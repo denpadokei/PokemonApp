@@ -1,7 +1,7 @@
-﻿using Prism.Ioc;
+﻿using PokemonApp.Damage.Views;
+using Prism.Ioc;
 using Prism.Modularity;
-using PokemonApp.Damage.Views;
-using PokemonApp.Damage.ViewModels;
+using Prism.Regions;
 
 namespace PokemonApp.Damage
 {
@@ -9,12 +9,12 @@ namespace PokemonApp.Damage
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
-
+ 
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<ViewA, ViewAViewModel>();
+            
         }
     }
 }

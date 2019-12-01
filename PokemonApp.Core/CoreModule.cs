@@ -1,7 +1,7 @@
-﻿using Prism.Ioc;
+﻿using PokemonApp.Core.Views;
+using Prism.Ioc;
 using Prism.Modularity;
-using PokemonApp.Core.Views;
-using PokemonApp.Core.ViewModels;
+using Prism.Regions;
 
 namespace PokemonApp.Core
 {
@@ -9,12 +9,12 @@ namespace PokemonApp.Core
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
-
+ 
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<ViewA, ViewAViewModel>();
+            
         }
     }
 }

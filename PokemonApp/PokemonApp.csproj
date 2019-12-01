@@ -56,7 +56,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\Damage.xaml">
+    <Compile Include="ViewModels\BaseWindowViewModel.cs" />
+    <Compile Include="ViewModels\DamageUserControlViewModel.cs" />
+    <Compile Include="ViewModels\WildAreaViewModel.cs" />
+    <Compile Include="Views\BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DamageUserControl.xaml.cs">
+      <DependentUpon>DamageUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WildAreaView.xaml.cs">
+      <DependentUpon>WildAreaView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\BaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DamageUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DamageWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -68,15 +88,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\DamageViewModel.cs" />
+    <Compile Include="ViewModels\DamageWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\Damage.xaml.cs">
-      <DependentUpon>Damage.xaml</DependentUpon>
+    <Compile Include="Views\DamageWindowView.xaml.cs">
+      <DependentUpon>DamageWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\WildAreaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -102,7 +126,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.Unity" Version="7.2.0.1422" />
+    <PackageReference Include="NETStandard.Library">
+      <Version>2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>4.6.8</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Core">
+      <Version>7.2.0.1422</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>7.2.0.1422</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Wpf">
+      <Version>7.2.0.1422</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>4.3.0.991211</Version>
     </PackageReference>
@@ -112,8 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PokemonApp.Core\PokemonApp.Core.csproj">
-      <Project>{9fe89575-05e1-488e-a8e1-00b884c37ecf}</Project>
+      <Project>{c23b58d9-88e4-4df8-bb80-2353dd7bc8d8}</Project>
       <Name>PokemonApp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Damage\PokemonApp.Damage.csproj">
+      <Project>{019052c9-37cc-41bf-9fd9-00f11ced9136}</Project>
+      <Name>PokemonApp.Damage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

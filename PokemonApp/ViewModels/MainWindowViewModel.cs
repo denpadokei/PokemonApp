@@ -1,4 +1,7 @@
-﻿using Prism.Mvvm;
+﻿using PokemonApp.Views;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Services.Dialogs;
 
 namespace PokemonApp.ViewModels
 {
@@ -11,9 +14,22 @@ namespace PokemonApp.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public MainWindowViewModel()
-        {
 
+
+
+        private DelegateCommand _openWindow;
+        public DelegateCommand OpenWindowCommand { get { return this._openWindow ?? new DelegateCommand(this.OpenWindow); } }
+
+        private void OpenWindow()
+        {
+            this.dialogservice_.Show(nameof(DamageUserControl), new DialogParameters(), _ => { });
+        }
+
+        private readonly IDialogService dialogservice_;
+
+        public MainWindowViewModel(IDialogService service)
+        {
+            this.dialogservice_ = service;
         }
     }
 }

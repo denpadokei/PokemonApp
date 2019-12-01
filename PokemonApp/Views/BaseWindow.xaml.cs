@@ -1,13 +1,14 @@
 ﻿using System.Windows;
 
+
 namespace PokemonApp.Views
 {
     /// <summary>
-    /// Interaction logic for Damage.xaml
+    /// Interaction logic for BaseWindow.xaml
     /// </summary>
-    public partial class Damage : Window
+    public partial class BaseWindow : Window
     {
-        public Damage()
+        public BaseWindow()
         {
             InitializeComponent();
         }

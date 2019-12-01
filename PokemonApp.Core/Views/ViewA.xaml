@@ -1,11 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PokemonApp.Core.Views.ViewA"
-             Title="{Binding Title}">
-    
-    <Label Text="View A from your Prism Module"
-           HorizontalOptions="CenterAndExpand"
-           VerticalOptions="CenterAndExpand" />
-    
-</ContentPage>
+﻿<UserControl x:Class="PokemonApp.Core.Views.ViewA"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PokemonApp.Core.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True" >
+    <Grid>
+        <TextBlock Text="{Binding Message}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+    </Grid>
+</UserControl>
