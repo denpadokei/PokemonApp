@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="PokemonApp.Views.DamageUserControl"
+﻿<UserControl x:Class="PokemonApp.WildArea.Views.WildAreaUraraka"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <TextBlock Text="text"/>
+        <TextBlock Text="{Binding Text}"/>
     </Grid>
 </UserControl>

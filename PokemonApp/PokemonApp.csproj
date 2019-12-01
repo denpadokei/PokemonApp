@@ -56,30 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\BaseWindowViewModel.cs" />
-    <Compile Include="ViewModels\DamageUserControlViewModel.cs" />
-    <Compile Include="ViewModels\WildAreaViewModel.cs" />
-    <Compile Include="Views\BaseWindow.xaml.cs">
-      <DependentUpon>BaseWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DamageUserControl.xaml.cs">
-      <DependentUpon>DamageUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WildAreaView.xaml.cs">
-      <DependentUpon>WildAreaView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\BaseWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DamageUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DamageWindowView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,19 +64,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\DamageWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\DamageWindowView.xaml.cs">
-      <DependentUpon>DamageWindowView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\WildAreaView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -156,6 +124,10 @@
     <ProjectReference Include="..\PokemonApp.Damage\PokemonApp.Damage.csproj">
       <Project>{019052c9-37cc-41bf-9fd9-00f11ced9136}</Project>
       <Name>PokemonApp.Damage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.WildArea\PokemonApp.WildArea.csproj">
+      <Project>{7E0AC48A-A089-4D03-84CC-1757C3D910A2}</Project>
+      <Name>PokemonApp.WildArea</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

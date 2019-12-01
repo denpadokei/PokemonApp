@@ -1,11 +1,11 @@
-﻿using Prism.Commands;
+﻿using PokemonApp.Core.ViewModels;
+using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PokemonApp.ViewModels
+namespace PokemonApp.Damage.ViewModels
 {
     public class DamageWindowViewModel : BaseWindowViewModel
     {

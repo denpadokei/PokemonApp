@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PokemonApp.ViewModels
+namespace PokemonApp.Core.ViewModels
 {
-    public class WildAreaViewModel : BaseWindowViewModel
+    public class BaseTabViewModel : BindableBase
     {
-        public WildAreaViewModel()
+        public BaseTabViewModel()
         {
 
         }

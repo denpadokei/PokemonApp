@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="PokemonApp.WildArea.Views.WildAreaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Height="700" Width="1200">
+    <TabControl>
+        <TabItem Header="うららか草原" x:Name="Uraraka" prism:RegionManager.RegionName="WildAreaUraraka"/>
+        <TabItem Header="木漏れ日林" x:Name="Komorebi" prism:RegionManager.RegionName="WildAreaKomorebi"/>
+    </TabControl>
+</UserControl>

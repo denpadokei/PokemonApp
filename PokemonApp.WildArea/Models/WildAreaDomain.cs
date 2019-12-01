@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PokemonApp.ViewModels
+namespace PokemonApp.WildArea.Models
 {
-    public class DamageUserControlViewModel : BaseWindowViewModel
+    public class WildAreaDomain : BindableBase
     {
-        public DamageUserControlViewModel()
+        private
+
+        public WildAreaDomain()
         {
 
         }

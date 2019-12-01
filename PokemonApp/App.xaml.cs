@@ -5,6 +5,7 @@ using Prism.Unity;
 using System.Windows;
 using PokemonApp.Core;
 using PokemonApp.Damage;
+using PokemonApp.WildArea;
 
 namespace PokemonApp
 {
@@ -20,9 +21,7 @@ namespace PokemonApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<DamageWindowView>();
-            containerRegistry.RegisterDialog<WildAreaView>();
-            containerRegistry.RegisterDialog<DamageUserControl>();
+            
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -30,6 +29,7 @@ namespace PokemonApp
             base.ConfigureModuleCatalog(moduleCatalog);
             moduleCatalog.AddModule<CoreModule>();
             moduleCatalog.AddModule<DamageModule>();
+            moduleCatalog.AddModule<WildAreaModule>();
         }
     }
 }

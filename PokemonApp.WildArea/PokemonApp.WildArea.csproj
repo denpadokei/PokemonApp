@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C23B58D9-88E4-4DF8-BB80-2353DD7BC8D8}</ProjectGuid>
+    <ProjectGuid>{7E0AC48A-A089-4D03-84CC-1757C3D910A2}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PokemonApp.Core</RootNamespace>
-    <AssemblyName>PokemonApp.Core</AssemblyName>
+    <RootNamespace>PokemonApp.WildArea</RootNamespace>
+    <AssemblyName>PokemonApp.WildArea</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,8 +49,21 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoreModule.cs" />
-    <Compile Include="Enum\WildAreaEnum.cs" />
+    <Compile Include="Models\WildAreaDomain.cs" />
+    <Compile Include="Models\WildAreaEntity.cs" />
+    <Compile Include="ViewModels\WildAreaKomorebiViewModel.cs" />
+    <Compile Include="ViewModels\WildAreaUrarakaViewModel.cs" />
+    <Compile Include="ViewModels\WildAreaViewModel.cs" />
+    <Compile Include="Views\WildAreaKomorebi.xaml.cs">
+      <DependentUpon>WildAreaKomorebi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WildAreaView.xaml.cs">
+      <DependentUpon>WildAreaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WildAreaUraraka.xaml.cs">
+      <DependentUpon>WildAreaUraraka.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WildAreaModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,11 +77,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\BaseTabViewModel.cs" />
-    <Compile Include="ViewModels\BaseWindowViewModel.cs" />
-    <Compile Include="Views\BaseWindow.xaml.cs">
-      <DependentUpon>BaseWindow.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,12 +86,23 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Static\pokemon_status.csv" />
-    <None Include="Static\pokemon_status.xlsx" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\BaseWindow.xaml">
+    <ProjectReference Include="..\PokemonApp.Core\PokemonApp.Core.csproj">
+      <Project>{c23b58d9-88e4-4df8-bb80-2353dd7bc8d8}</Project>
+      <Name>PokemonApp.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\WildAreaKomorebi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WildAreaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WildAreaUraraka.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,5 +110,6 @@
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1367" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
