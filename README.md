@@ -1,1 +1,1 @@
-ポケモンやる時便利なツール
+Useful tools when doing Pokemon
