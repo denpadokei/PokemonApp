@@ -6,6 +6,7 @@ using System.Windows;
 using PokemonApp.Core;
 using PokemonApp.Damage;
 using PokemonApp.WildArea;
+using PokemonApp.PictureBook;
 
 namespace PokemonApp
 {
@@ -30,6 +31,7 @@ namespace PokemonApp
             moduleCatalog.AddModule<CoreModule>();
             moduleCatalog.AddModule<DamageModule>();
             moduleCatalog.AddModule<WildAreaModule>();
+            moduleCatalog.AddModule<PictureBookModule>();
         }
     }
 }

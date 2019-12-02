@@ -8,8 +8,6 @@ namespace PokemonApp.WildArea.Models
 {
     public class WildAreaDomain : BindableBase
     {
-        private
-
         public WildAreaDomain()
         {
 

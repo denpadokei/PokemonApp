@@ -3,37 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="700" Width="1200">
+        Title="{Binding Title}" Height="700" Width="1200" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Margin="5" Height="Auto">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" x:Name="Damage" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                <Button Grid.Row="0" Grid.Column="1" x:Name="WildArea" Content="text" Margin="10" Command="{Binding WildAreaCommand}"/>
-                <Button Grid.Row="0" Grid.Column="2" x:Name="図鑑" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                <Button Grid.Row="1" Grid.Column="0" x:Name="hoge1" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                <Button Grid.Row="1" Grid.Column="1" x:Name="hoge2" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                <Button Grid.Row="1" Grid.Column="2" x:Name="hoge3" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                <Button Grid.Row="2" Grid.Column="0" x:Name="hoge4" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                <Button Grid.Row="2" Grid.Column="1" x:Name="hoge5" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                <Button Grid.Row="2" Grid.Column="2" x:Name="hoge6" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
-                
-            </Grid>
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" x:Name="Damage" Content="ダメージ計算機" Margin="10" Command="{Binding OpenCommand}"/>
+            <Button Grid.Row="0" Grid.Column="1" x:Name="WildArea" Content="ワイルドエリアのポケモン" Margin="10" Command="{Binding WildAreaCommand}"/>
+            <Button Grid.Row="0" Grid.Column="2" x:Name="PictureBook" Content="種族値一覧表" Margin="10" Command="{Binding PictureBookCommand}"/>
+            <Button Grid.Row="1" Grid.Column="0" x:Name="hoge1" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
+            <Button Grid.Row="1" Grid.Column="1" x:Name="hoge2" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
+            <Button Grid.Row="1" Grid.Column="2" x:Name="hoge3" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
+            <Button Grid.Row="2" Grid.Column="0" x:Name="hoge4" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
+            <Button Grid.Row="2" Grid.Column="1" x:Name="hoge5" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
+            <Button Grid.Row="2" Grid.Column="2" x:Name="hoge6" Content="text" Margin="10" Command="{Binding OpenCommand}"/>
+        </Grid>
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
 </Window>

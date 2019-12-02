@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -113,9 +114,7 @@
       <Version>4.3.0.991211</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\PokemonApp.Core\PokemonApp.Core.csproj">
       <Project>{c23b58d9-88e4-4df8-bb80-2353dd7bc8d8}</Project>
@@ -124,6 +123,14 @@
     <ProjectReference Include="..\PokemonApp.Damage\PokemonApp.Damage.csproj">
       <Project>{019052c9-37cc-41bf-9fd9-00f11ced9136}</Project>
       <Name>PokemonApp.Damage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.DataBase\PokemonApp.DataBase.csproj">
+      <Project>{742f51d7-d5d7-4e0e-9df4-51a633de100d}</Project>
+      <Name>PokemonApp.DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.PictureBook\PokemonApp.PictureBook.csproj">
+      <Project>{fdc92c66-ae82-4331-9e39-be95bc266560}</Project>
+      <Name>PokemonApp.PictureBook</Name>
     </ProjectReference>
     <ProjectReference Include="..\PokemonApp.WildArea\PokemonApp.WildArea.csproj">
       <Project>{7E0AC48A-A089-4D03-84CC-1757C3D910A2}</Project>

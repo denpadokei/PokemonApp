@@ -1,54 +1,61 @@
-﻿using PokemonApp.Damage.Views;
-using PokemonApp.PictureBook.Views;
-using PokemonApp.WildArea.Views;
+﻿using PokemonApp.Core.ViewModels;
+using PokemonApp.PictureBook.Models;
 using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 
-namespace PokemonApp.ViewModels
+namespace PokemonApp.PictureBook.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class PictureBookViewModel : BaseWindowViewModel
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
+        /// <summary>説明 を取得、設定</summary>
+        private ObservableCollection<PokemonEntity> pokemons_;
+        /// <summary>説明 を取得、設定</summary>
+        public ObservableCollection<PokemonEntity> Pokemons
+        {
+            get { return this.pokemons_; }
+            set { this.SetProperty(ref this.pokemons_, value); }
+        }
+
+        /// <summary>データセット を取得、設定</summary>
+        private DataTable csvTable_;
+        /// <summary>データセット を取得、設定</summary>
+        public DataTable CsvTable
+        {
+            get { return this.csvTable_; }
+            set { this.SetProperty(ref csvTable_, value); }
+        }
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
-        public DelegateCommand OpenCommand { get; private set; }
-        public DelegateCommand WildAreaCommand { get; private set; }
-        /// <summary>図鑑用コマンド を取得、設定</summary>
-        private DelegateCommand pictureBookCommand_;
-        /// <summary>図鑑用コマンド を取得、設定</summary>
-        public DelegateCommand PictureBookCommand
+        /// <summary>コマンド を取得、設定</summary>
+        private DelegateCommand serchCommand_;
+        /// <summary>コマンド を取得、設定</summary>
+        public DelegateCommand SerchCommand
 
         {
-            get { return this.pictureBookCommand_ ?? new DelegateCommand(this.OpenPictureBook); }
-            set { this.SetProperty(ref this.pictureBookCommand_, value); }
+            get { return this.serchCommand_ ?? new DelegateCommand(this.Serch); }
+            set { this.SetProperty(ref serchCommand_, value); }
         }
 
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
-
-
-        private void Open()
+        /// <summary>
+        /// CSVから引っ張ってくる。
+        /// </summary>
+        private void Serch()
         {
-            this.dialog_.Show(nameof(DamageWindow), new DialogParameters(), _ => { });
+            this.Pokemons.Clear();
+            this.Pokemons.AddRange(PictureBookDataSet.FindPokemon());
         }
-        private void OpenWildArea()
-        {
-            this.dialog_.Show(nameof(WildAreaView), new DialogParameters(), _ => { });
-        }
-
-        private void OpenPictureBook()
-        {
-            this.dialog_.Show(nameof(PictureBookView), new DialogParameters(), _ => { });
-        }
-
-
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // リクエスト
@@ -67,15 +74,10 @@ namespace PokemonApp.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        #endregion
-
-        private readonly IDialogService dialog_;
-
-        public MainWindowViewModel(IDialogService service)
+        public PictureBookViewModel()
         {
-            this.OpenCommand = new DelegateCommand(this.Open);
-            this.WildAreaCommand = new DelegateCommand(this.OpenWildArea);
-            this.dialog_ = service;
+            this.Pokemons = new ObservableCollection<PokemonEntity>();
         }
+        #endregion
     }
 }

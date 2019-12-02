@@ -4,6 +4,9 @@
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <TextBlock Text="{Binding Text}"/>
+        <StackPanel>
+            <CheckBox x:Name="checkBox" Content=""/>
+            <RadioButton x:Name="WetherButton" Content="天気"/>
+        </StackPanel>
     </Grid>
 </UserControl>

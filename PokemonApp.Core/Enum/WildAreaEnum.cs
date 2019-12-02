@@ -10,7 +10,39 @@ namespace PokemonApp.Core.Enum
     public enum AreaName
     {
         [Description("うららか草原")]
-        Uraraka
+        Uraraka,
+        [Description("こもれび林")]
+        Komorebi,
+        [Description("キバ湖・東")]
+        KibakoEast,
+        [Description("キバ湖・西")]
+        KibakoWest,
+        [Description("キバ湖・瞳")]
+        KibakoCenter,
+        [Description("見張りの塔跡地")]
+        Mihari,
+        [Description("ミロカロ湖・南")]
+        MirokarokoSause,
+        [Description("ミロカロ湖・北")]
+        MirokarokoNose,
+        [Description("巨人の腰かけ")]
+        BigManChar,
+        [Description("エンジンリバーサイド")]
+        Engine,
+        [Description("ハノシマ原っぱ")]
+        Hashinoma,
+        [Description("ストーンズ原野")]
+        Storns,
+        [Description("砂塵の窪地")]
+        SandMist,
+        [Description("巨人の防止")]
+        BigManHat,
+        [Description("巨人の鏡池")]
+        BigManMirrer,
+        [Description("逆鱗の湖")]
+        Nackle,
+        [Description("ナックル丘陵")]
+        Gekirin,
     }
 
     public enum WildAreaEnum
@@ -49,5 +81,10 @@ namespace PokemonApp.Core.Enum
         SandStorm,
         [Description("霧")]
         Fog
+    }
+
+    public enum AppearanceType
+    {
+
     }
 }
