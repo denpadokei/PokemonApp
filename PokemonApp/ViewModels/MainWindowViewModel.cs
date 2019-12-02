@@ -14,6 +14,14 @@ namespace PokemonApp.ViewModels
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
+        /// <summary>タイトル を取得、設定</summary>
+        private string title_;
+        /// <summary>タイトル を取得、設定</summary>
+        public string Title
+        {
+            get { return this.title_; }
+            set { this.SetProperty(ref title_, value); }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -23,7 +31,6 @@ namespace PokemonApp.ViewModels
         private DelegateCommand pictureBookCommand_;
         /// <summary>図鑑用コマンド を取得、設定</summary>
         public DelegateCommand PictureBookCommand
-
         {
             get { return this.pictureBookCommand_ ?? new DelegateCommand(this.OpenPictureBook); }
             set { this.SetProperty(ref this.pictureBookCommand_, value); }
@@ -73,6 +80,7 @@ namespace PokemonApp.ViewModels
 
         public MainWindowViewModel(IDialogService service)
         {
+            this.Title = "ちょっと便利なツール1号";
             this.OpenCommand = new DelegateCommand(this.Open);
             this.WildAreaCommand = new DelegateCommand(this.OpenWildArea);
             this.dialog_ = service;
