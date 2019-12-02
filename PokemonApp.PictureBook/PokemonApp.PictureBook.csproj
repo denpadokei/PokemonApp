@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\PictureBookDataSet.cs" />
+    <Compile Include="Models\PictureBookDomain.cs" />
+    <Compile Include="Models\PictureBookFilter.cs" />
     <Compile Include="Models\PokemonEntity.cs" />
     <Compile Include="PictureBookModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -11,7 +11,7 @@ namespace PokemonApp.Core.ViewModels
     {
         public BaseWindowViewModel()
         {
-
+            this.Title = "Test";
         }
 
         public void Close()
@@ -19,7 +19,14 @@ namespace PokemonApp.Core.ViewModels
             this.RequestClose?.Invoke(new DialogResult());
         }
 
-        public string Title => "Test";
+        /// <summary>タイトル を取得、設定</summary>
+        private string title_;
+        /// <summary>タイトル を取得、設定</summary>
+        public string Title
+        {
+            get { return this.title_; }
+            set { this.SetProperty(ref title_, value); }
+        }
 
         public event Action<IDialogResult> RequestClose;
 
