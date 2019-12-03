@@ -12,6 +12,7 @@ using PokemonApp.Main.Views;
 using PokemonApp.PictureBook.Views;
 using PokemonApp.Main;
 using PokemonApp.WindowManage;
+using Prism.Services.Dialogs;
 
 namespace PokemonApp
 {
@@ -27,15 +28,14 @@ namespace PokemonApp
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            var region = new RegionManager();
-            region.RequestNavigate("ShellRegion", "メインメニュー");
+            var region = this.Container.Resolve<IRegionManager>();
+            region.RegisterViewWithRegion("ShellRegion", typeof(MainWindowView));
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialogWindow<CustomDialogWindow>();
         }
-
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             base.ConfigureModuleCatalog(moduleCatalog);

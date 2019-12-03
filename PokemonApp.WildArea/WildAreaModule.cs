@@ -11,15 +11,13 @@ namespace PokemonApp.WildArea
         public void OnInitialized(IContainerProvider containerProvider)
         {
             var regionManager = containerProvider.Resolve<IRegionManager>();
-            regionManager.RegisterViewWithRegion("WildAreaUraraka", typeof(WildAreaUraraka));
-            regionManager.RegisterViewWithRegion("WildAreaKomorebi", typeof(WildAreaKomorebi));
+            regionManager.RegisterViewWithRegion("WildAreaUrarakaRegion", typeof(WildAreaUraraka));
+            regionManager.RegisterViewWithRegion("WildAreaKomorebiRegion", typeof(WildAreaKomorebi));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<WildAreaView, WildAreaViewModel>();
-            //containerRegistry.RegisterForNavigation<WildAreaUraraka, WildAreaUrarakaViewModel>();
-            //containerRegistry.RegisterForNavigation<WildAreaKomorebi, WildAreaKomorebiViewModel>();
+            containerRegistry.RegisterDialog<WildAreaView, WildAreaViewModel>(nameof(WildAreaView));
         }
     }
 }

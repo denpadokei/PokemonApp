@@ -1,25 +1,21 @@
 ﻿using PokemonApp.Core.ViewModels;
-using PokemonApp.PictureBook.Views;
-using PokemonApp.WindowManage;
 using Prism.Commands;
-using Prism.Ioc;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace PokemonApp.Main.ViewModels
+namespace PokemonApp.DataBase.ViewModels
 {
-    public class MainWindowViewModel : BaseWindowViewModel
+    public class DataBaseAccsessWindowViewModel : BaseWindowViewModel
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        private ObservableCollection<MainWindowButtonViewModel> collection_;
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        public ObservableCollection<MainWindowButtonViewModel> Collection
+        /// <summary>コレクション を取得、設定</summary>
+        private ObservableCollection<string> collection_;
+        /// <summary>コレクション を取得、設定</summary>
+        public ObservableCollection<string> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
@@ -30,6 +26,15 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
+        private void Serch()
+        {
+
+        }
+
+        private void Save()
+        {
+
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // リクエスト
@@ -48,14 +53,10 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public MainWindowViewModel(IDialogService service, WindowType type)
+        public DataBaseAccsessWindowViewModel()
         {
-            this.Collection = new ObservableCollection<MainWindowButtonViewModel>();
-            this.Collection.Add(new MainWindowButtonViewModel(service, type.PictuerBook));
-            this.Collection.Add(new MainWindowButtonViewModel(service, type.DamageSim));
-            this.Collection.Add(new MainWindowButtonViewModel(service, type.WildArea));
+
         }
         #endregion
-
     }
 }

@@ -11,13 +11,14 @@ namespace PokemonApp.Main
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            var region = containerProvider.Resolve<IRegionManager>();
-            region.RegisterViewWithRegion("ShellRegion", typeof(MainWindowView));
+            //var region = containerProvider.Resolve<IRegionManager>();
+            //region.RegisterViewWithRegion("ShellRegion", typeof(MainWindowView));
+            
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<MainWindowView, MainWindowViewModel>("メインメニュー");
+            containerRegistry.RegisterForNavigation<MainWindowView, MainWindowViewModel>(nameof(MainWindowView));
         }
     }
 }

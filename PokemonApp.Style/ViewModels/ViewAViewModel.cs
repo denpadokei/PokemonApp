@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonApp.DataBase.ViewModels
+namespace PokemonApp.Style.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {
