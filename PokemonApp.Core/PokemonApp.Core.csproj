@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CoreModule.cs" />
     <Compile Include="Enum\WildAreaEnum.cs" />
+    <Compile Include="Interface\IButtonMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -79,12 +80,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Static\pokemon_status.csv" />
+    <None Include="Static\pokemon_status.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Static\pokemon_status.xlsx" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Views\BaseWindow.xaml">
       <SubType>Designer</SubType>
@@ -96,6 +97,9 @@
       <Version>4.6.8</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1367" />
+    <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.112</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@ namespace PokemonApp.PictureBook.Models
 {
     static class PictureBookDataSet
     {
-        static public List<PokemonEntity> FindPokemon(string csv_file_path = @"..\Static\pokemon_status.csv")
+        static public List<PokemonEntity> FindPokemon(string csv_file_path = @".\Static\pokemon_status.csv")
         {
             var csvData = new DataTable();
             var list = new List<PokemonEntity>();

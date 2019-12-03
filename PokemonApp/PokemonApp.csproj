@@ -56,19 +56,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="ShellWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomDialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\ModelBase.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="ShellWindow.xaml.cs">
+      <DependentUpon>ShellWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDialogWindow.xaml.cs">
+      <DependentUpon>CustomDialogWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +114,9 @@
     <PackageReference Include="Prism.Wpf">
       <Version>7.2.0.1422</Version>
     </PackageReference>
+    <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.112</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>4.3.0.991211</Version>
     </PackageReference>
@@ -128,6 +135,10 @@
       <Project>{742f51d7-d5d7-4e0e-9df4-51a633de100d}</Project>
       <Name>PokemonApp.DataBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Main\PokemonApp.Main.csproj">
+      <Project>{531deb79-ad13-41bc-9182-c1454c67701a}</Project>
+      <Name>PokemonApp.Main</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PokemonApp.PictureBook\PokemonApp.PictureBook.csproj">
       <Project>{fdc92c66-ae82-4331-9e39-be95bc266560}</Project>
       <Name>PokemonApp.PictureBook</Name>
@@ -135,6 +146,10 @@
     <ProjectReference Include="..\PokemonApp.WildArea\PokemonApp.WildArea.csproj">
       <Project>{7E0AC48A-A089-4D03-84CC-1757C3D910A2}</Project>
       <Name>PokemonApp.WildArea</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Window\PokemonApp.WindowManage.csproj">
+      <Project>{3D35DEC1-AF7D-441A-A4F6-B9BC7FA90717}</Project>
+      <Name>PokemonApp.WindowManage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

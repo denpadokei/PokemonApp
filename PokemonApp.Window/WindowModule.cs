@@ -1,21 +1,20 @@
-﻿using PokemonApp.PictureBook.ViewModels;
-using PokemonApp.PictureBook.Views;
+﻿using PokemonApp.WindowManage;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace PokemonApp.PictureBook
+namespace PokemonApp.WindowManage
 {
-    public class PictureBookModule : IModule
+    public class WindowModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
- 
+            
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<PictureBookView>();
+            containerRegistry.Register(typeof(WindowType));
         }
     }
 }
