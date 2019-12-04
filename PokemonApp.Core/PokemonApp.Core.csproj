@@ -50,9 +50,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\ChangeWindowAttribute.cs" />
     <Compile Include="CoreModule.cs" />
     <Compile Include="Enum\WildAreaEnum.cs" />
     <Compile Include="Interface\IButtonMenu.cs" />
+    <Compile Include="Interface\IWindowManager.cs" />
+    <Compile Include="Models\WindowManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -68,8 +71,8 @@
     </Compile>
     <Compile Include="ViewModels\BaseTabViewModel.cs" />
     <Compile Include="ViewModels\BaseWindowViewModel.cs" />
-    <Compile Include="Views\BaseWindow.xaml.cs">
-      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    <Compile Include="Views\BaseWindowView.xaml.cs">
+      <DependentUpon>BaseWindowView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,7 +90,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\BaseWindow.xaml">
+    <Page Include="Views\BaseWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,7 +99,10 @@
     <PackageReference Include="NLog">
       <Version>4.6.8</Version>
     </PackageReference>
-    <PackageReference Include="Prism.Wpf" Version="7.2.0.1367" />
+    <PackageReference Include="Prism.Unity">
+      <Version>7.2.0.1422</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
     <PackageReference Include="System.Data.SQLite">
       <Version>1.0.112</Version>
     </PackageReference>

@@ -13,6 +13,7 @@ using PokemonApp.PictureBook.Views;
 using PokemonApp.Main;
 using PokemonApp.WindowManage;
 using Prism.Services.Dialogs;
+using PokemonApp.AbilityValueConverter;
 
 namespace PokemonApp
 {
@@ -45,6 +46,7 @@ namespace PokemonApp
             moduleCatalog.AddModule<PictureBookModule>();
             moduleCatalog.AddModule<MainModule>();
             moduleCatalog.AddModule<WindowModule>();
+            moduleCatalog.AddModule<AbilityValueConverterModule>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Interface;
+using PokemonApp.Core.ViewModels;
 using PokemonApp.PictureBook.Views;
 using PokemonApp.WindowManage;
 using Prism.Commands;
@@ -17,9 +18,9 @@ namespace PokemonApp.Main.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>ボタンコレクション を取得、設定</summary>
-        private ObservableCollection<MainWindowButtonViewModel> collection_;
+        private ObservableCollection<IButtonMenu> collection_;
         /// <summary>ボタンコレクション を取得、設定</summary>
-        public ObservableCollection<MainWindowButtonViewModel> Collection
+        public ObservableCollection<IButtonMenu> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
@@ -48,12 +49,14 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public MainWindowViewModel(IDialogService service, WindowType type)
+        public MainWindowViewModel(IContainerExtension container)
         {
-            this.Collection = new ObservableCollection<MainWindowButtonViewModel>();
-            this.Collection.Add(new MainWindowButtonViewModel(service, type.PictuerBook));
-            this.Collection.Add(new MainWindowButtonViewModel(service, type.DamageSim));
-            this.Collection.Add(new MainWindowButtonViewModel(service, type.WildArea));
+            this.Collection = new ObservableCollection<IButtonMenu>() {
+                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.PictuerBook)),
+                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.DamageSim)),
+                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.WildArea)),
+                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.AbilityValueConverter))
+            };
         }
         #endregion
 

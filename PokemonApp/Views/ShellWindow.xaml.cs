@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 
 namespace PokemonApp.Views
@@ -11,6 +12,15 @@ namespace PokemonApp.Views
         public ShellWindow()
         {
             InitializeComponent();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            var windows = Application.Current.Windows.OfType<Window>().Where(x => x != Application.Current.MainWindow);
+            foreach (var window in windows) {
+                window.Close();
+            }
+            base.OnClosed(e);
         }
     }
 }

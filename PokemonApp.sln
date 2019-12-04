@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonApp.WindowManage", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonApp.Style", "PokemonApp.Style\PokemonApp.Style.csproj", "{CC703163-FE6E-434C-9DBD-4066040994BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonApp.AbilityValueConverter", "PokemonApp.AbilityValueConverter\PokemonApp.AbilityValueConverter.csproj", "{C20EB307-BD8B-4B90-85C6-2398191A6DFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{CC703163-FE6E-434C-9DBD-4066040994BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC703163-FE6E-434C-9DBD-4066040994BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC703163-FE6E-434C-9DBD-4066040994BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C20EB307-BD8B-4B90-85C6-2398191A6DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20EB307-BD8B-4B90-85C6-2398191A6DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20EB307-BD8B-4B90-85C6-2398191A6DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20EB307-BD8B-4B90-85C6-2398191A6DFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

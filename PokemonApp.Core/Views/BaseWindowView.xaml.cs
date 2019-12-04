@@ -5,9 +5,9 @@ namespace PokemonApp.Core.Views
     /// <summary>
     /// Interaction logic for BaseWindow
     /// </summary>
-    public partial class BaseWindow : UserControl
+    public partial class BaseWindowView : UserControl
     {
-        public BaseWindow()
+        public BaseWindowView()
         {
             InitializeComponent();
         }

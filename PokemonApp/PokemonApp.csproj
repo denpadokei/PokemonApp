@@ -106,9 +106,6 @@
     <PackageReference Include="NLog">
       <Version>4.6.8</Version>
     </PackageReference>
-    <PackageReference Include="Prism.Core">
-      <Version>7.2.0.1422</Version>
-    </PackageReference>
     <PackageReference Include="Prism.Unity">
       <Version>7.2.0.1422</Version>
     </PackageReference>
@@ -118,12 +115,13 @@
     <PackageReference Include="System.Data.SQLite">
       <Version>1.0.112</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms">
-      <Version>4.3.0.991211</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\PokemonApp.AbilityValueConverter\PokemonApp.AbilityValueConverter.csproj">
+      <Project>{C20EB307-BD8B-4B90-85C6-2398191A6DFA}</Project>
+      <Name>PokemonApp.AbilityValueConverter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PokemonApp.Core\PokemonApp.Core.csproj">
       <Project>{c23b58d9-88e4-4df8-bb80-2353dd7bc8d8}</Project>
       <Name>PokemonApp.Core</Name>

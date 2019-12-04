@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3D35DEC1-AF7D-441A-A4F6-B9BC7FA90717}</ProjectGuid>
+    <ProjectGuid>{C20EB307-BD8B-4B90-85C6-2398191A6DFA}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PokemonApp.Window</RootNamespace>
-    <AssemblyName>PokemonApp.Window</AssemblyName>
+    <RootNamespace>PokemonApp.AbilityValueConverter</RootNamespace>
+    <AssemblyName>PokemonApp.AbilityValueConverter</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,7 +49,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WindowModule.cs" />
+    <Compile Include="AbilityValueConverterModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -63,8 +63,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="WindowType.cs" />
-    <Compile Include="WindowTypes.cs" />
+    <Compile Include="ViewModels\AbilityValueConverterViewModel.cs" />
+    <Compile Include="Views\AbilityValueConverteView.xaml.cs">
+      <DependentUpon>AbilityValueConverteView.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,28 +78,25 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PokemonApp.AbilityValueConverter\PokemonApp.AbilityValueConverter.csproj">
-      <Project>{c20eb307-bd8b-4b90-85c6-2398191a6dfa}</Project>
-      <Name>PokemonApp.AbilityValueConverter</Name>
+    <ProjectReference Include="..\PokemonApp.Core\PokemonApp.Core.csproj">
+      <Project>{c23b58d9-88e4-4df8-bb80-2353dd7bc8d8}</Project>
+      <Name>PokemonApp.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PokemonApp.Damage\PokemonApp.Damage.csproj">
-      <Project>{019052C9-37CC-41BF-9FD9-00F11CED9136}</Project>
-      <Name>PokemonApp.Damage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PokemonApp.PictureBook\PokemonApp.PictureBook.csproj">
-      <Project>{FDC92C66-AE82-4331-9E39-BE95BC266560}</Project>
-      <Name>PokemonApp.PictureBook</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PokemonApp.WildArea\PokemonApp.WildArea.csproj">
-      <Project>{7E0AC48A-A089-4D03-84CC-1757C3D910A2}</Project>
-      <Name>PokemonApp.WildArea</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AbilityValueConverteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Unity">
       <Version>7.2.0.1422</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

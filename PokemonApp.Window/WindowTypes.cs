@@ -1,4 +1,5 @@
-﻿using PokemonApp.Damage.Views;
+﻿using PokemonApp.AbilityValueConverter.Views;
+using PokemonApp.Damage.Views;
 using PokemonApp.PictureBook.Views;
 using PokemonApp.WildArea.Views;
 using System;
@@ -11,9 +12,10 @@ namespace PokemonApp.WindowManage
 {
     public partial class WindowType
     {
-        public WindowType PictuerBook => new WindowType("種族値一覧", nameof(PictureBookView));
-        public WindowType DamageSim => new WindowType("ダメージ計算", nameof(DamageView));
-        public WindowType WildArea => new WindowType("ワイルドエリア一覧", nameof(WildAreaView));
+        static public WindowType PictuerBook => new WindowType("種族値一覧", nameof(PictureBookView));
+        static public WindowType DamageSim => new WindowType("ダメージ計算", nameof(DamageView));
+        static public WindowType WildArea => new WindowType("ワイルドエリア一覧", nameof(WildAreaView));
+        static public WindowType AbilityValueConverter => new WindowType("能力値計算機", nameof(AbilityValueConverterView));
 
     }
 }

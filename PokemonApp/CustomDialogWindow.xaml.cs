@@ -25,16 +25,6 @@ namespace PokemonApp.Views
             InitializeComponent();
         }
 
-        protected override void OnInitialized(EventArgs e)
-        {
-            base.OnInitialized(e);
-        }
-        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
-        {
-            base.OnPropertyChanged(e);
-            this.Owner = null;
-        }
-
         public IDialogResult Result { get; set; }
     }
 }

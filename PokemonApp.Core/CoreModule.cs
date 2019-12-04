@@ -1,4 +1,7 @@
-﻿using PokemonApp.Core.Views;
+﻿using PokemonApp.Core.Action;
+using PokemonApp.Core.Interface;
+using PokemonApp.Core.Models;
+using PokemonApp.Core.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -14,7 +17,8 @@ namespace PokemonApp.Core
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.Register<IWindowManager, WindowManager>();
+            containerRegistry.Register<ChangeWindowAttribute>();
         }
     }
 }

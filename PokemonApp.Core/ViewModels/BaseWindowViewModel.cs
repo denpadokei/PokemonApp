@@ -1,14 +1,19 @@
-﻿using Prism.Commands;
+﻿using PokemonApp.Core.Interface;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity;
 
 namespace PokemonApp.Core.ViewModels
 {
     public class BaseWindowViewModel : BindableBase, IDialogAware
     {
+        [Dependency]
+        public IWindowManager WindowManager { get; set; }
+
         public BaseWindowViewModel()
         {
             this.Title = "Test";

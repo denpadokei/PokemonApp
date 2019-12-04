@@ -19,6 +19,7 @@ namespace PokemonApp.Main
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MainWindowView, MainWindowViewModel>(nameof(MainWindowView));
+            containerRegistry.Register<MainWindowButtonViewModel>();
         }
     }
 }

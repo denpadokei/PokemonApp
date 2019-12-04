@@ -1,4 +1,5 @@
 ﻿using PokemonApp.Core.Interface;
+using PokemonApp.Core.ViewModels;
 using PokemonApp.WindowManage;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -9,7 +10,7 @@ using System.Linq;
 
 namespace PokemonApp.Main.ViewModels
 {
-    public class MainWindowButtonViewModel : BindableBase, IButtonMenu
+    public class MainWindowButtonViewModel : BaseWindowViewModel, IButtonMenu
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
@@ -47,7 +48,7 @@ namespace PokemonApp.Main.ViewModels
         #region // コマンド用メソッド
         public void OpenWindow()
         {
-            this.dialog_?.Show(this.WindowName, new DialogParameters(), _ => { });
+            this.WindowManager.Show(this.WindowName, new DialogParameters(), _ => { });
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -64,13 +65,12 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // メンバ変数
-        private readonly IDialogService dialog_;
+        
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public MainWindowButtonViewModel(IDialogService dialog, WindowType type)
+        public MainWindowButtonViewModel(WindowType type)
         {
-            this.dialog_ = dialog;
             this.Name = type.Name;
             this.WindowName = type.WindowName;
         }
