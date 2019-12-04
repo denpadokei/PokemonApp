@@ -66,7 +66,7 @@ namespace PokemonApp.PictureBook.Models
                 var context = new DataContext(connection);
                 var table = context.GetTable<pokemon>();
                 var i = 1;
-                foreach (var pokemon in this.Collection.Where(x => x.No != 0)) {
+                foreach (var pokemon in this.Collection) {
                     table.InsertOnSubmit(new pokemon() {
                         Id = i,
                         No = pokemon.No,
@@ -84,7 +84,7 @@ namespace PokemonApp.PictureBook.Models
                         Speed = pokemon.Speed,
                     });
                     ++i;
-                    logger.Info($"{i}行目が終わりました。");
+                    logger.Trace($"{i}行目が終わりました。");
 
                 }
                 try {
@@ -98,6 +98,73 @@ namespace PokemonApp.PictureBook.Models
                 }
                 
             };
+        }
+
+        public void CharComit()
+        {
+            var logger = LogManager.GetCurrentClassLogger();
+            using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
+                var context = new DataContext(connection);
+                connection.Open();
+                var pokemontable = context.GetTable<pokemon>();
+                var charastable = context.GetTable<characteristic>();
+                foreach (var pokemon in this.Collection) {
+                    var pokemonRecords = pokemontable.ToArray().Where(x => x.Name == pokemon.Name);
+                    foreach (var pokemonRecord in pokemonRecords) {
+                        var chars1 = pokemon.Characteristic1;
+                        var id1 = charastable.ToArray().Where(x => x.Name == chars1);
+                        foreach (var chars in id1) {
+                            pokemonRecord.Characteristic1 = chars.Id;
+                        }
+                        if (pokemon.Characteristic2 != "") {
+                            var chars2 = pokemon.Characteristic2;
+                            var id2 = charastable.ToArray().Where(x => x.Name == chars2);
+                            foreach (var chars in id2) {
+                                pokemonRecord.Characteristic2 = chars.Id;
+                            }
+                        }
+                        if (pokemon.DreamCharacteristic != "") {
+                            var chars3 = pokemon.DreamCharacteristic;
+                            var id3 = charastable.ToArray().Where(x => x.Name == chars3);
+                            foreach (var chars in id3) {
+                                pokemonRecord.DreamCharacteristic = chars.Id;
+                            }
+                        }
+                    }
+                }
+                context.SubmitChanges();
+                connection.Close();
+            }
+        }
+
+        public void TypeComit()
+        {
+            var logger = LogManager.GetCurrentClassLogger();
+            using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
+                var context = new DataContext(connection);
+                connection.Open();
+                var pokemontable = context.GetTable<pokemon>();
+                var charastable = context.GetTable<type>();
+                foreach (var pokemon in this.Collection) {
+                    var pokemonRecords = pokemontable.ToArray().Where(x => x.Name == pokemon.Name);
+                    foreach (var pokemonRecord in pokemonRecords) {
+                        var type1 = pokemon.Type1;
+                        var id1 = charastable.ToArray().Where(x => x.Name == type1);
+                        foreach (var chars in id1) {
+                            pokemonRecord.Type1 = chars.Id;
+                        }
+                        if (pokemon.Type2 != "") {
+                            var type2 = pokemon.Type2;
+                            var id2 = charastable.ToArray().Where(x => x.Name == type2);
+                            foreach (var chars in id2) {
+                                pokemonRecord.Type2 = chars.Id;
+                            }
+                        }
+                    }
+                }
+                context.SubmitChanges();
+                connection.Close();
+            }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

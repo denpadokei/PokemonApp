@@ -34,7 +34,9 @@ namespace PokemonApp.PictureBook.Models
                         //        fieldData[i] = null;
                         //    }
                         //}
-                        var entity = new PokemonEntity() {
+                        var entity = new PokemonEntity()
+                        {
+                            No = fieldData[0],
                             Name = fieldData[1],
                             Type1 = fieldData[2],
                             Type2 = fieldData[3],
@@ -46,11 +48,8 @@ namespace PokemonApp.PictureBook.Models
                             Block = int.Parse(fieldData[9]),
                             Contact = int.Parse(fieldData[10]),
                             Defence = int.Parse(fieldData[11]),
-                            Speed = int.Parse(fieldData[12]),
+                            Speed = int.Parse(fieldData[12])
                         };
-                        if (int.TryParse(fieldData[0], out var no)) {
-                            entity.No = no;
-                        }
                         if (int.TryParse(fieldData[13], out var sumAll)) {
                             entity.SumAll = sumAll;
                         }

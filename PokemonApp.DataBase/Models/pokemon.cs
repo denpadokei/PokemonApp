@@ -13,7 +13,7 @@ namespace PokemonApp.DataBase.Models
         [Column(Name = "pokemon_id", IsPrimaryKey = true, CanBeNull = false)]
         public int Id { get; set; }
         [Column(Name = "pokemon_no", CanBeNull = false)]
-        public int No { get; set; }
+        public string No { get; set; }
         [Column(Name = "name", CanBeNull = false)]
         public string Name { get; set; }
         [Column(Name = "type_1_id", CanBeNull = false)]

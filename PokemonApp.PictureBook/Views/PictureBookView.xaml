@@ -8,14 +8,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
+             d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:PictureBookViewModel}, IsDesignTimeCreatable=True}"
-             prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="種族値一覧" With="1200" Height="800"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-    
+             prism:ViewModelLocator.AutoWireViewModel="True">
     <ContentControl>
         <Grid Margin="10">
             <Grid.RowDefinitions>
@@ -36,9 +31,13 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Margin="3" Grid.Column="0" Command="{Binding RegistCommand}" Content="登録" Width="75" Height="30" HorizontalAlignment="Right"/>
-                        <Button Margin="3" Grid.Column="1" Command="{Binding FilteringCommand}" Content="検索" Width="75" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Grid.Column="0" Command="{Binding FilteringCommand}" Content="検索" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Grid.Column="1" Command="{Binding RegistCommand}" Content="登録" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Grid.Column="2" Command="{Binding ComittCommand}" Content="特性を紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Grid.Column="3" Command="{Binding TypeComitCommand}" Content="タイプを紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
                     </Grid>
                 </Grid>
             </StackPanel>

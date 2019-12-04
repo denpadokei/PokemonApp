@@ -8,7 +8,7 @@ namespace PokemonApp.PictureBook.Models
 {
     public class PokemonEntity
     {
-        public int No { get; set; }
+        public string No { get; set; }
         public string Name { get; set; }
         public string Type1 { get; set; }
         public string Type2 { get; set; }

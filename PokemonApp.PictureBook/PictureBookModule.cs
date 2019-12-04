@@ -10,12 +10,16 @@ namespace PokemonApp.PictureBook
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            
+            var region = containerProvider.Resolve<IRegionManager>();
+            region.RegisterViewWithRegion("PictureBookRegion", typeof(PictureBookView));
+            region.RegisterViewWithRegion("TrickRegion", typeof(TrickView));
+            region.RegisterViewWithRegion("CharacteristicRegion", typeof(CharacteristicView));
+            region.RegisterViewWithRegion("TypeRegion", typeof(TypesView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<PictureBookView>();
+            containerRegistry.RegisterDialog<PokemonDataView, PokemonDataViewModel>(nameof(PokemonDataView));
         }
     }
 }

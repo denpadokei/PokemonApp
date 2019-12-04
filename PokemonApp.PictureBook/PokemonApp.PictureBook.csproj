@@ -52,10 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\PicturBookDataBase.cs" />
+    <Compile Include="Models\TypesDomain.cs" />
+    <Compile Include="Models\CharacteristicEntity.cs" />
     <Compile Include="Models\PictureBookDataSet.cs" />
+    <Compile Include="Models\CharacteristicDomain.cs" />
+    <Compile Include="Models\TrickDomain.cs" />
     <Compile Include="Models\PictureBookDomain.cs" />
     <Compile Include="Models\PictureBookFilter.cs" />
     <Compile Include="Models\PokemonEntity.cs" />
+    <Compile Include="Models\TrickEntity.cs" />
+    <Compile Include="Models\TypeEntity.cs" />
     <Compile Include="PictureBookModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -70,9 +76,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\CharacteristicViewModel.cs" />
     <Compile Include="ViewModels\PictureBookViewModel.cs" />
-    <Compile Include="ViewModels\PokemonDataViewViewModel.cs" />
+    <Compile Include="ViewModels\PokemonDataViewModel.cs" />
     <Compile Include="ViewModels\TrickViewModel.cs" />
+    <Compile Include="ViewModels\TypesViewModel.cs" />
+    <Compile Include="Views\CharacteristicView.xaml.cs">
+      <DependentUpon>CharacteristicView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PictureBookView.xaml.cs">
       <DependentUpon>PictureBookView.xaml</DependentUpon>
     </Compile>
@@ -81,6 +92,9 @@
     </Compile>
     <Compile Include="Views\TrickView.xaml.cs">
       <DependentUpon>TrickView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TypesView.xaml.cs">
+      <DependentUpon>TypesView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -103,6 +117,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\CharacteristicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PictureBookView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TrickView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TypesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

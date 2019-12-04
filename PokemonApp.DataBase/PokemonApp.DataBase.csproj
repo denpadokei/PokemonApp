@@ -67,6 +67,8 @@
   <ItemGroup>
     <Compile Include="DataBaseModule.cs" />
     <Compile Include="Models\DataBaseAccsessDomain.cs" />
+    <Compile Include="Models\characteristic.cs" />
+    <Compile Include="Models\type.cs" />
     <Compile Include="Models\pokemon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

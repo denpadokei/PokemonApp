@@ -3,11 +3,11 @@
 namespace PokemonApp.PictureBook.Views
 {
     /// <summary>
-    /// Interaction logic for TrickView
+    /// Interaction logic for TypesView
     /// </summary>
-    public partial class TrickView : UserControl
+    public partial class TypesView : UserControl
     {
-        public TrickView()
+        public TypesView()
         {
             InitializeComponent();
         }

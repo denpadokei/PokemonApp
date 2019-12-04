@@ -11,17 +11,17 @@ using System.Linq;
 
 namespace PokemonApp.PictureBook.ViewModels
 {
-    public class PictureBookViewModel : BaseWindowViewModel
+    public class CharacteristicViewModel : BaseWindowViewModel
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>説明 を取得、設定</summary>
-        private ObservableCollection<PokemonEntity> pokemons_;
+        private ObservableCollection<CharacteristicEntity> charactaristics_;
         /// <summary>説明 を取得、設定</summary>
-        public ObservableCollection<PokemonEntity> Pokemons
+        public ObservableCollection<CharacteristicEntity> Characteristics
         {
-            get { return this.pokemons_; }
-            set { this.SetProperty(ref this.pokemons_, value); }
+            get { return this.charactaristics_; }
+            set { this.SetProperty(ref this.charactaristics_, value); }
         }
 
         /// <summary>データセット を取得、設定</summary>
@@ -69,16 +69,6 @@ namespace PokemonApp.PictureBook.ViewModels
             get { return this.filteringCommand_ ?? new DelegateCommand(this.Filtering); }
             set { this.SetProperty(ref this.filteringCommand_, value); }
         }
-
-        /// <summary>特性を紐づけるコマンド を取得、設定</summary>
-        private DelegateCommand comittCommand_;
-        /// <summary>特性を紐づけるコマンド を取得、設定</summary>
-        public DelegateCommand ComittCommand { get { return this.comittCommand_ ?? (this.comittCommand_ = new DelegateCommand(this.CharComit)); } }
-
-        /// <summary>タイプを紐づけるコマンド を取得、設定</summary>
-        private DelegateCommand typeComitCommand_;
-        /// <summary>タイプを紐づけるコマンド を取得、設定</summary>
-        public DelegateCommand TypeComitCommand { get { return this.typeComitCommand_ ?? (this.typeComitCommand_ = new DelegateCommand(this.TypeComit)); } }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
@@ -87,8 +77,7 @@ namespace PokemonApp.PictureBook.ViewModels
         /// </summary>
         private void Serch()
         {
-            this.Pokemons.Clear();
-            this.Pokemons.AddRange(PictureBookDataSet.FindPokemon());
+            this.domain_.Serch();
         }
 
         private void Filtering()
@@ -100,16 +89,6 @@ namespace PokemonApp.PictureBook.ViewModels
         {
             this.domain_.Regist();
         }
-
-        private void CharComit()
-        {
-            this.domain_.CharComit();
-        }
-
-        private void TypeComit()
-        {
-            this.domain_.TypeComit();
-        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // リクエスト
@@ -119,23 +98,31 @@ namespace PokemonApp.PictureBook.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
+        private void Initialize()
+        {
+            foreach (var cha in this.Characteristics) {
+                this.domain_.CharsList.Add(cha);
+            }
+        }
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // メンバ変数
-        private readonly PictureBookDomain domain_;
+        private readonly CharacteristicDomain domain_;
 
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public PictureBookViewModel()
+        public CharacteristicViewModel()
         {
-            this.domain_ = new PictureBookDomain();
-            this.Pokemons = this.domain_.Collection;
+            this.domain_ = new CharacteristicDomain();
+            this.Characteristics = this.domain_.Collection;
             this.Filter = this.domain_.Filter;
             this.Serch();
+            this.Initialize();
         }
         #endregion
     }
