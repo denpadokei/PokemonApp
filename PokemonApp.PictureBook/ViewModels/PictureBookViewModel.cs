@@ -42,6 +42,11 @@ namespace PokemonApp.PictureBook.ViewModels
             set { this.SetProperty(ref filter_, value); }
         }
 
+        /// <summary>登録コマンド を取得、設定</summary>
+        private DelegateCommand registCommand_;
+        /// <summary>登録コマンド を取得、設定</summary>
+        public DelegateCommand RegistCommand { get { return this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist)); } }
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -79,6 +84,11 @@ namespace PokemonApp.PictureBook.ViewModels
         private void Filtering()
         {
             this.domain_.Filtering();
+        }
+
+        private void Regist()
+        {
+            this.domain_.Regist();
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

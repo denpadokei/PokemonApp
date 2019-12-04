@@ -2,9 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Linq;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PokemonApp.DataBase.Models;
+using NLog;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -53,6 +57,47 @@ namespace PokemonApp.PictureBook.Models
             var list = new List<PokemonEntity>(PictureBookDataSet.FindPokemon());
             this.Collection.Clear();
             this.Collection.AddRange(list.Where(x => x.Name.Contains(this.Filter.PokemonName)));
+        }
+
+        public void Regist()
+        {
+            var logger = LogManager.GetCurrentClassLogger();
+            using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
+                var context = new DataContext(connection);
+                var table = context.GetTable<pokemon>();
+                var i = 1;
+                foreach (var pokemon in this.Collection.Where(x => x.No != 0)) {
+                    table.InsertOnSubmit(new pokemon() {
+                        Id = i,
+                        No = pokemon.No,
+                        Name = pokemon.Name,
+                        Type1 = 0,
+                        Type2 = null,
+                        Characteristic1 = 0,
+                        Characteristic2 = null,
+                        DreamCharacteristic = null,
+                        Hp = pokemon.Hp,
+                        Attack = pokemon.Attack,
+                        Block = pokemon.Block,
+                        Contact = pokemon.Contact,
+                        Defence = pokemon.Defence,
+                        Speed = pokemon.Speed,
+                    });
+                    ++i;
+                    logger.Info($"{i}行目が終わりました。");
+
+                }
+                try {
+                    context.SubmitChanges();
+                }
+                catch (Exception e) {
+                    logger.Error(e);
+                    //throw e;
+                }
+                finally {
+                }
+                
+            };
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

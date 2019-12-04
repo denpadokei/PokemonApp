@@ -36,6 +36,7 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -50,6 +51,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBase\PicturBookDataBase.cs" />
     <Compile Include="Models\PictureBookDataSet.cs" />
     <Compile Include="Models\PictureBookDomain.cs" />
     <Compile Include="Models\PictureBookFilter.cs" />
@@ -69,8 +71,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\PictureBookViewModel.cs" />
+    <Compile Include="ViewModels\PokemonDataViewViewModel.cs" />
+    <Compile Include="ViewModels\TrickViewModel.cs" />
     <Compile Include="Views\PictureBookView.xaml.cs">
       <DependentUpon>PictureBookView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PokemonDataView.xaml.cs">
+      <DependentUpon>PokemonDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrickView.xaml.cs">
+      <DependentUpon>TrickView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +104,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\PictureBookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PokemonDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrickView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
