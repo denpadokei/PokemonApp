@@ -24,15 +24,6 @@ namespace PokemonApp.PictureBook.ViewModels
             set { this.SetProperty(ref this.pokemons_, value); }
         }
 
-        /// <summary>データセット を取得、設定</summary>
-        private DataTable csvTable_;
-        /// <summary>データセット を取得、設定</summary>
-        public DataTable CsvTable
-        {
-            get { return this.csvTable_; }
-            set { this.SetProperty(ref csvTable_, value); }
-        }
-
         /// <summary>検索条件 を取得、設定</summary>
         private PictureBookFilter filter_;
         /// <summary>検索条件 を取得、設定</summary>
@@ -87,8 +78,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// </summary>
         private void Serch()
         {
-            this.Pokemons.Clear();
-            this.Pokemons.AddRange(PictureBookDataSet.FindPokemon());
+            //this.Pokemons.Clear();
+            //this.Pokemons.AddRange(PictureBookDataSet.FindPokemon());
+            this.domain_.Serch();
         }
 
         private void Filtering()
@@ -119,6 +111,12 @@ namespace PokemonApp.PictureBook.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
+        private void Initialize()
+        {
+            foreach (var pokemon in this.Pokemons) {
+                this.domain_.PokemonList.Add(pokemon);
+            }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド
@@ -136,6 +134,7 @@ namespace PokemonApp.PictureBook.ViewModels
             this.Pokemons = this.domain_.Collection;
             this.Filter = this.domain_.Filter;
             this.Serch();
+            this.Initialize();
         }
         #endregion
     }

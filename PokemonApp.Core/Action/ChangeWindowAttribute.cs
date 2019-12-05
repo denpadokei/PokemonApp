@@ -10,7 +10,7 @@ using System.Windows.Shell;
 
 namespace PokemonApp.Core.Action
 {
-    public class ChangeWindowAttribute : TriggerAction<UserControl>
+    public class ChangeWindowAttribute : TriggerAction<DependencyObject>
     {
         public bool IsRemoveOwner { get; set; }
         public string Title { get; set; }
@@ -19,7 +19,7 @@ namespace PokemonApp.Core.Action
         //public WindowChrome Chrome { get; set; }
         protected override void Invoke(object parameter)
         {
-            var window = Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.IsActive);
+            var window = Window.GetWindow(this.AssociatedObject);
             window.Title = this.Title;
             if (this.With != null) {
                 window.Width = (double)this.With;

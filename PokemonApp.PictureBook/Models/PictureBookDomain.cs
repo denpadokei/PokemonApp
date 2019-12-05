@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Linq;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PokemonApp.DataBase.Models;
 using NLog;
+using System.Diagnostics;
+using PokemonApp.PictureBook.DataBase;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -23,6 +24,15 @@ namespace PokemonApp.PictureBook.Models
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
+        }
+
+        /// <summary>初期リスト を取得、設定</summary>
+        private List<PokemonEntity> pokemonList_;
+        /// <summary>初期リスト を取得、設定</summary>
+        public List<PokemonEntity> PokemonList
+        {
+            get { return this.pokemonList_; }
+            set { this.SetProperty(ref pokemonList_, value); }
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -54,44 +64,51 @@ namespace PokemonApp.PictureBook.Models
         #region // パブリックメソッド
         public void Filtering()
         {
-            var list = new List<PokemonEntity>(PictureBookDataSet.FindPokemon());
+            var list = new List<PokemonEntity>(this.PokemonList);
             this.Collection.Clear();
             this.Collection.AddRange(list.Where(x => x.Name.Contains(this.Filter.PokemonName)));
+        }
+
+        public void Serch()
+        {
+            this.Collection.Clear();
+            using (var repository = new Repository()) {
+                this.Collection.AddRange(PicturBookDataBase.FindPokemon(repository.Context));
+            }   
         }
 
         public void Regist()
         {
             var logger = LogManager.GetCurrentClassLogger();
-            using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
-                var context = new DataContext(connection);
-                var table = context.GetTable<pokemon>();
+            using (var repositoty = new Repository()) {
+                var table = repositoty.Context.pokemons;
                 var i = 1;
                 foreach (var pokemon in this.Collection) {
-                    table.InsertOnSubmit(new pokemon() {
-                        Id = i,
-                        No = pokemon.No,
-                        Name = pokemon.Name,
-                        Type1 = 0,
-                        Type2 = null,
-                        Characteristic1 = 0,
-                        Characteristic2 = null,
-                        DreamCharacteristic = null,
-                        Hp = pokemon.Hp,
-                        Attack = pokemon.Attack,
-                        Block = pokemon.Block,
-                        Contact = pokemon.Contact,
-                        Defence = pokemon.Defence,
-                        Speed = pokemon.Speed,
+                    table.Add(new pokemon() {
+                        pokemon_id = i,
+                        pokemon_no = pokemon.No,
+                        name = pokemon.Name,
+                        height = pokemon.Height,
+                        weight = pokemon.Weight,
+                        type_1_id = 0,
+                        type_2_id = null,
+                        characteristic1_id = 0,
+                        characteristic2_id = null,
+                        dream_characteristic_id = null,
+                        hp = pokemon.Hp,
+                        attack = pokemon.Attack,
+                        block = pokemon.Block,
+                        contact = pokemon.Contact,
+                        defence = pokemon.Defence,
+                        speed = pokemon.Speed,
                     });
                     ++i;
-                    logger.Trace($"{i}行目が終わりました。");
-
                 }
                 try {
-                    context.SubmitChanges();
+                    repositoty.Context.SaveChanges();
                 }
                 catch (Exception e) {
-                    logger.Error(e);
+                    Debug.WriteLine(e);
                     //throw e;
                 }
                 finally {
@@ -102,69 +119,67 @@ namespace PokemonApp.PictureBook.Models
 
         public void CharComit()
         {
-            var logger = LogManager.GetCurrentClassLogger();
-            using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
-                var context = new DataContext(connection);
-                connection.Open();
-                var pokemontable = context.GetTable<pokemon>();
-                var charastable = context.GetTable<characteristic>();
-                foreach (var pokemon in this.Collection) {
-                    var pokemonRecords = pokemontable.ToArray().Where(x => x.Name == pokemon.Name);
-                    foreach (var pokemonRecord in pokemonRecords) {
-                        var chars1 = pokemon.Characteristic1;
-                        var id1 = charastable.ToArray().Where(x => x.Name == chars1);
-                        foreach (var chars in id1) {
-                            pokemonRecord.Characteristic1 = chars.Id;
-                        }
-                        if (pokemon.Characteristic2 != "") {
-                            var chars2 = pokemon.Characteristic2;
-                            var id2 = charastable.ToArray().Where(x => x.Name == chars2);
-                            foreach (var chars in id2) {
-                                pokemonRecord.Characteristic2 = chars.Id;
-                            }
-                        }
-                        if (pokemon.DreamCharacteristic != "") {
-                            var chars3 = pokemon.DreamCharacteristic;
-                            var id3 = charastable.ToArray().Where(x => x.Name == chars3);
-                            foreach (var chars in id3) {
-                                pokemonRecord.DreamCharacteristic = chars.Id;
-                            }
-                        }
-                    }
-                }
-                context.SubmitChanges();
-                connection.Close();
-            }
+            //var logger = LogManager.GetCurrentClassLogger();
+            //using (var repository = new Repository()) {
+            //    repository.SQLiteConnection.Open();
+            //    var pokemontable = repository.Context.GetTable<pokemon>();
+            //    var charastable = repository.Context.GetTable<characteristic>();
+            //    foreach (var pokemon in this.Collection) {
+            //        var pokemonRecords = pokemontable.ToArray().Where(x => x.name == pokemon.Name);
+            //        foreach (var pokemonRecord in pokemonRecords) {
+            //            var chars1 = pokemon.Characteristic1;
+            //            var id1 = charastable.ToArray().Where(x => x.characteristic_name == chars1);
+            //            foreach (var chars in id1) {
+            //                pokemonRecord.characteristic1_id = chars.characteristic_id;
+            //            }
+            //            if (pokemon.Characteristic2 != "") {
+            //                var chars2 = pokemon.Characteristic2;
+            //                var id2 = charastable.ToArray().Where(x => x.characteristic_name == chars2);
+            //                foreach (var chars in id2) {
+            //                    pokemonRecord.characteristric2_id = chars.characteristic_id;
+            //                }
+            //            }
+            //            if (pokemon.DreamCharacteristic != "") {
+            //                var chars3 = pokemon.DreamCharacteristic;
+            //                var id3 = charastable.ToArray().Where(x => x.characteristic_name == chars3);
+            //                foreach (var chars in id3) {
+            //                    pokemonRecord.dream_characteristic_id = chars.characteristic_id;
+            //                }
+            //            }
+            //        }
+            //    }
+            //    repository.Context.SubmitChanges();
+            //    repository.SQLiteConnection.Close();
+            //}
         }
 
         public void TypeComit()
         {
-            var logger = LogManager.GetCurrentClassLogger();
-            using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
-                var context = new DataContext(connection);
-                connection.Open();
-                var pokemontable = context.GetTable<pokemon>();
-                var charastable = context.GetTable<type>();
-                foreach (var pokemon in this.Collection) {
-                    var pokemonRecords = pokemontable.ToArray().Where(x => x.Name == pokemon.Name);
-                    foreach (var pokemonRecord in pokemonRecords) {
-                        var type1 = pokemon.Type1;
-                        var id1 = charastable.ToArray().Where(x => x.Name == type1);
-                        foreach (var chars in id1) {
-                            pokemonRecord.Type1 = chars.Id;
-                        }
-                        if (pokemon.Type2 != "") {
-                            var type2 = pokemon.Type2;
-                            var id2 = charastable.ToArray().Where(x => x.Name == type2);
-                            foreach (var chars in id2) {
-                                pokemonRecord.Type2 = chars.Id;
-                            }
-                        }
-                    }
-                }
-                context.SubmitChanges();
-                connection.Close();
-            }
+            //var logger = LogManager.GetCurrentClassLogger();
+            //using (var repository = new Repository()) {
+            //    repository.SQLiteConnection.Open();
+            //    var pokemontable = repository.Context.GetTable<pokemon>();
+            //    var charastable = repository.Context.GetTable<type>();
+            //    foreach (var pokemon in this.Collection) {
+            //        var pokemonRecords = pokemontable.ToArray().Where(x => x.name == pokemon.Name);
+            //        foreach (var pokemonRecord in pokemonRecords) {
+            //            var type1 = pokemon.Type1;
+            //            var id1 = charastable.ToArray().Where(x => x.type_name == type1);
+            //            foreach (var chars in id1) {
+            //                pokemonRecord.type_1_id = chars.type_id;
+            //            }
+            //            if (pokemon.Type2 != "") {
+            //                var type2 = pokemon.Type2;
+            //                var id2 = charastable.ToArray().Where(x => x.type_name == type2);
+            //                foreach (var chars in id2) {
+            //                    pokemonRecord.type_2_id = chars.type_id;
+            //                }
+            //            }
+            //        }
+            //    }
+            //    repository.Context.SubmitChanges();
+            //    repository.SQLiteConnection.Close();
+            //}
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -175,6 +190,7 @@ namespace PokemonApp.PictureBook.Models
         public PictureBookDomain()
         {
             this.Collection = new ObservableCollection<PokemonEntity>();
+            this.PokemonList = new List<PokemonEntity>();
             this.Filter = new PictureBookFilter();
         }
         #endregion

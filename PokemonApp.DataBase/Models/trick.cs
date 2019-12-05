@@ -9,15 +9,29 @@ using System.Threading.Tasks;
 
 namespace PokemonApp.DataBase.Models
 {
-    [Table("type")]
-    public class type
+    [Table("trick")]
+    public class trick
     {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int trick_id { get; set; }
+        
+        [Required]
+        public int power { get; set; }
+        
+        [Required]
+        public int accuracy_rate { get; set; }
+        
+        [Required]
         public int type_id { get; set; }
         
         [Required]
-        public string type_name { get; set; }
+        public string trick_name { get; set; }
+        
+        [Required]
+        public int attribute { get; set; }
+        
+        public string detial { get; set; }
     }
 }

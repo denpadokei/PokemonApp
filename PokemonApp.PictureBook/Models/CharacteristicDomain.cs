@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Linq;
-using System.Data.SQLite;
+//using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,32 +90,32 @@ namespace PokemonApp.PictureBook.Models
 
         public void Regist()
         {
-            var logger = LogManager.GetCurrentClassLogger();
-            using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
-                var context = new DataContext(connection);
-                var table = context.GetTable<characteristic>();
-                var i = 1;
-                foreach (var charact in this.Collection) {
-                    table.InsertOnSubmit(new characteristic()
-                    {
-                        Id = i,
-                        Name = charact.Name
-                    });
-                    ++i;
-                    logger.Info($"{i}行目が終わりました。");
+            //var logger = LogManager.GetCurrentClassLogger();
+            //using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
+            //    var context = new DataContext(connection);
+            //    var table = context.GetTable<characteristic>();
+            //    var i = 1;
+            //    foreach (var charact in this.Collection) {
+            //        table.InsertOnSubmit(new characteristic()
+            //        {
+            //            characteristic_id = i,
+            //            characteristic_name = charact.Name
+            //        });
+            //        ++i;
+            //        logger.Info($"{i}行目が終わりました。");
 
-                }
-                try {
-                    context.SubmitChanges();
-                }
-                catch (Exception e) {
-                    logger.Error(e);
-                    //throw e;
-                }
-                finally {
-                }
+            //    }
+            //    try {
+            //        context.SubmitChanges();
+            //    }
+            //    catch (Exception e) {
+            //        logger.Error(e);
+            //        //throw e;
+            //    }
+            //    finally {
+            //    }
 
-            };
+            //};
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

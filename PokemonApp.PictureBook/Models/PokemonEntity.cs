@@ -10,6 +10,8 @@ namespace PokemonApp.PictureBook.Models
     {
         public string No { get; set; }
         public string Name { get; set; }
+        public double Height { get; set; }
+        public double Weight { get; set; }
         public string Type1 { get; set; }
         public string Type2 { get; set; }
         public string Characteristic1 { get; set; }
@@ -21,6 +23,6 @@ namespace PokemonApp.PictureBook.Models
         public int Contact { get; set; }
         public int Defence { get; set; }
         public int Speed { get; set; }
-        public int SumAll { get; set; }
+        public int SumAll => this.Hp + this.Attack + this.Block + this.Contact + this.Defence + this.Speed;
     }
 }
