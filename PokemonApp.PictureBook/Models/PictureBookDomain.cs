@@ -90,17 +90,22 @@ namespace PokemonApp.PictureBook.Models
             using (var repositoty = new Repository()) {
                 foreach (var pokemon in this.Collection) {
                     if (repositoty.Context.pokemons.FirstOrDefault(x => x.name == pokemon.Name) == null) {
+                        var type1 = repositoty.Context.types.FirstOrDefault(x => x.type_name == pokemon.Type1);
+                        var type2 = repositoty.Context.types.FirstOrDefault(x => x.type_name == pokemon.Type2);
+                        var characteristic1 = repositoty.Context.characteristics.FirstOrDefault(x => x.characteristic_name == pokemon.Characteristic1);
+                        var characteristic2 = repositoty.Context.characteristics.FirstOrDefault(x => x.characteristic_name == pokemon.Characteristic2);
+                        var dCharacteristic = repositoty.Context.characteristics.FirstOrDefault(x => x.characteristic_name == pokemon.DreamCharacteristic);
                         repositoty.Context.pokemons.Add(new pokemon()
                         {
                             pokemon_no = pokemon.No,
                             name = pokemon.Name,
                             height = pokemon.Height,
                             weight = pokemon.Weight,
-                            type_1_id = 0,
-                            type_2_id = null,
-                            characteristic1_id = 0,
-                            characteristic2_id = null,
-                            dream_characteristic_id = null,
+                            type_1_id = type1 != null ? type1.type_id : 1,
+                            type_2_id = type2.type_id,
+                            characteristic1_id = characteristic1 != null ? characteristic1.characteristic_id : 1,
+                            characteristic2_id = characteristic2.characteristic_id,
+                            dream_characteristic_id = dCharacteristic.characteristic_id,
                             hp = pokemon.Hp,
                             attack = pokemon.Attack,
                             block = pokemon.Block,
