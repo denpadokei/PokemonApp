@@ -15,7 +15,7 @@ namespace PokemonApp.Damage
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<DamageView, DamageWindowViewModel>();
+            containerRegistry.RegisterDialog<DamageSimView, DamageSimViewModel>(nameof(DamageSimView));
         }
     }
 }

@@ -114,10 +114,9 @@ namespace PokemonApp.PictureBook.ViewModels
         public override void OnInitialize()
         {
             base.OnInitialize();
-            foreach (var pokemon in this.Pokemons) {
-                this.domain_.PokemonList.Add(pokemon);
-            }
             this.Serch();
+            this.domain_.PokemonList = new List<PokemonEntity>(this.Pokemons);
+            
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

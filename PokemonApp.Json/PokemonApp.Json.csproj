@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonModule.cs" />
+    <Compile Include="Json\JsonData.cs" />
+    <Compile Include="Models\Filter.cs" />
+    <Compile Include="Models\JsonConvertEntity.cs" />
     <Compile Include="Models\JsonEntity.cs" />
     <Compile Include="Models\JsonSerchDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

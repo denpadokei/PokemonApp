@@ -53,7 +53,9 @@
     <Compile Include="Actions\ChangeWindowAttribute.cs" />
     <Compile Include="Actions\Initializetion.cs" />
     <Compile Include="CoreModule.cs" />
+    <Compile Include="Enum\TypeAttributeEnum.cs" />
     <Compile Include="Enum\WildAreaEnum.cs" />
+    <Compile Include="Extentions\EnumExtention.cs" />
     <Compile Include="Interface\IButtonMenu.cs" />
     <Compile Include="Interface\IDataBaseService.cs" />
     <Compile Include="Interface\IInitialize.cs" />

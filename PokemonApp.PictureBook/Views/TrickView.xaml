@@ -7,6 +7,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
+             xmlns:convert="clr-namespace:PokemonApp.Core.Enums;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:TrickViewModel}, IsDesignTimeCreatable=True}">
@@ -42,7 +43,7 @@
                 </Grid>
             </StackPanel>
             <ContentControl Grid.Row="1">
-                <DataGrid ItemsSource="{Binding Tricks}" AutoGenerateColumns="True" IsReadOnly="True"/>
+                <DataGrid ItemsSource="{Binding Tricks}" AutoGenerateColumns="True" IsReadOnly="True" />
             </ContentControl>
         </Grid>
     </ContentControl>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PokemonApp.DataBase.Models;
 using NLog;
+using PokemonApp.PictureBook.DataBase;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -25,9 +26,9 @@ namespace PokemonApp.PictureBook.Models
         }
 
         /// <summary>初期リスト を取得、設定</summary>
-        private List<TrickEntity> trickList_;
+        private IReadOnlyList<TrickEntity> trickList_;
         /// <summary>初期リスト を取得、設定</summary>
-        public List<TrickEntity> TrickList
+        public IReadOnlyList<TrickEntity> TrickList
         {
             get { return this.trickList_; }
             set { this.SetProperty(ref trickList_, value); }
@@ -63,17 +64,9 @@ namespace PokemonApp.PictureBook.Models
         public void Serch()
         {
             this.Collection.Clear();
-            var types = PictureBookDataSet.FindTrick();
-            var tricks = new HashSet<string>();
-            foreach (var item in types) {
-                foreach (var name in item) {
-                    tricks.Add(name);
-                }
-            }
-            var trickList = new List<string>(tricks);
-            tricks.OrderBy(x => x).ToList();
-            foreach (var item in tricks) {
-                this.Collection.Add(new TrickEntity() { Name = item });
+            using(var repository = new Repository()) {
+                var tricks = PictureBookDataBase.FindTrick(repository.Context);
+                this.Collection.AddRange(tricks);
             }
         }
 
@@ -84,11 +77,11 @@ namespace PokemonApp.PictureBook.Models
             this.Collection.AddRange(list.Where(x => x.Name.Contains(this.Filter.PokemonName)));
         }
 
-        public void Regist()
+        public bool Regist()
         {
             //var logger = LogManager.GetCurrentClassLogger();
             //using (var repository = new Repository()) {
-                
+
             //    var table = repository.Context.GetTable<trick>();
             //    var i = 1;
             //    foreach (var trick in this.Collection) {
@@ -112,6 +105,7 @@ namespace PokemonApp.PictureBook.Models
             //    }
 
             //};
+            return true;
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

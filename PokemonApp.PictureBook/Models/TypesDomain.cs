@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PokemonApp.DataBase.Models;
 using NLog;
+using PokemonApp.PictureBook.DataBase;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -25,9 +26,9 @@ namespace PokemonApp.PictureBook.Models
         }
 
         /// <summary>初期リスト を取得、設定</summary>
-        private List<TypeEntity> typeList_;
+        private IReadOnlyList<TypeEntity> typeList_;
         /// <summary>初期リスト を取得、設定</summary>
-        public List<TypeEntity> TypeList
+        public IReadOnlyList<TypeEntity> TypeList
         {
             get { return this.typeList_; }
             set { this.SetProperty(ref typeList_, value); }
@@ -63,18 +64,22 @@ namespace PokemonApp.PictureBook.Models
         public void Serch()
         {
             this.Collection.Clear();
-            var pokemons = PictureBookDataSet.FindPokemon();
-            var chars = new HashSet<string>();
-            foreach (var pokemon in pokemons) {
-                chars.Add(pokemon.Type1);
+            using(var repository = new Repository()) {
+                this.Collection.AddRange(PictureBookDataBase.FindType(repository.Context));
             }
-            foreach (var pokemon in pokemons.Where(x => x.Type2 != "")) {
-                chars.Add(pokemon.Type2);
-            }
-            var list = chars.ToList().OrderBy(x => x);
-            foreach (var item in list) {
-                this.Collection.Add(new TypeEntity() { Name = item });
-            }
+
+            //var pokemons = PictureBookDataSet.FindPokemon();
+            //var chars = new HashSet<string>();
+            //foreach (var pokemon in pokemons) {
+            //    chars.Add(pokemon.Type1);
+            //}
+            //foreach (var pokemon in pokemons.Where(x => x.Type2 != "")) {
+            //    chars.Add(pokemon.Type2);
+            //}
+            //var list = chars.ToList().OrderBy(x => x);
+            //foreach (var item in list) {
+            //    this.Collection.Add(new TypeEntity() { Name = item });
+            //}
         }
 
         public void Filtering()
@@ -84,7 +89,7 @@ namespace PokemonApp.PictureBook.Models
             this.Collection.AddRange(list.Where(x => x.Name.Contains(this.Filter.PokemonName)));
         }
 
-        public void Regist()
+        public bool Regist()
         {
             //var logger = LogManager.GetCurrentClassLogger();
             //using (var connection = new SQLiteConnection("DataSource=" + @".\localdb.db")) {
@@ -112,6 +117,8 @@ namespace PokemonApp.PictureBook.Models
             //    }
 
             //};
+
+            return true;
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

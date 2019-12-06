@@ -1,4 +1,5 @@
-﻿using PokemonApp.DataBase.Models;
+﻿using PokemonApp.Core.Enums;
+using PokemonApp.DataBase.Models;
 using PokemonApp.PictureBook.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.DataBase
 {
-    public static class PicturBookDataBase
+    public static class PictureBookDataBase
     {
         public static List<PokemonEntity> FindPokemon(LocalDbContext context)
         {
@@ -43,10 +44,17 @@ namespace PokemonApp.PictureBook.DataBase
 
         public static List<TrickEntity> FindTrick(LocalDbContext context)
         {
-            var query = from trick in context.tricks
-                        select new TrickEntity() {
-                            Name = trick.trick_name
-                        };
+            var query = (from trick in context.tricks
+                         let type = context.types.FirstOrDefault(x => x.type_id == trick.type_id)
+                         select new TrickEntity()
+                         {
+                             Name = trick.trick_name,
+                             Type = type.type_name,
+                             Power = trick.power,
+                             Rate = trick.accuracy_rate,
+                             TypeAttribute = (TypeAttribute)trick.attribute,
+                             Detial = trick.detial
+                         }).OrderBy(x => x.Name);
             return query.ToList();
         }
 
@@ -56,6 +64,16 @@ namespace PokemonApp.PictureBook.DataBase
                         select new TypeEntity()
                         {
                             Name = type.type_name
+                        };
+            return query.ToList();
+        }
+
+        public static List<CharacteristicEntity> FindCharacteristic(LocalDbContext context)
+        {
+            var query = from characteristic in context.characteristics
+                        select new CharacteristicEntity()
+                        {
+                            Name = characteristic.characteristic_name,
                         };
             return query.ToList();
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonApp.Core.Enum
+namespace PokemonApp.Core.Enums
 {
     public enum AreaName
     {

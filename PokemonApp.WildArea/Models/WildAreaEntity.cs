@@ -1,4 +1,4 @@
-﻿using PokemonApp.Core.Enum;
+﻿using PokemonApp.Core.Enums;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;

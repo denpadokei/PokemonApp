@@ -23,9 +23,25 @@
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            
+        <StackPanel VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <WrapPanel Grid.Column="0">
+                    <TextBlock Text="名前" Margin="10"/>
+                    <TextBox x:Name="SerchName" Text="{Binding Filter.Name}" Width="80" Margin="10"/>
+                </WrapPanel>
+                <ContentControl Grid.Column="1" HorizontalAlignment="Right">
+                    <WrapPanel>
+                        <Button x:Name="Serch" Content="検索" Command="{Binding SerchCommand}" Width="100" Height="30" Margin="10"/>
+                        <Button x:Name="Regist" Content="登録" Command="{Binding RegistCommand}" Width="100" Height="30" Margin="10"/>
+                    </WrapPanel>
+                </ContentControl>
+            </Grid>
         </StackPanel>
+        
         <DataGrid Grid.Row="1" ItemsSource="{Binding Collection}"/>
     </Grid>
 </UserControl>

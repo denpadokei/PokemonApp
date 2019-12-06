@@ -27,9 +27,9 @@ namespace PokemonApp.PictureBook.Models
         }
 
         /// <summary>初期リスト を取得、設定</summary>
-        private List<PokemonEntity> pokemonList_;
+        private IReadOnlyList<PokemonEntity> pokemonList_;
         /// <summary>初期リスト を取得、設定</summary>
-        public List<PokemonEntity> PokemonList
+        public IReadOnlyList<PokemonEntity> PokemonList
         {
             get { return this.pokemonList_; }
             set { this.SetProperty(ref pokemonList_, value); }
@@ -73,7 +73,7 @@ namespace PokemonApp.PictureBook.Models
         {
             this.Collection.Clear();
             using (var repository = new Repository()) {
-                this.Collection.AddRange(PicturBookDataBase.FindPokemon(repository.Context));
+                this.Collection.AddRange(PictureBookDataBase.FindPokemon(repository.Context));
             }   
         }
 
