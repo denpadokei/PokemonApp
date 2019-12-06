@@ -4,11 +4,17 @@
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:TrickViewModel}, IsDesignTimeCreatable=True}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <ContentControl>
         <Grid Margin="10">
             <Grid.RowDefinitions>

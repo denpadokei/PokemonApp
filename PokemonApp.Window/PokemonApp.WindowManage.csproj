@@ -84,6 +84,10 @@
       <Project>{019052C9-37CC-41BF-9FD9-00F11CED9136}</Project>
       <Name>PokemonApp.Damage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Json\PokemonApp.Json.csproj">
+      <Project>{ED4E1FD0-7943-4BA8-946D-17B3FFAFCD1E}</Project>
+      <Name>PokemonApp.Json</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PokemonApp.PictureBook\PokemonApp.PictureBook.csproj">
       <Project>{FDC92C66-AE82-4331-9E39-BE95BC266560}</Project>
       <Name>PokemonApp.PictureBook</Name>

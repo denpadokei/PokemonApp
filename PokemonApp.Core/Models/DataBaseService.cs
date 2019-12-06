@@ -1,26 +1,20 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Debug;
-using Microsoft.EntityFrameworkCore;
-using NLog;
+﻿using PokemonApp.Core.Interface;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.Data.Linq;
-using System.Diagnostics;
-//using System.Data.SQLite;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Unity;
 
-namespace PokemonApp.DataBase.Models
+namespace PokemonApp.Core.Models
 {
-    public class Repository : IDisposable
+    public class DataBaseService : BindableBase, IDataBaseService
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
-        public LocalDbContext Context { get; set; }
-        public bool IsDispose { get; set; }
-
-
+        [Dependency]
+        public IDialogService DialogService { get; set; }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -36,48 +30,45 @@ namespace PokemonApp.DataBase.Models
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
-        private void Dispose(bool isDispose)
-        {
-            if (isDispose) {
-                if (this.Context != null) {
-                    Context.MyLoggerFactory.Dispose();
-                    Context.Dispose();
-                }
-                
-                GC.SuppressFinalize(this);
-            }
-        }
-
-        private void CreateContext()
-        {
-            if (this.Context != null) {
-                this.Context.Dispose();
-            }
-            this.Context = new LocalDbContext();
-        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド
-        public void Dispose()
+        public void Load(Action action)
         {
-            this.Dispose(true);
+            try {
+                action();
+            }
+            catch (Exception e) {
+                this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", $"{e}" } }, _ => { });
+                //throw;
+            }
+        }
+
+        public void Regist(Func<bool> func)
+        {
+            try {
+                if (func()) {
+                    this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録に成功しました" } }, _ => { });
+                }
+                else {
+                    this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録するデータはありませんでした" } }, _ => { });
+                }
+            }
+            catch (Exception e) {
+                this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", $"{e}" } }, _ => { });
+                //throw;
+            }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // メンバ変数
-        //private readonly string path_ = "DataSource=" + @".\localdb.db";
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public Repository()
+        public DataBaseService()
         {
-            this.CreateContext();
-        }
-        ~Repository()
-        {
-            this.Dispose(false);
+
         }
         #endregion
-
     }
 }

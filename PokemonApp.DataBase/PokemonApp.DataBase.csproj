@@ -70,7 +70,7 @@
     <Compile Include="DataBaseModule.cs" />
     <Compile Include="Models\DataBaseAccsessDomain.cs" />
     <Compile Include="Models\characteristic.cs" />
-    <Compile Include="Models\DebugLogTextWriter.cs" />
+    <Compile Include="Models\link_trick.cs" />
     <Compile Include="Models\LocalDbContext.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\trick.cs" />

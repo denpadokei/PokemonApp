@@ -7,10 +7,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
-             xmlns:action="clr-namespace:PokemonApp.Core.Action;assembly=PokemonApp.Core"
+             xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:CharacteristicViewModel}, IsDesignTimeCreatable=True}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <ContentControl>
         <Grid Margin="10">
             <Grid.RowDefinitions>

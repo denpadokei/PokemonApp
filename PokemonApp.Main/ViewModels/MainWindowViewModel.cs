@@ -55,7 +55,8 @@ namespace PokemonApp.Main.ViewModels
                 container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.PictuerBook)),
                 container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.DamageSim)),
                 container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.WildArea)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.AbilityValueConverter))
+                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.AbilityValueConverter)),
+                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.JsonSerch))
             };
         }
         #endregion

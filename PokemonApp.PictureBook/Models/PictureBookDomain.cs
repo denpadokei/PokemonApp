@@ -77,9 +77,8 @@ namespace PokemonApp.PictureBook.Models
             }   
         }
 
-        public void Regist()
+        public bool Regist()
         {
-            var logger = LogManager.GetCurrentClassLogger();
             using (var repositoty = new Repository()) {
                 var table = repositoty.Context.pokemons;
                 var i = 1;
@@ -104,20 +103,15 @@ namespace PokemonApp.PictureBook.Models
                     });
                     ++i;
                 }
-                try {
+                if (repositoty.Context.ChangeTracker.HasChanges()) {
                     repositoty.Context.SaveChanges();
+                    return true;
                 }
-                catch (Exception e) {
-                    Debug.WriteLine(e);
-                    //throw e;
-                }
-                finally {
-                }
-                
+                return false;
             };
         }
 
-        public void CharComit()
+        public bool CharComit()
         {
             //var logger = LogManager.GetCurrentClassLogger();
             //using (var repository = new Repository()) {
@@ -151,9 +145,10 @@ namespace PokemonApp.PictureBook.Models
             //    repository.Context.SubmitChanges();
             //    repository.SQLiteConnection.Close();
             //}
+            return true;
         }
 
-        public void TypeComit()
+        public bool TypeComit()
         {
             //var logger = LogManager.GetCurrentClassLogger();
             //using (var repository = new Repository()) {
@@ -180,6 +175,7 @@ namespace PokemonApp.PictureBook.Models
             //    repository.Context.SubmitChanges();
             //    repository.SQLiteConnection.Close();
             //}
+            return true;
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

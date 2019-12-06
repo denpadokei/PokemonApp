@@ -56,7 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\ConfirmationWindowViewModel.cs" />
     <Compile Include="ViewModels\ShellWindowViewModel.cs" />
+    <Compile Include="Views\ConfirmationWindowView.xaml.cs">
+      <DependentUpon>ConfirmationWindowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
@@ -71,6 +75,10 @@
     <Compile Include="CustomDialogWindow.xaml.cs">
       <DependentUpon>CustomDialogWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\ConfirmationWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShellWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +141,10 @@
     <ProjectReference Include="..\PokemonApp.DataBase\PokemonApp.DataBase.csproj">
       <Project>{742f51d7-d5d7-4e0e-9df4-51a633de100d}</Project>
       <Name>PokemonApp.DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Json\PokemonApp.Json.csproj">
+      <Project>{ED4E1FD0-7943-4BA8-946D-17B3FFAFCD1E}</Project>
+      <Name>PokemonApp.Json</Name>
     </ProjectReference>
     <ProjectReference Include="..\PokemonApp.Main\PokemonApp.Main.csproj">
       <Project>{531deb79-ad13-41bc-9182-c1454c67701a}</Project>

@@ -39,5 +39,25 @@ namespace PokemonApp.PictureBook.DataBase
                          });
             return query.ToList();
         }
+
+
+        public static List<TrickEntity> FindTrick(LocalDbContext context)
+        {
+            var query = from trick in context.tricks
+                        select new TrickEntity() {
+                            Name = trick.trick_name
+                        };
+            return query.ToList();
+        }
+
+        public static List<TypeEntity> FindType(LocalDbContext context)
+        {
+            var query = from type in context.types
+                        select new TypeEntity()
+                        {
+                            Name = type.type_name
+                        };
+            return query.ToList();
+        }
     }
 }

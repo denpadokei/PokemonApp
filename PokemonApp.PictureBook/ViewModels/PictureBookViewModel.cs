@@ -80,7 +80,7 @@ namespace PokemonApp.PictureBook.ViewModels
         {
             //this.Pokemons.Clear();
             //this.Pokemons.AddRange(PictureBookDataSet.FindPokemon());
-            this.domain_.Serch();
+            this.DataBaseService?.Load(this.domain_.Serch);
         }
 
         private void Filtering()
@@ -90,17 +90,17 @@ namespace PokemonApp.PictureBook.ViewModels
 
         private void Regist()
         {
-            this.domain_.Regist();
+            this.DataBaseService?.Regist(this.domain_.Regist);
         }
 
         private void CharComit()
         {
-            this.domain_.CharComit();
+            this.DataBaseService?.Regist(this.domain_.CharComit);
         }
 
         private void TypeComit()
         {
-            this.domain_.TypeComit();
+            this.DataBaseService?.Regist(this.domain_.TypeComit);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -111,11 +111,13 @@ namespace PokemonApp.PictureBook.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
-        private void Initialize()
+        public override void OnInitialize()
         {
+            base.OnInitialize();
             foreach (var pokemon in this.Pokemons) {
                 this.domain_.PokemonList.Add(pokemon);
             }
+            this.Serch();
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -133,8 +135,6 @@ namespace PokemonApp.PictureBook.ViewModels
             this.domain_ = new PictureBookDomain();
             this.Pokemons = this.domain_.Collection;
             this.Filter = this.domain_.Filter;
-            this.Serch();
-            this.Initialize();
         }
         #endregion
     }

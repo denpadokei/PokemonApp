@@ -14,6 +14,7 @@ using PokemonApp.Main;
 using PokemonApp.WindowManage;
 using Prism.Services.Dialogs;
 using PokemonApp.AbilityValueConverter;
+using PokemonApp.Json;
 
 namespace PokemonApp
 {
@@ -36,6 +37,7 @@ namespace PokemonApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialogWindow<CustomDialogWindow>();
+            containerRegistry.RegisterDialog<ConfirmationWindowView>();
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
@@ -47,6 +49,7 @@ namespace PokemonApp
             moduleCatalog.AddModule<MainModule>();
             moduleCatalog.AddModule<WindowModule>();
             moduleCatalog.AddModule<AbilityValueConverterModule>();
+            moduleCatalog.AddModule<JsonModule>();
         }
     }
 }

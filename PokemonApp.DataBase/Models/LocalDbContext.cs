@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-//using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +15,9 @@ namespace PokemonApp.DataBase.Models
         public DbSet<type> types { get; set; }
         public DbSet<characteristic> characteristics { get; set; }
         public DbSet<trick> tricks { get; set; }
+        public DbSet<link_trick> link_tricks { get; set; }
 
-        public static readonly ILoggerFactory MyLoggerFactory
-            = LoggerFactory.Create(builder => { builder.AddDebug(); });
+        public ILoggerFactory MyLoggerFactory { get; set; } = LoggerFactory.Create(builder => { builder.AddDebug(); });
 
         public LocalDbContext()
         {

@@ -20,6 +20,7 @@ namespace PokemonApp.PictureBook
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<PokemonDataView, PokemonDataViewModel>(nameof(PokemonDataView));
+            containerRegistry.RegisterForNavigation<PictureBookView>();
         }
     }
 }

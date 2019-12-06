@@ -5,7 +5,9 @@
              prism:ViewModelLocator.AutoWireViewModel="True" ResizeMode="CanMinimize" Width="400" Height="500" WindowStartupLocation="CenterScreen"
         Title="ちょっと便利なツール1号">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ShellRegion" />
+        <ScrollViewer>
+            <ContentControl prism:RegionManager.RegionName="ShellRegion" />
+        </ScrollViewer>
     </Grid>
 </Window>
 

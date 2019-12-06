@@ -10,8 +10,8 @@ namespace PokemonApp.Core.Interface
     public interface IWindowManager
     {
         IDialogService DialogService { get; set; }
-        void Show(string windowname, DialogParameters parameter, Action<IDialogResult> action);
+        void Show(string windowname, IDialogParameters parameter, Action<IDialogResult> action);
 
-        void ShowDialog(string windowname, DialogParameters parameter, Action<IDialogResult> action);
+        void ShowDialog(string windowname, IDialogParameters parameter, Action<IDialogResult> action);
     }
 }
