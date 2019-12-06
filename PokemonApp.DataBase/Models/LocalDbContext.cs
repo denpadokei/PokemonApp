@@ -18,6 +18,8 @@ namespace PokemonApp.DataBase.Models
         public DbSet<trick> tricks { get; set; }
         public DbSet<link_trick> link_tricks { get; set; }
 
+        public DbSet<category> categories { get; set; }
+
         public ILoggerFactory MyLoggerFactory { get; set; } = LoggerFactory.Create(builder => { builder.AddDebug(); });
 
         public LocalDbContext()

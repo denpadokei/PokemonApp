@@ -21,9 +21,9 @@ namespace PokemonApp.PictureBook.Models
         }
 
         /// <summary>威力 を取得、設定</summary>
-        private int power_;
+        private int? power_;
         /// <summary>威力 を取得、設定</summary>
-        public int Power
+        public int? Power
         {
             get { return this.power_; }
             set { this.SetProperty(ref power_, value); }

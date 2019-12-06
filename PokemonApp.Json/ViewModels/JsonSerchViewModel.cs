@@ -14,11 +14,11 @@ namespace PokemonApp.Json.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>ポケモンコレクション を取得、設定</summary>
-        private ObservableCollection<JsonEntity> collection_;
+        private ObservableCollection<JsonTrickEntity> collection_;
         /// <summary>ポケモンコレクション を取得、設定</summary>
-        public ObservableCollection<JsonEntity> Collection
+        public ObservableCollection<JsonTrickEntity> Collection
         {
-            get { return this.collection_ ?? (this.collection_ = new ObservableCollection<JsonEntity>()); }
+            get { return this.collection_ ?? (this.collection_ = new ObservableCollection<JsonTrickEntity>()); }
             set { this.SetProperty(ref collection_, value); }
         }
 
@@ -47,11 +47,11 @@ namespace PokemonApp.Json.ViewModels
         #region // コマンド用メソッド
         private void Serch()
         {
-
+            this.DataBaseService.Load(this.domain_.Serch);
         }
         private void Regist()
         {
-
+            this.DataBaseService.Regist(this.domain_.Regist);
         }
 
         #endregion
@@ -60,6 +60,11 @@ namespace PokemonApp.Json.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        public override void OnInitialize()
+        {
+            base.OnInitialize();
+            this.Serch();
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド

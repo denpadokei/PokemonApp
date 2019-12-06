@@ -16,22 +16,15 @@ namespace PokemonApp.DataBase.Models
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int trick_id { get; set; }
-        
-        [Required]
-        public int power { get; set; }
-        
-        [Required]
-        public int accuracy_rate { get; set; }
-        
+        public int? power { get; set; }
+        public int? accuracy_rate { get; set; }
         [Required]
         public int type_id { get; set; }
-        
         [Required]
         public string trick_name { get; set; }
-        
         [Required]
         public int attribute { get; set; }
-        
+        public int? pp { get; set; }
         public string detial { get; set; }
     }
 }
