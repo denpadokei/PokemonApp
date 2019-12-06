@@ -24,6 +24,15 @@ namespace PokemonApp.PictureBook.ViewModels
             set { this.SetProperty(ref this.pokemons_, value); }
         }
 
+        /// <summary>選択中 を取得、設定</summary>
+        private PokemonEntity currentPokemon_;
+        /// <summary>選択中 を取得、設定</summary>
+        public PokemonEntity CurrentPokemon
+        {
+            get { return this.currentPokemon_ ?? (this.currentPokemon_ = new PokemonEntity()); }
+            set { this.SetProperty(ref currentPokemon_, value); }
+        }
+
         /// <summary>検索条件 を取得、設定</summary>
         private PictureBookFilter filter_;
         /// <summary>検索条件 を取得、設定</summary>

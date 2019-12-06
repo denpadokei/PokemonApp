@@ -74,40 +74,56 @@ namespace PokemonApp.PictureBook.Models
             this.Collection.Clear();
             using (var repository = new Repository()) {
                 this.Collection.AddRange(PictureBookDataBase.FindPokemon(repository.Context));
-            }   
+                foreach (var pokemon in this.Collection) {
+                    //var trickListList = PictureBookDataSet.FindTrick(pokemon.Name);
+                    //foreach (var trickList in trickListList) {
+                    //    pokemon.LeanTrickList.AddRange(trickList);
+                    //}
+                    pokemon.LearnTrickList.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, pokemon.Id));
+                }
+            }
+            
         }
 
         public bool Regist()
         {
             using (var repositoty = new Repository()) {
-                var table = repositoty.Context.pokemons;
-                var i = 1;
                 foreach (var pokemon in this.Collection) {
-                    table.Add(new pokemon() {
-                        pokemon_id = i,
-                        pokemon_no = pokemon.No,
-                        name = pokemon.Name,
-                        height = pokemon.Height,
-                        weight = pokemon.Weight,
-                        type_1_id = 0,
-                        type_2_id = null,
-                        characteristic1_id = 0,
-                        characteristic2_id = null,
-                        dream_characteristic_id = null,
-                        hp = pokemon.Hp,
-                        attack = pokemon.Attack,
-                        block = pokemon.Block,
-                        contact = pokemon.Contact,
-                        defence = pokemon.Defence,
-                        speed = pokemon.Speed,
-                    });
-                    ++i;
+                    if (repositoty.Context.pokemons.FirstOrDefault(x => x.name == pokemon.Name) == null) {
+                        repositoty.Context.pokemons.Add(new pokemon()
+                        {
+                            pokemon_no = pokemon.No,
+                            name = pokemon.Name,
+                            height = pokemon.Height,
+                            weight = pokemon.Weight,
+                            type_1_id = 0,
+                            type_2_id = null,
+                            characteristic1_id = 0,
+                            characteristic2_id = null,
+                            dream_characteristic_id = null,
+                            hp = pokemon.Hp,
+                            attack = pokemon.Attack,
+                            block = pokemon.Block,
+                            contact = pokemon.Contact,
+                            defence = pokemon.Defence,
+                            speed = pokemon.Speed,
+                        });
+                        foreach (var trick in pokemon.LearnTrickList) {
+                            repositoty.Context.link_tricks.Add(new link_trick()
+                            {
+                                pokemon_id = repositoty.Context.pokemons.FirstOrDefault(x => x.name == pokemon.Name).pokemon_id,
+                                trick_id = repositoty.Context.tricks.FirstOrDefault(x => x.trick_name == trick.Name).trick_id
+                            });
+                        }
+                    }
                 }
                 if (repositoty.Context.ChangeTracker.HasChanges()) {
                     repositoty.Context.SaveChanges();
                     return true;
                 }
-                return false;
+                else {
+                    return false;
+                }
             };
         }
 

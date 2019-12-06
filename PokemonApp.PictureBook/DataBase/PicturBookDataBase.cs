@@ -22,6 +22,7 @@ namespace PokemonApp.PictureBook.DataBase
                          let dreamcharacteristic = context.characteristics.FirstOrDefault(x => x.characteristic_id == pokemon.dream_characteristic_id)
                          select new PokemonEntity()
                          {
+                             Id = pokemon.pokemon_id,
                              No = pokemon.pokemon_no,
                              Name = pokemon.name,
                              Height = pokemon.height,
@@ -75,6 +76,26 @@ namespace PokemonApp.PictureBook.DataBase
                         {
                             Name = characteristic.characteristic_name,
                         };
+            return query.ToList();
+        }
+
+
+        public static List<TrickEntity> FindLearnTrick(LocalDbContext context, int pokemonId)
+        {
+            var query = (from linktrick in context.link_tricks
+                         join trick in context.tricks on linktrick.trick_id equals trick.trick_id
+                         join type in context.types on trick.type_id equals type.type_id
+                         where linktrick.pokemon_id == pokemonId
+                         select new TrickEntity()
+                         {
+                             Name = trick.trick_name,
+                             Power = trick.power,
+                             Type = type.type_name,
+                             Rate = trick.accuracy_rate,
+                             TypeAttribute = (TypeAttribute)trick.attribute,
+                             Detial = trick.detial ?? ""
+                         });
+
             return query.ToList();
         }
     }

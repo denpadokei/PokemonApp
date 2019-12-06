@@ -118,10 +118,10 @@ namespace PokemonApp.PictureBook.Models
         }
 
 
-        static public List<List<string>> FindTrick(string csv_file_path = @".\Static\PokemonData.csv")
+        static public List<List<TrickEntity>> FindTrick(string pokemonName = "", string csv_file_path = @".\Static\PokemonData.csv")
         {
             var csvData = new DataTable();
-            var list = new List<List<string>>();
+            var list = new List<List<TrickEntity>>();
             try {
                 using (TextFieldParser csvReader = new TextFieldParser(csv_file_path, Encoding.GetEncoding("shift_jis"))) {
                     csvReader.SetDelimiters(new string[] { "," });
@@ -140,8 +140,16 @@ namespace PokemonApp.PictureBook.Models
                         //        fieldData[i] = null;
                         //    }
                         //}
-                        var entity = fieldData[8].Split('/').ToList();
-                        list.Add(entity);
+                        var entity = new List<TrickEntity>();
+                        foreach (var trick in fieldData[8].Split('/')) {
+                            entity.Add(new TrickEntity()
+                            {
+                                Name = trick,
+                            });
+                        }
+                        if(pokemonName == fieldData[0]) {
+                            list.Add(entity);
+                        }
                     }
                     return list;
                 }
