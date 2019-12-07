@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\PokemonApp\bin\Debug\ClosedXML.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="ClosedXML.Excel" #>
+<#@ import namespace="System.Threading.Tasks" #>
+<#@ output extension=".cs" #>
+using PokemonApp.AbilityValueConverter.Views;
+using PokemonApp.Damage.Views;
+using PokemonApp.Json.Views;
+using PokemonApp.PictureBook.Views;
+using PokemonApp.WildArea.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace PokemonApp.WindowManage
+{
+    public partial class WindowType
+    {
+<#
+		var workbook = new XLWorkbook(@"C:\Users\denpadokei\source\repos\PokemonApp\PokemonApp.Window\WindowTypeInfo.xlsx");
+		var worksheet = workbook.Worksheet("WindowType");
+		var table = worksheet.RangeUsed().AsTable();
+		foreach(var row in table.DataRange.Rows()) {
+		#>
+		public static WindowType <#
+		Write($"{row.Cell(1).Value}");
+		#>
+ => new WindowType("<#
+		Write($"{row.Cell(2).Value}");
+		#>
+", nameof(<#
+		Write($"{row.Cell(3).Value}");
+		#>
+));
+<#}#>
+	}
+}

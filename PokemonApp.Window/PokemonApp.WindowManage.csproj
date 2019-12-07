@@ -64,7 +64,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="WindowType.cs" />
-    <Compile Include="WindowTypes.cs" />
+    <Compile Include="WindowTypes1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WindowTypes.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +78,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="WindowTypeInfo.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PokemonApp.AbilityValueConverter\PokemonApp.AbilityValueConverter.csproj">
@@ -98,6 +103,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ClosedXML">
+      <Version>0.94.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>3.1.0</Version>
     </PackageReference>
@@ -105,6 +113,15 @@
       <Version>7.2.0.1422</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WindowTypes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WindowTypes1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -43,7 +43,7 @@
                 </Grid>
             </StackPanel>
             <ContentControl Grid.Row="1">
-                <DataGrid ItemsSource="{Binding Tricks}" AutoGenerateColumns="True" IsReadOnly="True" />
+                <DataGrid ItemsSource="{Binding Tricks}" AutoGenerateColumns="True" IsReadOnly="False" />
             </ContentControl>
         </Grid>
     </ContentControl>

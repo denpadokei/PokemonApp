@@ -13,7 +13,7 @@
              d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute Title="ダメージ計算機"/>
+            <action:ChangeWindowAttribute Title="ダメージ計算機" IsRemoveOwner="True"/>
             <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>

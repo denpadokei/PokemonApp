@@ -4,6 +4,6 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" MinHeight="300" MinWidth="400" Title="{Binding Title, TargetNullValue=ダイアログ, FallbackValue=未設定}" >
+        mc:Ignorable="d" MinHeight="300" MinWidth="400" Title="{Binding Title, TargetNullValue=ダイアログ, FallbackValue=未設定}" WindowStartupLocation="CenterScreen">
     <ContentControl/>
 </Window>
