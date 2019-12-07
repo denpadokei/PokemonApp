@@ -55,7 +55,7 @@
                 <DataGrid Grid.Column="0" ItemsSource="{Binding Pokemons}" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="True" IsReadOnly="True" Margin="10">
                     
                 </DataGrid>
-                <DataGrid Grid.Column="1" ItemsSource="{Binding CurrentPokemon.LearnTrickList}" AutoGenerateColumns="True" IsReadOnly="True" Margin="10"/>
+                <DataGrid Grid.Column="1" ItemsSource="{Binding TrickCollection}" AutoGenerateColumns="True" IsReadOnly="True" Margin="10"/>
             </Grid>
             
         </Grid>

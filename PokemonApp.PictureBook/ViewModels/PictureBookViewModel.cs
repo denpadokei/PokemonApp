@@ -6,6 +6,7 @@ using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 
@@ -22,6 +23,15 @@ namespace PokemonApp.PictureBook.ViewModels
         {
             get { return this.pokemons_; }
             set { this.SetProperty(ref this.pokemons_, value); }
+        }
+
+        /// <summary>覚える技コレクション を取得、設定</summary>
+        private ObservableCollection<TrickEntity> trickCollection_;
+        /// <summary>覚える技コレクション を取得、設定</summary>
+        public ObservableCollection<TrickEntity> TrickCollection
+        {
+            get { return this.trickCollection_; }
+            set { this.SetProperty(ref trickCollection_, value); }
         }
 
         /// <summary>選択中 を取得、設定</summary>
@@ -92,6 +102,14 @@ namespace PokemonApp.PictureBook.ViewModels
             this.DataBaseService?.Load(this.domain_.Serch);
         }
 
+        private void SerchLeanTrick()
+        {
+            if (this.CurrentPokemon.Id != 0) {
+                this.domain_.CurrentPokemon = this.CurrentPokemon;
+                this.DataBaseService?.Load(this.domain_.SerchLearnTrick);
+            }
+        }
+
         private void Filtering()
         {
             this.domain_.Filtering();
@@ -117,6 +135,14 @@ namespace PokemonApp.PictureBook.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(this.CurrentPokemon)) {
+                this.SerchLeanTrick();
+            }
+        }
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
@@ -124,8 +150,8 @@ namespace PokemonApp.PictureBook.ViewModels
         {
             base.OnInitialize();
             this.Serch();
+            this.TrickCollection.Clear();
             this.domain_.PokemonList = new List<PokemonEntity>(this.Pokemons);
-            
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -142,7 +168,8 @@ namespace PokemonApp.PictureBook.ViewModels
         {
             this.domain_ = new PictureBookDomain();
             this.Pokemons = this.domain_.Collection;
-            this.Filter = this.domain_.Filter;
+            this.TrickCollection = this.domain_.TrickCollection;
+            this.domain_.Filter = this.Filter;
         }
         #endregion
     }

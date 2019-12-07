@@ -26,6 +26,25 @@ namespace PokemonApp.PictureBook.Models
             set { this.SetProperty(ref collection_, value); }
         }
 
+        /// <summary>覚える技コレクション を取得、設定</summary>
+        private ObservableCollection<TrickEntity> trickCollection_;
+        /// <summary>覚える技コレクション を取得、設定</summary>
+        public ObservableCollection<TrickEntity> TrickCollection
+        {
+            get { return this.trickCollection_; }
+            set { this.SetProperty(ref trickCollection_, value); }
+        }
+
+
+        /// <summary>選択中のポケモン を取得、設定</summary>
+        private PokemonEntity currentPokemon_;
+        /// <summary>選択中のポケモン を取得、設定</summary>
+        public PokemonEntity CurrentPokemon
+        {
+            get { return this.currentPokemon_ ?? (this.currentPokemon_ = new PokemonEntity()); }
+            set { this.SetProperty(ref currentPokemon_, value); }
+        }
+
         /// <summary>初期リスト を取得、設定</summary>
         private IReadOnlyList<PokemonEntity> pokemonList_;
         /// <summary>初期リスト を取得、設定</summary>
@@ -73,16 +92,27 @@ namespace PokemonApp.PictureBook.Models
         {
             this.Collection.Clear();
             using (var repository = new Repository()) {
-                this.Collection.AddRange(PictureBookDataBase.FindPokemon(repository.Context));
-                foreach (var pokemon in this.Collection) {
-                    //var trickListList = PictureBookDataSet.FindTrick(pokemon.Name);
-                    //foreach (var trickList in trickListList) {
-                    //    pokemon.LeanTrickList.AddRange(trickList);
-                    //}
-                    pokemon.LearnTrickList.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, pokemon.Id));
-                }
+                var list = PictureBookDataBase.FindPokemon(repository.Context);
+                this.Collection.AddRange(list);
+                //foreach (var pokemon in this.Collection) {
+                //    var trickListList = PictureBookDataSet.FindTrick(pokemon.Name);
+                //    foreach (var trickList in trickListList) {
+                //        pokemon.LeanTrickList.AddRange(trickList);
+                //    }
+                //    pokemon.LearnTrickList.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, pokemon.Id));
+                //}
             }
             
+        }
+
+        public void SerchLearnTrick()
+        {
+            this.TrickCollection.Clear();
+            if (!this.CurrentPokemon.LearnTrickList.Any()) {
+                using (var repository = new Repository()) {
+                    this.TrickCollection.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, this.CurrentPokemon.Id));
+                }
+            }
         }
 
         public bool Regist()
@@ -207,6 +237,7 @@ namespace PokemonApp.PictureBook.Models
         public PictureBookDomain()
         {
             this.Collection = new ObservableCollection<PokemonEntity>();
+            this.TrickCollection = new ObservableCollection<TrickEntity>();
             this.PokemonList = new List<PokemonEntity>();
             this.Filter = new PictureBookFilter();
         }
