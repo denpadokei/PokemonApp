@@ -110,7 +110,7 @@ namespace PokemonApp.PictureBook.Models
             this.TrickCollection.Clear();
             if (!this.CurrentPokemon.LearnTrickList.Any()) {
                 using (var repository = new Repository()) {
-                    this.TrickCollection.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, this.CurrentPokemon.Id));
+                    this.TrickCollection.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, this.CurrentPokemon.Id).Select(x => x.TrickEntity));
                 }
             }
         }

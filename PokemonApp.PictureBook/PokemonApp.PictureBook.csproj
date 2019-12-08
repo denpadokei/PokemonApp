@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\PicturBookDataBase.cs" />
+    <Compile Include="Models\LeranTrickLinkDomain.cs" />
+    <Compile Include="Models\LinkTrickEntity.cs" />
     <Compile Include="Models\TypesDomain.cs" />
     <Compile Include="Models\CharacteristicEntity.cs" />
     <Compile Include="Models\PictureBookDataSet.cs" />
@@ -77,12 +79,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\CharacteristicViewModel.cs" />
+    <Compile Include="ViewModels\LearnTrickLinkViewModel.cs" />
     <Compile Include="ViewModels\PictureBookViewModel.cs" />
     <Compile Include="ViewModels\PokemonDataViewModel.cs" />
     <Compile Include="ViewModels\TrickViewModel.cs" />
     <Compile Include="ViewModels\TypesViewModel.cs" />
     <Compile Include="Views\CharacteristicView.xaml.cs">
       <DependentUpon>CharacteristicView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LearnTrickLink.xaml.cs">
+      <DependentUpon>LearnTrickLink.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PictureBookView.xaml.cs">
       <DependentUpon>PictureBookView.xaml</DependentUpon>
@@ -118,6 +124,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\CharacteristicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LearnTrickLink.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

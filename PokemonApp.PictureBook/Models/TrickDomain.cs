@@ -65,7 +65,7 @@ namespace PokemonApp.PictureBook.Models
         {
             this.Collection.Clear();
             using(var repository = new Repository()) {
-                var tricks = PictureBookDataBase.FindTrick(repository.Context);
+                var tricks = PictureBookDataBase.FindTrickList(repository.Context);
                 this.Collection.AddRange(tricks);
             }
         }

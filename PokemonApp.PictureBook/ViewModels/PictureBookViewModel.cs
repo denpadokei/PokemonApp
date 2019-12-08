@@ -1,5 +1,6 @@
 ﻿using PokemonApp.Core.ViewModels;
 using PokemonApp.PictureBook.Models;
+using PokemonApp.PictureBook.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -89,6 +90,11 @@ namespace PokemonApp.PictureBook.ViewModels
         private DelegateCommand typeComitCommand_;
         /// <summary>タイプを紐づけるコマンド を取得、設定</summary>
         public DelegateCommand TypeComitCommand { get { return this.typeComitCommand_ ?? (this.typeComitCommand_ = new DelegateCommand(this.TypeComit)); } }
+
+        /// <summary>覚える技紐づけウインドウコマンド を取得、設定</summary>
+        private DelegateCommand trickWindowcommand_;
+        /// <summary>覚える技紐づけウインドウコマンド を取得、設定</summary>
+        public DelegateCommand TrickWindowCommand { get { return this.trickWindowcommand_ ?? (this.trickWindowcommand_ = new DelegateCommand(this.TrickComit)); } }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
@@ -118,6 +124,13 @@ namespace PokemonApp.PictureBook.ViewModels
         private void Regist()
         {
             this.DataBaseService?.Regist(this.domain_.Regist);
+        }
+
+        private void TrickComit()
+        {
+            if (this.CurrentPokemon.Id != 0) {
+                this.WindowManager.ShowDialog(nameof(LearnTrickLink), new DialogParameters() { { "PokemonId", CurrentPokemon.Id },{"PokemonName", CurrentPokemon.Name } }, _ => { });
+            }
         }
 
         private void CharComit()

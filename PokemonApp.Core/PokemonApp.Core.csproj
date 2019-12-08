@@ -56,11 +56,16 @@
     <Compile Include="Enum\TypeAttributeEnum.cs" />
     <Compile Include="Enum\WildAreaEnum.cs" />
     <Compile Include="Extentions\EnumExtention.cs" />
+    <Compile Include="Interface\IAddable.cs" />
     <Compile Include="Interface\IButtonMenu.cs" />
     <Compile Include="Interface\IDataBaseService.cs" />
+    <Compile Include="Interface\IDeletable.cs" />
     <Compile Include="Interface\IInitialize.cs" />
+    <Compile Include="Interface\ISelectable.cs" />
+    <Compile Include="Interface\IUpdatable.cs" />
     <Compile Include="Interface\IWindowManager.cs" />
     <Compile Include="Models\DataBaseService.cs" />
+    <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\WindowManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

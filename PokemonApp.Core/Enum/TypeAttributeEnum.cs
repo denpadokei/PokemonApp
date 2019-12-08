@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PokemonApp.Core.Enums
 {
-    public enum TypeAttribute
+    public enum CategoryAttribute
     {
         [Description("不明")]
         None = 0,

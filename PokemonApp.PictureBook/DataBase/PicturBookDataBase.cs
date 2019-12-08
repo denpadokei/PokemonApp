@@ -43,21 +43,39 @@ namespace PokemonApp.PictureBook.DataBase
         }
 
 
-        public static List<TrickEntity> FindTrick(LocalDbContext context)
+        public static List<TrickEntity> FindTrickList(LocalDbContext context)
         {
             var query = (from trick in context.tricks
                          let type = context.types.FirstOrDefault(x => x.type_id == trick.type_id)
                          select new TrickEntity()
                          {
+                             TrickId = trick.trick_id,
                              Name = trick.trick_name,
                              Type = type.type_name,
                              Power = trick.power,
                              Rate = trick.accuracy_rate,
-                             TypeAttribute = (TypeAttribute)trick.attribute,
+                             CategoryAttribute = (CategoryAttribute)trick.attribute,
                              Detial = trick.detial
                          }).OrderBy(x => x.Name);
             return query.ToList();
         }
+
+        public static TrickEntity FindTrick(LocalDbContext context, int trickId)
+        {
+            var query = (from trick in context.tricks.Where(x => x.trick_id == trickId)
+                        join type in context.types on trick.type_id equals type.type_id
+                        select new TrickEntity()
+                        {
+                            TrickId = trick.trick_id,
+                            Name = trick.trick_name,
+                            Power = trick.power,
+                            Rate = trick.accuracy_rate,
+                            Type = type.type_name,
+                            CategoryAttribute = (CategoryAttribute)trick.attribute
+                        }).FirstOrDefault();
+            return query;
+        }
+
 
         public static List<TypeEntity> FindType(LocalDbContext context)
         {
@@ -80,23 +98,29 @@ namespace PokemonApp.PictureBook.DataBase
         }
 
 
-        public static List<TrickEntity> FindLearnTrick(LocalDbContext context, int pokemonId)
+        public static List<LinkTrickEntity> FindLearnTrick(LocalDbContext context, int pokemonId)
         {
             var query = (from linktrick in context.link_tricks
                          join trick in context.tricks on linktrick.trick_id equals trick.trick_id
                          join type in context.types on trick.type_id equals type.type_id
                          where linktrick.pokemon_id == pokemonId
-                         select new TrickEntity()
+                         select new LinkTrickEntity()
                          {
-                             Name = trick.trick_name,
-                             Power = trick.power,
-                             Type = type.type_name,
-                             Rate = trick.accuracy_rate,
-                             TypeAttribute = (TypeAttribute)trick.attribute,
-                             Detial = trick.detial ?? ""
+                             LinkTrickId = linktrick.trick_id,
+                             TrickEntity = new TrickEntity()
+                             {
+                                 TrickId = trick.trick_id,
+                                 Name = trick.trick_name,
+                                 Power = trick.power,
+                                 Rate = trick.accuracy_rate,
+                                 Type = type.type_name,
+                                 CategoryAttribute = (CategoryAttribute)trick.attribute,
+                             }
                          });
 
             return query.ToList();
         }
+
+
     }
 }

@@ -11,6 +11,15 @@ namespace PokemonApp.PictureBook.Models
 {
     public class TrickEntity : BindableBase
     {
+        /// <summary>技ID を取得、設定</summary>
+        private int trickId_;
+        /// <summary>技ID を取得、設定</summary>
+        public int TrickId
+        {
+            get { return this.trickId_; }
+            set { this.SetProperty(ref trickId_, value); }
+        }
+
         /// <summary>技の名前 を取得、設定</summary>
         private string name_;
         /// <summary>技の名前 を取得、設定</summary>
@@ -48,15 +57,15 @@ namespace PokemonApp.PictureBook.Models
         }
 
         /// <summary>属性 を取得、設定</summary>
-        private TypeAttribute typeAttribute_;
+        private CategoryAttribute typeAttribute_;
         /// <summary>属性 を取得、設定</summary>
-        public TypeAttribute TypeAttribute
+        public CategoryAttribute CategoryAttribute
         {
             get { return this.typeAttribute_; }
             set { this.SetProperty(ref typeAttribute_, value); }
         }
 
-        public string TypeAttributeString => EnumExtention.GetDescription(this.TypeAttribute);
+        public string TypeAttributeString => EnumExtention.GetDescription(this.CategoryAttribute);
 
         /// <summary>説明 を取得、設定</summary>
         private string detial_;
