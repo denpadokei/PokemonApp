@@ -10,12 +10,16 @@ namespace PokemonApp.Json
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
- 
+            var regionManager = containerProvider.Resolve<IRegionManager>();
+            regionManager.RegisterViewWithRegion("Pokemon", typeof(JsonPokemonView));
+            regionManager.RegisterViewWithRegion("Trick", typeof(JsonTrickView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<JsonSerchView, JsonSerchViewModel>();
+            containerRegistry.RegisterDialog<JsonSerchBaseView, JsonSerchBaseViewModel>();
+            containerRegistry.RegisterForNavigation<JsonTrickView>();
+            containerRegistry.RegisterForNavigation<JsonPokemonView>();
         }
     }
 }

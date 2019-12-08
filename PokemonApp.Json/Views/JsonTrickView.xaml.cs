@@ -5,9 +5,9 @@ namespace PokemonApp.Json.Views
     /// <summary>
     /// Interaction logic for JsonSerch
     /// </summary>
-    public partial class JsonSerchView : UserControl
+    public partial class JsonTrickView : UserControl
     {
-        public JsonSerchView()
+        public JsonTrickView()
         {
             InitializeComponent();
         }

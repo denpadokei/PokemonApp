@@ -104,6 +104,10 @@
       <Project>{FDC92C66-AE82-4331-9E39-BE95BC266560}</Project>
       <Name>PokemonApp.PictureBook</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Style\PokemonApp.Style.csproj">
+      <Project>{cc703163-fe6e-434c-9dbd-4066040994ba}</Project>
+      <Name>PokemonApp.Style</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PokemonApp.Window\PokemonApp.WindowManage.csproj">
       <Project>{3D35DEC1-AF7D-441A-A4F6-B9BC7FA90717}</Project>
       <Name>PokemonApp.WindowManage</Name>

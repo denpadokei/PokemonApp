@@ -48,7 +48,7 @@ namespace PokemonApp.Main.ViewModels
         #region // コマンド用メソッド
         public void OpenWindow()
         {
-            this.WindowManager.Show(this.WindowName, new DialogParameters(), _ => { });
+            this.WindowManager.Show(this.WindowName, new DialogParameters() { { "Title", this.Name } }, _ => { });
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

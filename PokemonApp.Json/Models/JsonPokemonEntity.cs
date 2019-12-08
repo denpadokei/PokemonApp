@@ -1,90 +1,80 @@
-﻿using PokemonApp.Core.Interface;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
+﻿using Prism.Mvvm;
 using System;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Linq;
-using Unity;
-using System.Diagnostics;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
-namespace PokemonApp.Core.ViewModels
+namespace PokemonApp.Json.Models
 {
-    public class BaseWindowViewModel : BindableBase, IDialogAware, IInitialize
+    [DataContract]
+    public class JsonPokemonEntity
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
-        [Dependency]
-        public IWindowManager WindowManager { get; set; }
-        [Dependency]
-        public IDataBaseService DataBaseService { get; set; }
-
-        /// <summary>タイトル を取得、設定</summary>
-        private string title_;
-        /// <summary>タイトル を取得、設定</summary>
-        public string Title
+        
+        /// <summary>図鑑番号 を取得、設定</summary>
+        [DataMember(Name ="id")]
+        public int No { get; set; }
+        /// <summary>ポケモンの名前 を取得、設定</summary>
+        [DataMember(Name = "name")]
+        public Dictionary<string, string> Name { get; set; }
+        /// <summary>フォーム名 を取得、設定</summary>
+        public string FormName { get; set; }
+        /// <summary>タイプ１ を取得、設定</summary>
+        [DataMember(Name = "type")]
+        public ObservableCollection<string> TypeList { get; set; }
+        [DataMember(Name = "base")]
+        public Dictionary<string, int> Base { get; set; }
+        /// <summary>特性1 を取得、設定</summary>
+        public string CharacteristicList { get; set; }
+        /// <summary>HP を取得、設定</summary>
+        public int Hp { get; set; }
+        /// <summary>攻撃 を取得、設定</summary>
+        public int Attack { get; set; }
+        /// <summary>防御 を取得、設定</summary>
+        public int Block { get; set; }
+        /// <summary>特攻 を取得、設定</summary>
+        public int Contact { get; set; }
+        /// <summary>特防 を取得、設定</summary>
+        public int Defence { get; set; }
+        /// <summary>素早さ を取得、設定</summary>
+        public int Speed { get; set; }
+        /// <summary>種族値合計 を取得、設定</summary>
+        public int SumAll
         {
-            get { return this.title_; }
-            set { this.SetProperty(ref title_, value); }
+            get { return this.Hp + this.Attack + this.Block + this.Contact + this.Defence + this.Speed; }
         }
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
-        /// <summary>ロードコマンド を取得、設定</summary>
-        private DelegateCommand loadedCommand_;
-        /// <summary>ロードコマンド を取得、設定</summary>
-        public DelegateCommand LoadedCommand { get { return this.loadedCommand_ ?? (this.loadedCommand_ = new DelegateCommand(this.OnInitialize)); } }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // リクエスト
-        public event Action<IDialogResult> RequestClose;
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド
-        public void Close()
-        {
-            this.RequestClose?.Invoke(new DialogResult());
-        }
-
-        public virtual bool CanCloseDialog()
-        {
-            return true;
-        }
-
-        public virtual void OnDialogClosed()
-        {
-
-        }
-
-        public virtual void OnDialogOpened(IDialogParameters parameters)
-        {
-            this.Title = parameters.GetValue<string>("Title");
-        }
-
-        public virtual void OnInitialize()
-        {
-            
-        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // メンバ変数
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public BaseWindowViewModel()
-        {
-            
-        }
         #endregion
     }
 }

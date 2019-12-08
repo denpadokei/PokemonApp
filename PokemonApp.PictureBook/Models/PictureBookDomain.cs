@@ -92,8 +92,8 @@ namespace PokemonApp.PictureBook.Models
         {
             this.Collection.Clear();
             using (var repository = new Repository()) {
-                var list = PictureBookDataBase.FindPokemon(repository.Context);
-                this.Collection.AddRange(list);
+                this.Collection.AddRange(PictureBookDataBase.FindPokemon(repository.Context));
+                //this.Collection.AddRange(PictureBookDataSet.FindPokemon());
                 //foreach (var pokemon in this.Collection) {
                 //    var trickListList = PictureBookDataSet.FindTrick(pokemon.Name);
                 //    foreach (var trickList in trickListList) {
@@ -118,38 +118,54 @@ namespace PokemonApp.PictureBook.Models
         public bool Regist()
         {
             using (var repositoty = new Repository()) {
-                foreach (var pokemon in this.Collection) {
-                    if (repositoty.Context.pokemons.FirstOrDefault(x => x.name == pokemon.Name) == null) {
-                        var type1 = repositoty.Context.types.FirstOrDefault(x => x.type_name == pokemon.Type1);
-                        var type2 = repositoty.Context.types.FirstOrDefault(x => x.type_name == pokemon.Type2);
+                foreach (var pokemon in this.Collection.Where(x => x.Id >= 810)) {
+                    if (!repositoty.Context.pokemons.Where(x => x.name == pokemon.Name).Any()) {
+                        var type1 = repositoty.Context.types.FirstOrDefault(x => x.type_name == pokemon.Type1) != null ? repositoty.Context.types.FirstOrDefault(x => x.type_name == pokemon.Type1).type_id : 1;
+                        var type2 = repositoty.Context.types.FirstOrDefault(x => x.type_name == pokemon.Type2)?.type_id;
                         var characteristic1 = repositoty.Context.characteristics.FirstOrDefault(x => x.characteristic_name == pokemon.Characteristic1);
                         var characteristic2 = repositoty.Context.characteristics.FirstOrDefault(x => x.characteristic_name == pokemon.Characteristic2);
                         var dCharacteristic = repositoty.Context.characteristics.FirstOrDefault(x => x.characteristic_name == pokemon.DreamCharacteristic);
-                        repositoty.Context.pokemons.Add(new pokemon()
+                        var addpokemon = new pokemon()
                         {
                             pokemon_no = pokemon.No,
                             name = pokemon.Name,
                             height = pokemon.Height,
                             weight = pokemon.Weight,
-                            type_1_id = type1 != null ? type1.type_id : 1,
-                            type_2_id = type2.type_id,
-                            characteristic1_id = characteristic1 != null ? characteristic1.characteristic_id : 1,
-                            characteristic2_id = characteristic2.characteristic_id,
-                            dream_characteristic_id = dCharacteristic.characteristic_id,
-                            hp = pokemon.Hp,
-                            attack = pokemon.Attack,
-                            block = pokemon.Block,
-                            contact = pokemon.Contact,
-                            defence = pokemon.Defence,
-                            speed = pokemon.Speed,
-                        });
+                            type_1_id = type1,
+                            type_2_id = type2,
+                            //characteristic1_id = characteristic1 != null ? characteristic1.characteristic_id : 0,
+                            //characteristic2_id = characteristic2.characteristic_id,
+                            //dream_characteristic_id = dCharacteristic.characteristic_id,
+                            //hp = pokemon.Hp,
+                            //attack = pokemon.Attack,
+                            //block = pokemon.Block,
+                            //contact = pokemon.Contact,
+                            //defence = pokemon.Defence,
+                            //speed = pokemon.Speed,
+                        };
+                        repositoty.Context.pokemons.Add(addpokemon);
                         foreach (var trick in pokemon.LearnTrickList) {
                             repositoty.Context.link_tricks.Add(new link_trick()
                             {
-                                pokemon_id = repositoty.Context.pokemons.FirstOrDefault(x => x.name == pokemon.Name).pokemon_id,
+                                pokemon_id = addpokemon.pokemon_id,
                                 trick_id = repositoty.Context.tricks.FirstOrDefault(x => x.trick_name == trick.Name).trick_id
                             });
                         }
+                    }
+                    else {
+                        //var updatePokemons = repositoty.Context.pokemons.Where(x => x.name == pokemon.Name);
+                        //foreach (var updatePokemon in updatePokemons) {
+                        //    var charachter1 = repositoty.Context.characteristics.FirstOrDefault(x => x.characteristic_name == pokemon.Characteristic1)?.characteristic_id;
+                        //    updatePokemon.characteristic1_id = charachter1 != null ? (int)charachter1 : 0;
+                        //    foreach (var trick in pokemon.LearnTrickList) {
+                        //        repositoty.Context.link_tricks.Add(new link_trick()
+                        //        {
+                        //            pokemon_id = updatePokemon.pokemon_id,
+                        //            trick_id = repositoty.Context.tricks.FirstOrDefault(x => x.trick_name == trick.Name).trick_id
+                        //        });
+                        //    }
+                        //}
+                        
                     }
                 }
                 if (repositoty.Context.ChangeTracker.HasChanges()) {

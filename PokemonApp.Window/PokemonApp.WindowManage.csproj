@@ -115,10 +115,10 @@
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WindowTypes.tt">
+    <None Include="WindowTypes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>WindowTypes1.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

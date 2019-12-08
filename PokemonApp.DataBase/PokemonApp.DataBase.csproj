@@ -100,7 +100,7 @@
     </EmbeddedResource>
     <None Include="App.Config" />
     <None Include="localdb.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

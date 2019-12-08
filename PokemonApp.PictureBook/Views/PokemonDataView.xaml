@@ -13,7 +13,7 @@
              d:DataContext="{d:DesignInstance {x:Type viewmodel:PokemonDataViewModel}, IsDesignTimeCreatable=True}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="ポケモンのデータあれこれ" With="1200" Height="800"/>
+            <action:ChangeWindowAttribute IsRemoveOwner="True" With="1200" Height="800"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <ContentControl>

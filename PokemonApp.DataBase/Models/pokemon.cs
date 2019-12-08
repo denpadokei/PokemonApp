@@ -13,7 +13,6 @@ namespace PokemonApp.DataBase.Models
     public class pokemon
     {
         [Key]
-        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int pokemon_id { get; set; }
         
@@ -55,5 +54,10 @@ namespace PokemonApp.DataBase.Models
         
         [Required]
         public int speed { get; set; }
+
+        public pokemon()
+        {
+
+        }
     }
 }

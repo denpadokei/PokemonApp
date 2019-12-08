@@ -20,6 +20,13 @@ namespace PokemonApp.Json.Json
             }
         }
 
+        public static List<JsonPokemonEntity> FindPokemon()
+        {
+            using (var fs = new FileStream(@".\pokedex.json", FileMode.Open, FileAccess.Read)) {
+                return (List<JsonPokemonEntity>)SerializerList<JsonPokemonEntity>().ReadObject(fs);
+            }
+        }
+
         /// <summary>
         /// Listオブジェクト用
         /// </summary>

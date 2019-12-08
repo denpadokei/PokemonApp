@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="PokemonApp.Json.Views.JsonPokemonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewmodel="clr-namespace:PokemonApp.Json.ViewModels"
+             xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             d:DataContext="{d:DesignInstance {x:Type viewmodel:JsonPokemonViewModel}, IsDesignTimeCreatable=True}"
+             d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <WrapPanel Grid.Column="0">
+                    <TextBlock Text="名前" Margin="10"/>
+                    <TextBox x:Name="SerchName" Text="{Binding Filter.Name}" Width="80" Margin="10"/>
+                </WrapPanel>
+                <ContentControl Grid.Column="1" HorizontalAlignment="Right">
+                    <WrapPanel>
+                        <Button x:Name="Serch" Content="検索" Command="{Binding SerchCommand}" Width="100" Height="30" Margin="10"/>
+                        <Button x:Name="Regist" Content="登録" Command="{Binding RegistCommand}" Width="100" Height="30" Margin="10"/>
+                    </WrapPanel>
+                </ContentControl>
+            </Grid>
+        </StackPanel>
+        <WrapPanel Grid.Row="1">
+            <DataGrid ItemsSource="{Binding Collection}" SelectedItem="{Binding CurrentEntity}"/>
+            <DataGrid ItemsSource="{Binding CurrentEntity.TypeList}" />
+            <DataGrid ItemsSource="{Binding CurrentEntity.Name}" />
+            <DataGrid ItemsSource="{Binding CurrentEntity.Base}" />
+        </WrapPanel>
+    </Grid>
+</UserControl>
