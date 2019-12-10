@@ -15,6 +15,7 @@ using PokemonApp.WindowManage;
 using Prism.Services.Dialogs;
 using PokemonApp.AbilityValueConverter;
 using PokemonApp.Json;
+using PokemonApp.Style;
 
 namespace PokemonApp
 {
@@ -50,6 +51,7 @@ namespace PokemonApp
             moduleCatalog.AddModule<WindowModule>();
             moduleCatalog.AddModule<AbilityValueConverterModule>();
             moduleCatalog.AddModule<JsonModule>();
+            moduleCatalog.AddModule<StyleModule>();
         }
     }
 }

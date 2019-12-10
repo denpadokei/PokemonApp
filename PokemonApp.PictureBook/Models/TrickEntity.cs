@@ -1,5 +1,6 @@
 ﻿using PokemonApp.Core.Enums;
 using PokemonApp.Core.Extentions;
+using PokemonApp.Core.Interface;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.Models
 {
-    public class TrickEntity : BindableBase
+    public class TrickEntity : BindableBase, IUpdatable
     {
         /// <summary>技ID を取得、設定</summary>
         private int trickId_;
@@ -65,6 +66,14 @@ namespace PokemonApp.PictureBook.Models
             set { this.SetProperty(ref typeAttribute_, value); }
         }
 
+        /// <summary>更新フラグ を取得、設定</summary>
+        private bool isUpdated_;
+        /// <summary>更新フラグ を取得、設定</summary>
+        public bool IsUpdated
+        {
+            get { return this.isUpdated_; }
+            set { this.SetProperty(ref isUpdated_, value); }
+        }
         public string TypeAttributeString => EnumExtention.GetDescription(this.CategoryAttribute);
 
         /// <summary>説明 を取得、設定</summary>

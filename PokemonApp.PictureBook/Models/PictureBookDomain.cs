@@ -59,7 +59,7 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>検索条件 を取得、設定</summary>
         public PictureBookFilter Filter
         {
-            get { return this.filter_; }
+            get { return this.filter_ ?? (this.filter_ = new PictureBookFilter()); }
             set { this.SetProperty(ref filter_, value); }
         }
 
@@ -85,7 +85,7 @@ namespace PokemonApp.PictureBook.Models
         {
             var list = new List<PokemonEntity>(this.PokemonList);
             this.Collection.Clear();
-            this.Collection.AddRange(list.Where(x => x.Name.Contains(this.Filter.PokemonName)));
+            this.Collection.AddRange(list.Where(x => x.Name.Contains(this.Filter.PokemonName ?? "")));
         }
 
         public void Serch()
@@ -255,7 +255,6 @@ namespace PokemonApp.PictureBook.Models
             this.Collection = new ObservableCollection<PokemonEntity>();
             this.TrickCollection = new ObservableCollection<TrickEntity>();
             this.PokemonList = new List<PokemonEntity>();
-            this.Filter = new PictureBookFilter();
         }
         #endregion
     }

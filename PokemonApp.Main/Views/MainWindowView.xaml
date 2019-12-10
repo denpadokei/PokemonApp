@@ -4,7 +4,7 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:viewmodel="clr-namespace:PokemonApp.Main.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
-             prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1053" d:DesignHeight="472" Background="WhiteSmoke">
+             prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1053" d:DesignHeight="472" >
     <UserControl.Resources>
         <DataTemplate x:Name="ButtonTemp" DataType="{x:Type viewmodel:MainWindowButtonViewModel}">
             <Button Margin="10" Width="320" Height="40" FontSize="22" Content="{Binding Name}" Command="{Binding Command}"/>

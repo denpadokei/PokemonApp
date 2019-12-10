@@ -61,15 +61,7 @@ namespace PokemonApp.PictureBook.ViewModels
             set { this.SetProperty(ref linkTrickFilter_, value); }
         }
 
-        /// <summary>選択中の技 を取得、設定</summary>
-        private TrickEntity currentEntity_;
-        /// <summary>選択中の技 を取得、設定</summary>
-        public TrickEntity CurrentEntity
-        {
-            get { return this.currentEntity_ ?? (this.currentEntity_ = new TrickEntity()); }
-            set { this.SetProperty(ref currentEntity_, value); }
-        }
-
+        
         /// <summary>覚える技一覧 を取得、設定</summary>
         private ObservableCollection<LinkTrickEntity> learnCollection_;
         /// <summary>覚える技一覧 を取得、設定</summary>
@@ -79,26 +71,19 @@ namespace PokemonApp.PictureBook.ViewModels
             set { this.SetProperty(ref learnCollection_, value); }
         }
 
-        /// <summary>選択中の覚える技 を取得、設定</summary>
-        private LinkTrickEntity currentLinkEntity_;
-        /// <summary>選択中の覚える技 を取得、設定</summary>
-        public LinkTrickEntity CurrentLinkEntity
-        {
-            get { return this.currentLinkEntity_ ?? (this.currentLinkEntity_ = new LinkTrickEntity()); }
-            set { this.SetProperty(ref currentLinkEntity_, value); }
-        }
+        
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
         /// <summary>技追加コマンド を取得、設定</summary>
-        private DelegateCommand addCommand_;
+        private DelegateCommand<IList<object>> addCommand_;
         /// <summary>技追加コマンド を取得、設定</summary>
-        public DelegateCommand AddCommand { get { return this.addCommand_ ?? (this.addCommand_ = new DelegateCommand(this.MoveToRight)); } }
+        public DelegateCommand<IList<object>> AddCommand { get { return this.addCommand_ ?? (this.addCommand_ = new DelegateCommand<IList<object>>(this.MoveToRight)); } }
 
         /// <summary>技削除コマンド を取得、設定</summary>
-        private DelegateCommand deleteCommand_;
+        private DelegateCommand<IList<object>> deleteCommand_;
         /// <summary>技削除コマンド を取得、設定</summary>
-        public DelegateCommand DeleteCommand { get { return this.deleteCommand_ ?? (this.deleteCommand_ = new DelegateCommand(this.MoveToLeft)); } }
+        public DelegateCommand<IList<object>> DeleteCommand { get { return this.deleteCommand_ ?? (this.deleteCommand_ = new DelegateCommand<IList<object>>(this.MoveToLeft)); } }
 
         /// <summary>登録コマンド を取得、設定</summary>
         private DelegateCommand registCommand_;
@@ -108,20 +93,27 @@ namespace PokemonApp.PictureBook.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
 
-        private void MoveToRight()
+        private void MoveToRight(IList<object> tricks)
         {
-            this.LearnCollection.Add(new LinkTrickEntity() { TrickEntity = this.CurrentEntity, IsAdded = true });
-            this.TrickCollection.Remove(this.CurrentEntity);
+            var collection = new List<TrickEntity>(tricks.Cast<TrickEntity>()).AsEnumerable();
+            using (var repository = new Repository()) {
+                foreach (var move in collection) {
+                    this.LearnCollection.Add(new LinkTrickEntity() { TrickEntity = move, IsAdded = true });
+                    this.TrickCollection.Remove(move);
+                    var linkTricks = repository.Context.link_tricks.Where(x => x.trick_id == move.TrickId);
+                    foreach (var linkTrick in linkTricks) {
+                        repository.Context.Remove(linkTrick);
+                    }
+                }
+            }
         }
 
-        private void MoveToLeft()
+        private void MoveToLeft(IList<object> tricks)
         {
-            using (var repository = new Repository()) {
-                this.TrickCollection.Add(this.CurrentLinkEntity.TrickEntity);
-                this.LearnCollection.Remove(this.CurrentLinkEntity);
-                if (this.CurrentLinkEntity.LinkTrickId != 0) {
-                    repository.Context.link_tricks.Remove(repository.Context.link_tricks.FirstOrDefault(x => x.link_trick_id == CurrentLinkEntity.LinkTrickId));
-                }
+            var collection = new List<LinkTrickEntity>(tricks.Cast<LinkTrickEntity>()).AsEnumerable();
+            foreach (var move in collection) {
+                this.TrickCollection.Add(move.TrickEntity);
+                this.LearnCollection.Remove(move);
             }
         }
 

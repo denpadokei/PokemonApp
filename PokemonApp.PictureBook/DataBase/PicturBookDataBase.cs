@@ -115,7 +115,8 @@ namespace PokemonApp.PictureBook.DataBase
                                  Rate = trick.accuracy_rate,
                                  Type = type.type_name,
                                  CategoryAttribute = (CategoryAttribute)trick.attribute,
-                             }
+                             },
+                             Level = 10,
                          });
 
             return query.ToList();

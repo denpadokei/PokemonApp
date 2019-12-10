@@ -1,13 +1,15 @@
-﻿using PokemonApp.Core.Models;
+﻿using PokemonApp.Core.Interface;
+using PokemonApp.Core.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace PokemonApp.PictureBook.Models
 {
-    public class LinkTrickEntity : EntityBase
+    public class LinkTrickEntity : EntityBase, IUpdatable
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
@@ -20,6 +22,15 @@ namespace PokemonApp.PictureBook.Models
             set { this.SetProperty(ref linkTrickId_, value); }
         }
 
+        /// <summary>レベル を取得、設定</summary>
+        private int level_;
+        /// <summary>レベル を取得、設定</summary>
+        public int Level
+        {
+            get { return this.level_; }
+            set { this.SetProperty(ref level_, value); }
+        }
+
         /// <summary>技 を取得、設定</summary>
         private TrickEntity trickEntity_;
         /// <summary>技 を取得、設定</summary>
@@ -27,6 +38,15 @@ namespace PokemonApp.PictureBook.Models
         {
             get { return this.trickEntity_; }
             set { this.SetProperty(ref trickEntity_, value); }
+        }
+
+        /// <summary>更新フラグ を取得、設定</summary>
+        private bool isUpdated_;
+        /// <summary>更新フラグ を取得、設定</summary>
+        public bool IsUpdated
+        {
+            get { return this.isUpdated_; }
+            set { this.SetProperty(ref isUpdated_, value); }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -40,6 +60,13 @@ namespace PokemonApp.PictureBook.Models
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(this.Level)) {
+                this.IsUpdated = true;
+            }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
@@ -54,7 +81,7 @@ namespace PokemonApp.PictureBook.Models
         #region // 構築・破棄
         public LinkTrickEntity()
         {
-
+            
         }
         #endregion
     }

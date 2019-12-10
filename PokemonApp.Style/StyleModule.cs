@@ -1,4 +1,5 @@
-﻿using PokemonApp.Style.Views;
+﻿using PokemonApp.Style.Controls;
+using PokemonApp.Style.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -14,7 +15,7 @@ namespace PokemonApp.Style
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.Register<CustomDataGrid>();
         }
     }
 }

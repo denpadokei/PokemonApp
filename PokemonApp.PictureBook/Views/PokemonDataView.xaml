@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
@@ -11,13 +12,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DesignWidth="1200" d:DesignHeight="800"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:PokemonDataViewModel}, IsDesignTimeCreatable=True}">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
             <action:ChangeWindowAttribute IsRemoveOwner="True" With="1200" Height="800"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <ContentControl>
-        <TabControl>
+        <TabControl Background="DarkGray">
             <TabItem Name="PictureBook" Header="種族値一覧表" prism:RegionManager.RegionName="PictureBookRegion"/>
             <TabItem Name="Trick" Header="技一覧表" prism:RegionManager.RegionName="TrickRegion"/>
             <TabItem Name="Characteristic" Header="とくせい一覧表" prism:RegionManager.RegionName="CharacteristicRegion"/>

@@ -8,8 +8,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             d:DesignWidth="600" d:DesignHeight="800" Background="WhiteSmoke"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignWidth="600" d:DesignHeight="800"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:LearnTrickLinkViewModel}, IsDesignTimeCreatable=True}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -40,13 +40,13 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid Grid.Column= "0" Margin="5" IsReadOnly="True" ItemsSource="{Binding TrickCollection}" SelectedItem="{Binding CurrentEntity}" >
+            <DataGrid x:Name="Tricks" Grid.Column= "0" Margin="5" IsReadOnly="True" ItemsSource="{Binding TrickCollection}">
             </DataGrid>
             <StackPanel Grid.Column="1">
-                <Button Width="75" Content="→" Margin="5" Command="{Binding AddCommand}"/>
-                <Button Width="75" Content="←" Margin="5" Command="{Binding DeleteCommand}"/>
+                <Button Width="75" Content="→" Margin="5" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedItems, ElementName=Tricks}"/>
+                <Button Width="75" Content="←" Margin="5" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedItems, ElementName=LinkTrick}"/>
             </StackPanel>
-            <DataGrid Grid.Column="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding LearnCollection}" SelectedItem="{Binding CurrentLinkEntity}" >
+            <DataGrid x:Name="LinkTrick" Grid.Column="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding LearnCollection}" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="技名" Binding="{Binding TrickEntity.Name}" />
                 </DataGrid.Columns>

@@ -12,7 +12,7 @@ namespace PokemonApp.Core.Models
     /// <summary>
     /// Jsonの入れ物以外に使うやつ
     /// </summary>
-    public class EntityBase : BindableBase, IUpdatable, ISelectable, IDeletable, IAddable
+    public class EntityBase : BindableBase, ISelectable, IDeletable, IAddable
     {
         /// <summary>選択フラグ を取得、設定</summary>
         private bool isSelected_;
@@ -21,15 +21,6 @@ namespace PokemonApp.Core.Models
         {
             get { return this.isSelected_; }
             set { this.SetProperty(ref isSelected_, value); }
-        }
-
-        /// <summary>更新フラグ を取得、設定</summary>
-        private bool isUpdated_;
-        /// <summary>更新フラグ を取得、設定</summary>
-        public bool IsUpdated
-        {
-            get { return this.isUpdated_; }
-            set { this.SetProperty(ref isUpdated_, value); }
         }
 
         /// <summary>削除フラグ を取得、設定</summary>
@@ -50,18 +41,9 @@ namespace PokemonApp.Core.Models
             set { this.SetProperty(ref isAdded_, value); }
         }
 
-        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
-        {
-            base.OnPropertyChanged(args);
-            this.IsUpdated = true;
-        }
-
         public EntityBase()
         {
-            this.IsSelected = false;
-            this.IsDeleted = false;
-            this.IsAdded = false;
-            this.isUpdated_ = false;
+
         }
     }
 }

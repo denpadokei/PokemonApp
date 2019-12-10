@@ -142,9 +142,6 @@ namespace PokemonApp.Json.Models
             get { return this.speed_; }
             set { this.SetProperty(ref speed_, value); }
         }
-
-        /// <summary>種族値合計 を取得、設定</summary>
-        private int sumAll_;
         /// <summary>種族値合計 を取得、設定</summary>
         public int SumAll
         {
