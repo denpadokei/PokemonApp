@@ -1,42 +1,54 @@
-﻿using PokemonApp.Core.Interface;
+﻿using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
 using PokemonApp.Core.ViewModels;
-using PokemonApp.PictureBook.Views;
-using PokemonApp.WindowManage;
 using Prism.Commands;
-using Prism.Ioc;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace PokemonApp.Main.ViewModels
 {
-    public class MainWindowViewModel : BaseWindowViewModel
+    public class SettingsViewModel : BaseWindowViewModel
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        private ObservableCollection<IButtonMenu> collection_;
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        public ObservableCollection<IButtonMenu> Collection
+        /// <summary>テーマのフラグ を取得、設定</summary>
+        private bool isTheme_;
+        /// <summary>テーマのフラグ を取得、設定</summary>
+        public bool IsTheme
         {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
+            get { return this.isTheme_; }
+            set { this.SetProperty(ref isTheme_, value); }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
+        /// <summary>トグルコマンド を取得、設定</summary>
+        private DelegateCommand toggleCommand_;
+        /// <summary>トグルコマンド を取得、設定</summary>
+        public DelegateCommand ToggleCommand { get { return this.toggleCommand_ ?? (this.toggleCommand_ = new DelegateCommand(this.Change)); } }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
+        private void Change()
+        {
+            var paletteHelper = new PaletteHelper();
+            var theme = paletteHelper.GetTheme();
+            theme.SetBaseTheme(this.IsTheme ? Theme.Dark : Theme.Light);
+            paletteHelper.SetTheme(theme);
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // リクエスト
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        public override void OnInitialize()
+        {
+            base.OnInitialize();
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
@@ -49,18 +61,12 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public MainWindowViewModel(IContainerExtension container)
+        public SettingsViewModel()
         {
-            this.Collection = new ObservableCollection<IButtonMenu>() {
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.PictuerBook)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.DamageSim)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.WildArea)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.AbilityValueConverter)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.JsonSerch)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.Settings))
-            };
+            var paletteHelper = new PaletteHelper();
+            var theme = paletteHelper.GetTheme();
+            this.IsTheme = theme == Theme.Light;
         }
         #endregion
-
     }
 }

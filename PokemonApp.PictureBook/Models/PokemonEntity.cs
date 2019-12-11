@@ -1,4 +1,5 @@
 ﻿
+using PokemonApp.Core.Interface;
 using PokemonApp.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.Models
 {
-    public class PokemonEntity : EntityBase
+    public class PokemonEntity : EntityBase, IUpdatable
     {
         public int Id { get; set; }
         public string No { get; set; }
@@ -28,6 +29,16 @@ namespace PokemonApp.PictureBook.Models
         public int Defence { get; set; }
         public int Speed { get; set; }
         public int SumAll => this.Hp + this.Attack + this.Block + this.Contact + this.Defence + this.Speed;
+
+        /// <summary>更新フラグ を取得、設定</summary>
+        private bool isUpdated_;
+        /// <summary>更新フラグ を取得、設定</summary>
+        public bool IsUpdated
+        {
+            get { return this.isUpdated_; }
+            set { this.SetProperty(ref isUpdated_, value); }
+        }
+
         public ObservableCollection<TrickEntity> LearnTrickList { get; set; }
         public PokemonEntity()
         {

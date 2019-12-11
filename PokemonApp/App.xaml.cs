@@ -16,6 +16,8 @@ using Prism.Services.Dialogs;
 using PokemonApp.AbilityValueConverter;
 using PokemonApp.Json;
 using PokemonApp.Style;
+using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
 
 namespace PokemonApp
 {
@@ -33,6 +35,15 @@ namespace PokemonApp
             base.OnInitialized();
             var region = this.Container.Resolve<IRegionManager>();
             region.RegisterViewWithRegion("ShellRegion", typeof(MainWindowView));
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var primaryColor = SwatchHelper.Lookup[MaterialDesignColor.Grey900];
+            var accentColor = SwatchHelper.Lookup[MaterialDesignColor.Yellow100];
+            var theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
+            Resources.SetTheme(theme);
+            base.OnStartup(e);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

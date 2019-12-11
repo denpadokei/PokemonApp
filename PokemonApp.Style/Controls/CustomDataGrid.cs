@@ -52,7 +52,7 @@ namespace PokemonApp.Style.Controls
         #endregion
         public CustomDataGrid()
         {
-            this.RowHeaderStyle = null;
+            //DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomDataGrid), new FrameworkPropertyMetadata(typeof(CustomDataGrid)));
         }
     }
 }

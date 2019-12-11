@@ -12,7 +12,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="能力値計算" With="1200" Height="800"/>
+            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="能力値計算" Width="1200" Height="800"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 

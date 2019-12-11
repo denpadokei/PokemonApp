@@ -15,7 +15,7 @@ namespace PokemonApp.Core.Actions
     {
         public bool IsRemoveOwner { get; set; } = false;
         public string Title { get; set; }
-        public double? With { get; set; }
+        public double? Width { get; set; }
         public double? Height { get; set; }
         public WindowChrome Chrome { get; set; }
         protected override void Invoke(object parameter)
@@ -24,8 +24,8 @@ namespace PokemonApp.Core.Actions
             if (this.Title != null) {
                 window.Title = this.Title;
             }
-            if (this.With != null) {
-                window.Width = (double)this.With;
+            if (this.Width != null) {
+                window.Width = (double)this.Width;
             }
             if (this.Height != null) {
                 window.Height = (double)this.Height;

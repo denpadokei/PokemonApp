@@ -1,30 +1,15 @@
-﻿using PokemonApp.Core.Interface;
-using PokemonApp.Core.ViewModels;
-using PokemonApp.PictureBook.Views;
-using PokemonApp.WindowManage;
-using Prism.Commands;
-using Prism.Ioc;
+﻿using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace PokemonApp.Main.ViewModels
+namespace PokemonApp.Core.ViewModels
 {
-    public class MainWindowViewModel : BaseWindowViewModel
+    public class TabWindowViewModel : BaseWindowViewModel
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        private ObservableCollection<IButtonMenu> collection_;
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        public ObservableCollection<IButtonMenu> Collection
-        {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
-        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -49,16 +34,9 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public MainWindowViewModel(IContainerExtension container)
+        public TabWindowViewModel()
         {
-            this.Collection = new ObservableCollection<IButtonMenu>() {
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.PictuerBook)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.DamageSim)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.WildArea)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.AbilityValueConverter)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.JsonSerch)),
-                container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.Settings))
-            };
+
         }
         #endregion
 

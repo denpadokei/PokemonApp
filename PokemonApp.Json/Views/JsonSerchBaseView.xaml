@@ -14,7 +14,7 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
-            <action:ChangeWindowAttribute  With="1200" Height="800" IsRemoveOwner="True" />
+            <action:ChangeWindowAttribute  Width="1200" Height="800" IsRemoveOwner="True" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <ContentControl>

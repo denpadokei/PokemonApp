@@ -9,7 +9,7 @@
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
              xmlns:convert="clr-namespace:PokemonApp.Core.Enums;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke"
+             d:DesignWidth="1200" d:DesignHeight="800"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:TrickViewModel}, IsDesignTimeCreatable=True}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">

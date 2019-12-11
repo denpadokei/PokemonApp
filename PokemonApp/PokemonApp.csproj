@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\ConfirmationWindowViewModel.cs" />
+    <Compile Include="ViewModels\CustomDialogWindowViewModel.cs" />
     <Compile Include="ViewModels\ShellWindowViewModel.cs" />
     <Compile Include="Views\ConfirmationWindowView.xaml.cs">
       <DependentUpon>ConfirmationWindowView.xaml</DependentUpon>
@@ -64,7 +65,7 @@
     <Compile Include="Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="CustomDialogWindow.xaml">
+    <Page Include="Views\CustomDialogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -72,7 +73,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CustomDialogWindow.xaml.cs">
+    <Compile Include="Views\CustomDialogWindow.xaml.cs">
       <DependentUpon>CustomDialogWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\ConfirmationWindowView.xaml">
@@ -108,6 +109,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Dragablz">
+      <Version>0.0.3.203</Version>
+    </PackageReference>
     <PackageReference Include="MaterialDesignColors">
       <Version>1.2.1</Version>
     </PackageReference>

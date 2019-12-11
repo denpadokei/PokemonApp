@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity;
 using System.Diagnostics;
+using Prism.Regions;
+using PokemonApp.Core.Models;
+using Dragablz;
 
 namespace PokemonApp.Core.ViewModels
 {
@@ -19,6 +22,10 @@ namespace PokemonApp.Core.ViewModels
         public IWindowManager WindowManager { get; set; }
         [Dependency]
         public IDataBaseService DataBaseService { get; set; }
+        [Dependency]
+        public IRegionManager RegionManager { get; set; }
+        [Dependency]
+        public IInterTabClient TabClient { get; set; }
 
         /// <summary>タイトル を取得、設定</summary>
         private string title_;
@@ -28,6 +35,8 @@ namespace PokemonApp.Core.ViewModels
             get { return this.title_; }
             set { this.SetProperty(ref title_, value); }
         }
+
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド

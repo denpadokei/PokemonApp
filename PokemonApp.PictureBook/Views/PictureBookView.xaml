@@ -4,6 +4,8 @@
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
+             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+             xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,7 +13,8 @@
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
              d:DesignWidth="1200" d:DesignHeight="800"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:PictureBookViewModel}, IsDesignTimeCreatable=True}"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             FontFamily="{DynamicResource MaterialDesignFont}">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <action:DataContextInitialize />
@@ -47,17 +50,18 @@
                     <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <control:CustomDataGrid Grid.Column="0" ItemsSource="{Binding Pokemons}" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="False" IsReadOnly="False" Margin="10" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="名前" Binding="{Binding Name}"/>
-                    </DataGrid.Columns>
-                </control:CustomDataGrid>
+                <control:CustomDataGrid Grid.Column="0" ItemsSource="{Binding Pokemons}" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="True" IsReadOnly="False" Margin="10" />
+
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding TrickCollection}" AutoGenerateColumns="True" IsReadOnly="True" Margin="10" />
+                    <control:CustomDataGrid Grid.Row="1" ItemsSource="{Binding TrickCollection}" AutoGenerateColumns="True" IsReadOnly="True" Margin="10">
+                        <control:CustomDataGrid.Columns>
+                            <DataGridCheckBoxColumn Header="Select" Binding="{Binding IsUpdated}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                        </control:CustomDataGrid.Columns>
+                    </control:CustomDataGrid>
                 </Grid>
                 
             </Grid>

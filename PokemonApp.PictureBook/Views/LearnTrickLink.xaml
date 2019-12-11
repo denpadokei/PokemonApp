@@ -14,7 +14,7 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
-            <action:ChangeWindowAttribute With="600" Height="800" IsEnabled="False"/>
+            <action:ChangeWindowAttribute Width="600" Height="800" IsEnabled="False"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>

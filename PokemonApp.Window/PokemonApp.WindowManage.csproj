@@ -106,6 +106,9 @@
     <PackageReference Include="ClosedXML">
       <Version>0.94.2</Version>
     </PackageReference>
+    <PackageReference Include="Dragablz">
+      <Version>0.0.3.203</Version>
+    </PackageReference>
     <PackageReference Include="MaterialDesignColors">
       <Version>1.2.1</Version>
     </PackageReference>

@@ -38,10 +38,10 @@ namespace PokemonApp.WindowManage
  => new WindowType("<#
 		Write($"{row.Cell(2).Value}");
 		#>
-", nameof(<#
+", "<#
 		Write($"{row.Cell(3).Value}");
 		#>
-));
+");
 <#}#>
 	}
 }

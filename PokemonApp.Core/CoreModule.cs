@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.Actions;
+﻿using Dragablz;
+using PokemonApp.Core.Actions;
 using PokemonApp.Core.Interface;
 using PokemonApp.Core.Models;
 using PokemonApp.Core.Views;
@@ -19,6 +20,7 @@ namespace PokemonApp.Core
         {
             containerRegistry.Register<IWindowManager, WindowManager>();
             containerRegistry.Register<IDataBaseService, DataBaseService>();
+            containerRegistry.Register<IInterTabClient, InterTabClient>();
         }
     }
 }

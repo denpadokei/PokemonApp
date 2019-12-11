@@ -9,7 +9,7 @@
              >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="ワイルドエリア一覧" With="1200" Height="800" />
+            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="ワイルドエリア一覧" Width="1200" Height="800" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <TabControl>

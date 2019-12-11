@@ -13,7 +13,7 @@
              d:DataContext="{d:DesignInstance {x:Type viewmodel:ConfirmationWindowViewModel}, IsDesignTimeCreatable=True}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute Height="300" With="400" IsRemoveOwner="False"/>
+            <action:ChangeWindowAttribute Height="300" Width="400" IsRemoveOwner="False"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <TextBlock Text="{Binding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
