@@ -48,7 +48,7 @@ namespace PokemonApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialogWindow<CustomDialogWindow>();
+            //containerRegistry.RegisterDialogWindow<CustomDialogWindow>();
             containerRegistry.RegisterDialog<ConfirmationWindowView>();
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

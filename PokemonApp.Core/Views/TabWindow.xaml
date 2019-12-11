@@ -9,7 +9,9 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type viewmodel:TabWindowViewModel}, IsDesignTimeCreatable=True}"
         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-        >
+        MinHeight="300" MinWidth="400" Title="{Binding Title, TargetNullValue=ダイアログ, FallbackValue=未設定}" WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <dragablz:TabablzControl x:Name="InitialTabalzControl">
             <dragablz:TabablzControl.InterTabController>
