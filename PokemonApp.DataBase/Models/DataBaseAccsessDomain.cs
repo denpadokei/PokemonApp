@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using PokemonApp.Core.Collections;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ namespace PokemonApp.DataBase.Models
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>コレクション を取得、設定</summary>
-        private ObservableCollection<string> collection_;
+        private MTObservableCollection<string> collection_;
         /// <summary>コレクション を取得、設定</summary>
-        public ObservableCollection<string> Collection
+        public MTObservableCollection<string> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }

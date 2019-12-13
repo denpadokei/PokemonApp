@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using PokemonApp.DataBase.Models;
 using NLog;
 using PokemonApp.PictureBook.DataBase;
+using System.ComponentModel;
+using PokemonApp.Core.Collections;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -17,12 +19,30 @@ namespace PokemonApp.PictureBook.Models
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>コレクション を取得、設定</summary>
-        private ObservableCollection<TrickEntity> collection_;
+        private MTObservableCollection<TrickEntity> collection_;
         /// <summary>コレクション を取得、設定</summary>
-        public ObservableCollection<TrickEntity> Collection
+        public MTObservableCollection<TrickEntity> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
+        }
+
+        /// <summary>選択中の技 を取得、設定</summary>
+        private TrickEntity currentMove_;
+        /// <summary>選択中の技 を取得、設定</summary>
+        public TrickEntity CurrentMove
+        {
+            get { return this.currentMove_; }
+            set { this.SetProperty(ref currentMove_, value); }
+        }
+
+        /// <summary>ポケモンのコレクション を取得、設定</summary>
+        private MTObservableCollection<PokemonEntity> pokemonCollection_;
+        /// <summary>ポケモンのコレクション を取得、設定</summary>
+        public MTObservableCollection<PokemonEntity> PokemonCollection
+        {
+            get { return this.pokemonCollection_; }
+            set { this.SetProperty(ref pokemonCollection_, value); }
         }
 
         /// <summary>初期リスト を取得、設定</summary>
@@ -77,6 +97,14 @@ namespace PokemonApp.PictureBook.Models
             this.Collection.AddRange(list.Where(x => x.Name.Contains(this.Filter.PokemonName)));
         }
 
+        public void SetPokemon()
+        {
+            this.PokemonCollection.Clear();
+            using (var repository = new Repository()) {
+                this.PokemonCollection.AddRange(PictureBookDataBase.FindLinkPokemon(repository.Context, this.CurrentMove.TrickId));
+            }
+        }
+
         public bool Regist()
         {
             //var logger = LogManager.GetCurrentClassLogger();
@@ -115,7 +143,9 @@ namespace PokemonApp.PictureBook.Models
         #region // 構築・破棄
         public TrickDomain()
         {
-            this.Collection = new ObservableCollection<TrickEntity>();
+            this.Collection = new MTObservableCollection<TrickEntity>();
+            this.PokemonCollection = new MTObservableCollection<PokemonEntity>();
+            this.CurrentMove = new TrickEntity();
             this.TrickList = new List<TrickEntity>();
             this.Filter = new PictureBookFilter();
         }

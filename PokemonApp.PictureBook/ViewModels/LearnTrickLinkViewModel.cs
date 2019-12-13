@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.Core.ViewModels;
 using PokemonApp.DataBase.Models;
 using PokemonApp.PictureBook.DataBase;
 using PokemonApp.PictureBook.Models;
@@ -35,9 +36,9 @@ namespace PokemonApp.PictureBook.ViewModels
         }
 
         /// <summary>技コレクション を取得、設定</summary>
-        private ObservableCollection<TrickEntity> trickCollection_;
+        private MTObservableCollection<TrickEntity> trickCollection_;
         /// <summary>技コレクション を取得、設定</summary>
-        public ObservableCollection<TrickEntity> TrickCollection
+        public MTObservableCollection<TrickEntity> TrickCollection
         {
             get { return this.trickCollection_; }
             set { this.SetProperty(ref trickCollection_, value); }
@@ -63,9 +64,9 @@ namespace PokemonApp.PictureBook.ViewModels
 
         
         /// <summary>覚える技一覧 を取得、設定</summary>
-        private ObservableCollection<LinkTrickEntity> learnCollection_;
+        private MTObservableCollection<LinkTrickEntity> learnCollection_;
         /// <summary>覚える技一覧 を取得、設定</summary>
-        public ObservableCollection<LinkTrickEntity> LearnCollection
+        public MTObservableCollection<LinkTrickEntity> LearnCollection
         {
             get { return this.learnCollection_; }
             set { this.SetProperty(ref learnCollection_, value); }
@@ -157,7 +158,7 @@ namespace PokemonApp.PictureBook.ViewModels
         public LearnTrickLinkViewModel()
         {
             this.domain_ = new LeranTrickLinkDomain();
-            this.TrickCollection = new ObservableCollection<TrickEntity>();
+            this.TrickCollection = new MTObservableCollection<TrickEntity>();
             this.LearnCollection = this.domain_.LinkTrickColection;
         }
         #endregion

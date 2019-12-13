@@ -1,4 +1,5 @@
-﻿using PokemonApp.DataBase.Models;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.DataBase.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -13,9 +14,9 @@ namespace PokemonApp.PictureBook.Models
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>覚える技コレクション を取得、設定</summary>
-        private ObservableCollection<LinkTrickEntity> linkTrickCollection_;
+        private MTObservableCollection<LinkTrickEntity> linkTrickCollection_;
         /// <summary>覚える技コレクション を取得、設定</summary>
-        public ObservableCollection<LinkTrickEntity> LinkTrickColection
+        public MTObservableCollection<LinkTrickEntity> LinkTrickColection
         {
             get { return this.linkTrickCollection_; }
             set { this.SetProperty(ref linkTrickCollection_, value); }
@@ -62,7 +63,7 @@ namespace PokemonApp.PictureBook.Models
         #region // 構築・破棄
         public LeranTrickLinkDomain()
         {
-            this.LinkTrickColection = new ObservableCollection<LinkTrickEntity>();
+            this.LinkTrickColection = new MTObservableCollection<LinkTrickEntity>();
         }
         #endregion
 

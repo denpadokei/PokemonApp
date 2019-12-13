@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using PokemonApp.DataBase.Models;
 using NLog;
 using PokemonApp.PictureBook.DataBase;
+using PokemonApp.Core.Collections;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -17,9 +18,9 @@ namespace PokemonApp.PictureBook.Models
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>コレクション を取得、設定</summary>
-        private ObservableCollection<TypeEntity> collection_;
+        private MTObservableCollection<TypeEntity> collection_;
         /// <summary>コレクション を取得、設定</summary>
-        public ObservableCollection<TypeEntity> Collection
+        public MTObservableCollection<TypeEntity> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
@@ -128,7 +129,7 @@ namespace PokemonApp.PictureBook.Models
         #region // 構築・破棄
         public TypesDomain()
         {
-            this.Collection = new ObservableCollection<TypeEntity>();
+            this.Collection = new MTObservableCollection<TypeEntity>();
             this.TypeList = new List<TypeEntity>();
             this.Filter = new PictureBookFilter();
         }

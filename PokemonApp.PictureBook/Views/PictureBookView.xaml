@@ -50,7 +50,7 @@
                     <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <control:CustomDataGrid Grid.Column="0" ItemsSource="{Binding Pokemons}" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="True" IsReadOnly="False" Margin="10" />
+                <control:CustomDataGrid Grid.Column="0" ItemsSource="{Binding Pokemons}" SelectionMode="Single" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="True" IsReadOnly="False" Margin="10" />
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>

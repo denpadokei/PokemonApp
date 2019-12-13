@@ -1,4 +1,5 @@
 ﻿using Dragablz;
+using MahApps.Metro.Controls;
 using PokemonApp.Core.ViewModels;
 using Prism.Events;
 using Prism.Services.Dialogs;
@@ -10,7 +11,7 @@ namespace PokemonApp.Core.Views
     /// <summary>
     /// Interaction logic for TabWindow.xaml
     /// </summary>
-    public partial class TabWindow : Window, IDialogWindow
+    public partial class TabWindow : MetroWindow, IDialogWindow
     {
         
         public TabWindow()

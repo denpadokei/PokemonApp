@@ -1,10 +1,12 @@
-﻿using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.Core.ViewModels;
 using PokemonApp.PictureBook.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 
 namespace PokemonApp.PictureBook.ViewModels
@@ -14,12 +16,30 @@ namespace PokemonApp.PictureBook.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>説明 を取得、設定</summary>
-        private ObservableCollection<TrickEntity> tricks_;
+        private MTObservableCollection<TrickEntity> tricks_;
         /// <summary>説明 を取得、設定</summary>
-        public ObservableCollection<TrickEntity> Tricks
+        public MTObservableCollection<TrickEntity> Tricks
         {
             get { return this.tricks_; }
             set { this.SetProperty(ref this.tricks_, value); }
+        }
+
+        /// <summary>選択中の技 を取得、設定</summary>
+        private TrickEntity currentMove_;
+        /// <summary>選択中の技 を取得、設定</summary>
+        public TrickEntity CurrentMove
+        {
+            get { return this.currentMove_ ?? (this.currentMove_ = new TrickEntity()); }
+            set { this.SetProperty(ref currentMove_, value); }
+        }
+
+        /// <summary>ポケモンのコレクション を取得、設定</summary>
+        private MTObservableCollection<PokemonEntity> pokemonCollection_;
+        /// <summary>ポケモンのコレクション を取得、設定</summary>
+        public MTObservableCollection<PokemonEntity> PokemonCollection
+        {
+            get { return this.pokemonCollection_; }
+            set { this.SetProperty(ref pokemonCollection_, value); }
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -69,6 +89,12 @@ namespace PokemonApp.PictureBook.ViewModels
             this.DataBaseService.Load(this.domain_.Serch);
         }
 
+        private void SetPokemon()
+        {
+            this.domain_.CurrentMove = this.CurrentMove;
+            this.DataBaseService.Load(this.domain_.SetPokemon);
+        }
+
         private void Filtering()
         {
             this.domain_.Filtering();
@@ -84,6 +110,13 @@ namespace PokemonApp.PictureBook.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(this.CurrentMove) && this.CurrentMove.TrickId != 0) {
+                this.SetPokemon();
+            }
+        }
         public override void OnInitialize()
         {
             base.OnInitialize();
@@ -109,6 +142,7 @@ namespace PokemonApp.PictureBook.ViewModels
         {
             this.domain_ = new TrickDomain();
             this.Tricks = this.domain_.Collection;
+            this.PokemonCollection = this.domain_.PokemonCollection;
             this.Filter = this.domain_.Filter;
         }
         #endregion

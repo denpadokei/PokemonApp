@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using PokemonApp.Core.Collections;
 
 namespace PokemonApp.Json.Models
 {
@@ -27,7 +28,7 @@ namespace PokemonApp.Json.Models
         public string FormName { get; set; }
         /// <summary>タイプ１ を取得、設定</summary>
         [DataMember(Name = "type")]
-        public ObservableCollection<string> TypeList { get; set; }
+        public MTObservableCollection<string> TypeList { get; set; }
         [DataMember(Name = "base")]
         public Dictionary<string, int> Base { get; set; }
         /// <summary>特性1 を取得、設定</summary>

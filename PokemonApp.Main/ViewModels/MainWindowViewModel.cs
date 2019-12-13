@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.Interface;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.Core.Interface;
 using PokemonApp.Core.ViewModels;
 using PokemonApp.PictureBook.Views;
 using PokemonApp.WindowManage;
@@ -18,9 +19,9 @@ namespace PokemonApp.Main.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>ボタンコレクション を取得、設定</summary>
-        private ObservableCollection<IButtonMenu> collection_;
+        private MTObservableCollection<IButtonMenu> collection_;
         /// <summary>ボタンコレクション を取得、設定</summary>
-        public ObservableCollection<IButtonMenu> Collection
+        public MTObservableCollection<IButtonMenu> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
@@ -51,7 +52,7 @@ namespace PokemonApp.Main.ViewModels
         #region // 構築・破棄
         public MainWindowViewModel(IContainerExtension container)
         {
-            this.Collection = new ObservableCollection<IButtonMenu>() {
+            this.Collection = new MTObservableCollection<IButtonMenu>() {
                 container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.PictuerBook)),
                 container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.DamageSim)),
                 container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.WildArea)),

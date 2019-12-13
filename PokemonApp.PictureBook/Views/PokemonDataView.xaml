@@ -16,7 +16,7 @@
              d:DataContext="{d:DesignInstance {x:Type viewmodel:PokemonDataViewModel}, IsDesignTimeCreatable=True}">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute IsRemoveOwner="True" Width="1200" Height="800"/>
+            <action:ChangeWindowAttribute IsRemoveOwner="True" />
             <action:DataContextInitialize/>
         </b:EventTrigger>
     </b:Interaction.Triggers>
@@ -29,13 +29,13 @@
                 <ContentControl prism:RegionManager.RegionName="PictureBookRegion"/>
             </TabItem>
             <TabItem Name="Trick" Header="技一覧表">
-                <ContentControl  prism:RegionManager.RegionName="TrickRegion"/>
+                <ContentControl prism:RegionManager.RegionName="TrickRegion"/>
             </TabItem>
             <TabItem Name="Characteristic" Header="とくせい一覧表">
-                <ContentControl  prism:RegionManager.RegionName="CharacteristicRegion"/>
+                <ContentControl prism:RegionManager.RegionName="CharacteristicRegion"/>
             </TabItem>
             <TabItem Name="Type" Header="タイプ名称一覧表">
-                <ContentControl  prism:RegionManager.RegionName="TypeRegion"/>
+                <ContentControl prism:RegionManager.RegionName="TypeRegion"/>
             </TabItem>
         </dragablz:TabablzControl>
     </dockablz:Layout>

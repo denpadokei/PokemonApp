@@ -6,11 +6,12 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              xmlns:viewmodel="clr-namespace:PokemonApp.Damage.ViewModels"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:DamageSimViewModel}, IsDesignTimeCreatable=True}"
-             d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
+             d:DesignWidth="1200" d:DesignHeight="800">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <action:ChangeWindowAttribute IsRemoveOwner="True"/>
@@ -26,7 +27,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>            
             <StackPanel Background="PaleVioletRed" Margin="20">
                 <WrapPanel HorizontalAlignment="Left">
                     <TextBlock VerticalAlignment="Center" Text="レベル" Margin="5"/>

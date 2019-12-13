@@ -1,4 +1,5 @@
-﻿using PokemonApp.DataBase.Models;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.DataBase.Models;
 using PokemonApp.Json.Json;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -14,9 +15,9 @@ namespace PokemonApp.Json.Models
         ///ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>ポケモンコレクション を取得、設定</summary>
-        private ObservableCollection<JsonPokemonEntity> collection_;
+        private MTObservableCollection<JsonPokemonEntity> collection_;
         /// <summary>ポケモンコレクション を取得、設定</summary>
-        public ObservableCollection<JsonPokemonEntity> Collection
+        public MTObservableCollection<JsonPokemonEntity> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
@@ -97,7 +98,7 @@ namespace PokemonApp.Json.Models
         #region // 構築・破棄
         public JsonPokemonDomain()
         {
-            this.Collection = new ObservableCollection<JsonPokemonEntity>();
+            this.Collection = new MTObservableCollection<JsonPokemonEntity>();
             this.Filter = new Filter();
 
         }

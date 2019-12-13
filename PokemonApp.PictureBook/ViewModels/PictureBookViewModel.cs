@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.Core.ViewModels;
 using PokemonApp.PictureBook.Models;
 using PokemonApp.PictureBook.Views;
 using Prism.Commands;
@@ -18,18 +19,18 @@ namespace PokemonApp.PictureBook.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>説明 を取得、設定</summary>
-        private ObservableCollection<PokemonEntity> pokemons_;
+        private MTObservableCollection<PokemonEntity> pokemons_;
         /// <summary>説明 を取得、設定</summary>
-        public ObservableCollection<PokemonEntity> Pokemons
+        public MTObservableCollection<PokemonEntity> Pokemons
         {
             get { return this.pokemons_; }
             set { this.SetProperty(ref this.pokemons_, value); }
         }
 
         /// <summary>覚える技コレクション を取得、設定</summary>
-        private ObservableCollection<TrickEntity> trickCollection_;
+        private MTObservableCollection<TrickEntity> trickCollection_;
         /// <summary>覚える技コレクション を取得、設定</summary>
-        public ObservableCollection<TrickEntity> TrickCollection
+        public MTObservableCollection<TrickEntity> TrickCollection
         {
             get { return this.trickCollection_; }
             set { this.SetProperty(ref trickCollection_, value); }

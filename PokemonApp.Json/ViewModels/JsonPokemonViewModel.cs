@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.Core.ViewModels;
 using PokemonApp.Json.Models;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -14,11 +15,11 @@ namespace PokemonApp.Json.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>ポケモンコレクション を取得、設定</summary>
-        private ObservableCollection<JsonPokemonEntity> collection_;
+        private MTObservableCollection<JsonPokemonEntity> collection_;
         /// <summary>ポケモンコレクション を取得、設定</summary>
-        public ObservableCollection<JsonPokemonEntity> Collection
+        public MTObservableCollection<JsonPokemonEntity> Collection
         {
-            get { return this.collection_ ?? (this.collection_ = new ObservableCollection<JsonPokemonEntity>()); }
+            get { return this.collection_ ?? (this.collection_ = new MTObservableCollection<JsonPokemonEntity>()); }
             set { this.SetProperty(ref collection_, value); }
         }
 

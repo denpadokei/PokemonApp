@@ -1,4 +1,5 @@
 ﻿
+using PokemonApp.Core.Collections;
 using PokemonApp.Core.Interface;
 using PokemonApp.Core.Models;
 using System;
@@ -39,10 +40,10 @@ namespace PokemonApp.PictureBook.Models
             set { this.SetProperty(ref isUpdated_, value); }
         }
 
-        public ObservableCollection<TrickEntity> LearnTrickList { get; set; }
+        public MTObservableCollection<TrickEntity> LearnTrickList { get; set; }
         public PokemonEntity()
         {
-            this.LearnTrickList = new ObservableCollection<TrickEntity>();
+            this.LearnTrickList = new MTObservableCollection<TrickEntity>();
         }
     }
 }

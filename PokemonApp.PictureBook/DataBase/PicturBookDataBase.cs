@@ -122,6 +122,38 @@ namespace PokemonApp.PictureBook.DataBase
             return query.ToList();
         }
 
+        public static List<PokemonEntity> FindLinkPokemon(LocalDbContext context, int moveId)
+        {
+            var query = (from linkmove in context.link_tricks
+                         join pokemon in context.pokemons on linkmove.pokemon_id equals pokemon.pokemon_id
+                         join type1 in context.types on pokemon.type_1_id equals type1.type_id
+                         join charact1 in context.characteristics on pokemon.characteristic1_id equals charact1.characteristic_id
+                         let type2 = context.types.FirstOrDefault(x => x.type_id == pokemon.type_2_id)
+                         let charact2 = context.characteristics.FirstOrDefault(x => x.characteristic_id == pokemon.characteristic2_id)
+                         let dreamcharact = context.characteristics.FirstOrDefault(x => x.characteristic_id == pokemon.dream_characteristic_id)
+                         where linkmove.trick_id == moveId
+                         select new PokemonEntity()
+                         {
+                             Id = pokemon.pokemon_id,
+                             No = pokemon.pokemon_no,
+                             Name = pokemon.name,
+                             Weight = pokemon.weight,
+                             Height = pokemon.height,
+                             Type1 = type1.type_name,
+                             Type2 = type2.type_name,
+                             Characteristic1 = charact1.characteristic_name,
+                             Characteristic2 = charact2.characteristic_name,
+                             DreamCharacteristic = dreamcharact.characteristic_name,
+                             Hp = pokemon.hp,
+                             Attack = pokemon.attack,
+                             Block = pokemon.block,
+                             Contact = pokemon.contact,
+                             Defence = pokemon.defence,
+                             Speed = pokemon.speed,
+                         });
+            return query.ToList();
+        }
+
 
     }
 }

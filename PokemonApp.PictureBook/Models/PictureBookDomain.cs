@@ -10,6 +10,7 @@ using PokemonApp.DataBase.Models;
 using NLog;
 using System.Diagnostics;
 using PokemonApp.PictureBook.DataBase;
+using PokemonApp.Core.Collections;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -18,18 +19,18 @@ namespace PokemonApp.PictureBook.Models
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>コレクション を取得、設定</summary>
-        private ObservableCollection<PokemonEntity> collection_;
+        private MTObservableCollection<PokemonEntity> collection_;
         /// <summary>コレクション を取得、設定</summary>
-        public ObservableCollection<PokemonEntity> Collection
+        public MTObservableCollection<PokemonEntity> Collection
         {
             get { return this.collection_; }
             set { this.SetProperty(ref collection_, value); }
         }
 
         /// <summary>覚える技コレクション を取得、設定</summary>
-        private ObservableCollection<TrickEntity> trickCollection_;
+        private MTObservableCollection<TrickEntity> trickCollection_;
         /// <summary>覚える技コレクション を取得、設定</summary>
-        public ObservableCollection<TrickEntity> TrickCollection
+        public MTObservableCollection<TrickEntity> TrickCollection
         {
             get { return this.trickCollection_; }
             set { this.SetProperty(ref trickCollection_, value); }
@@ -252,8 +253,8 @@ namespace PokemonApp.PictureBook.Models
         #region // 構築・破棄
         public PictureBookDomain()
         {
-            this.Collection = new ObservableCollection<PokemonEntity>();
-            this.TrickCollection = new ObservableCollection<TrickEntity>();
+            this.Collection = new MTObservableCollection<PokemonEntity>();
+            this.TrickCollection = new MTObservableCollection<TrickEntity>();
             this.PokemonList = new List<PokemonEntity>();
         }
         #endregion

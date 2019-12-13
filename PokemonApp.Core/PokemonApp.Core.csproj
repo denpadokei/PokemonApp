@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Actions\ChangeWindowAttribute.cs" />
     <Compile Include="Actions\DataContextInitialize.cs" />
+    <Compile Include="Collections\MTObservableCollection.cs" />
     <Compile Include="CoreModule.cs" />
     <Compile Include="Enum\TypeAttributeEnum.cs" />
     <Compile Include="Enum\WildAreaEnum.cs" />
