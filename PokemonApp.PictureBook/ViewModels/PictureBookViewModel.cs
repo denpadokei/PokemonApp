@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.ViewModels
 {
@@ -104,9 +105,10 @@ namespace PokemonApp.PictureBook.ViewModels
         /// </summary>
         private void Serch()
         {
-            //this.Pokemons.Clear();
-            //this.Pokemons.AddRange(PictureBookDataSet.FindPokemon());
+            this.Pokemons.Clear();
             this.DataBaseService?.Load(this.domain_.Serch);
+            //this.Pokemons.AddRange(PictureBookDataSet.FindPokemon());
+            //this.DataBaseService?.Load(this, this.domain_.Serch);
         }
 
         private void SerchLeanTrick()

@@ -9,14 +9,11 @@
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.AbilityValueConverter.ViewModels"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:AbilityValueConverterViewModel}, IsDesignTimeCreatable=True}"
-             prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
+             prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1200" d:DesignHeight="800" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <action:ChangeWindowAttribute IsRemoveOwner="True" Title="能力値計算" Width="1200" Height="800"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <ContentControl>
-        
-    </ContentControl>
-</UserControl>
+ </UserControl>

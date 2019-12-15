@@ -5,12 +5,13 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.Json.ViewModels"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:JsonTrickViewModel}, IsDesignTimeCreatable=True}"
-             d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
+             d:DesignWidth="1200" d:DesignHeight="800" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
@@ -41,6 +42,6 @@
             </Grid>
         </StackPanel>
         
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Collection}"/>
+        <control:CustomDataGrid Grid.Row="1" ItemsSource="{Binding Collection}"/>
     </Grid>
 </UserControl>

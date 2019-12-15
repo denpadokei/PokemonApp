@@ -1,9 +1,15 @@
-﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl x:Class="PokemonApp.WildArea.Views.WildAreaView"             
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
+             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+             xmlns:viewmodel ="clr-namespace:PokemonApp.WildArea.ViewModels"
+             xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="PokemonApp.WildArea.Views.WildAreaView"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type={x:Type viewmodel:WildAreaViewModel}, IsDesignTimeCreatable=True}"
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DesignWidth="1200" d:DesignHeight="800"
              >
@@ -12,8 +18,15 @@
             <action:ChangeWindowAttribute IsRemoveOwner="True" Title="ワイルドエリア一覧" Width="1200" Height="800" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <TabControl>
-        <TabItem Header="うららか" prism:RegionManager.RegionName="WildAreaUrarakaRegion"/>
-        <TabItem Header="こもれび林" prism:RegionManager.RegionName="WildAreaKomorebiRegion"/>
-    </TabControl>
+    <dragablz:TabablzControl>
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
+        </dragablz:TabablzControl.InterTabController>
+        <TabItem Header="うららか" >
+            <ContentControl prism:RegionManager.RegionName="WildAreaUrarakaRegion" />
+        </TabItem>
+        <TabItem Header="こもれび林" >
+            <ContentControl prism:RegionManager.RegionName="WildAreaKomorebiRegion" />
+        </TabItem>
+    </dragablz:TabablzControl>
 </UserControl>

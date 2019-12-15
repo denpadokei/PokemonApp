@@ -113,6 +113,10 @@
       <Project>{742F51D7-D5D7-4E0E-9DF4-51A633DE100D}</Project>
       <Name>PokemonApp.DataBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Style\PokemonApp.Style.csproj">
+      <Project>{cc703163-fe6e-434c-9dbd-4066040994ba}</Project>
+      <Name>PokemonApp.Style</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\JsonPokemonView.xaml">
@@ -149,6 +153,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Npgsql">
+      <Version>4.1.2</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity">
       <Version>7.2.0.1422</Version>

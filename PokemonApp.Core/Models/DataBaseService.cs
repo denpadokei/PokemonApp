@@ -1,9 +1,11 @@
-﻿using PokemonApp.Core.Interface;
+﻿using MahApps.Metro.Controls.Dialogs;
+using PokemonApp.Core.Interface;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,8 +21,17 @@ namespace PokemonApp.Core.Models
         #region // プロパティ
         [Dependency]
         public IDialogService DialogService { get; set; }
+        [Dependency]
+        public IWindowManager WindowManager { get; set; }
 
-        
+        /// <summary>読み込み中かどうか を取得、設定</summary>
+        private bool isLoading_;
+        /// <summary>読み込み中かどうか を取得、設定</summary>
+        public bool IsLoading
+        {
+            get { return this.isLoading_; }
+            set { this.SetProperty(ref isLoading_, value); }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -33,6 +44,15 @@ namespace PokemonApp.Core.Models
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(this.IsLoading)) {
+                if (this.IsLoading) {
+                    this.WindowManager.CustomDialogService.ShowProgress();
+                }
+            }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
@@ -53,8 +73,9 @@ namespace PokemonApp.Core.Models
         public void Regist(Func<bool> func)
         {
             try {
-                if (func()) {
-                    this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録に成功しました" } }, _ => { });
+                if (this.dispatcher_.InvokeAsync(func).Result) {
+                    //this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録に成功しました" } }, _ => { });
+                    this.WindowManager.ShowMessage("登録に成功しました");
                 }
                 else {
                     this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録するデータはありませんでした" } }, _ => { });
@@ -65,6 +86,7 @@ namespace PokemonApp.Core.Models
                 //throw;
             }
         }
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // メンバ変数

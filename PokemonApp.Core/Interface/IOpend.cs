@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace PokemonApp.Core.Interface
 {
-    public interface IDataBaseService
-    {   
-        bool IsLoading { get; set; }
-        void Regist(Func<bool> func);
-        void Load(Action action);
+    public interface IOpend
+    {
+        bool IsOpen { get; set; }
     }
 }

@@ -47,8 +47,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0" Margin="20" Padding="3" ItemsSource="{Binding Tricks}" SelectedItem="{Binding CurrentMove}" AutoGenerateColumns="True" IsReadOnly="False" SelectionMode="Single"/>
-                <DataGrid Grid.Column="1" Margin="20" Padding="3" ItemsSource="{Binding PokemonCollection}" AutoGenerateColumns="True" IsReadOnly="False" SelectionMode="Single"/>
+                <DataGrid Grid.Column="0" Margin="20" Padding="3" ItemsSource="{Binding Tricks}" SelectedItem="{Binding CurrentMove}" AutoGenerateColumns="True" IsReadOnly="True" SelectionMode="Single"/>
+                <DataGrid Grid.Column="1" Margin="20" Padding="3" ItemsSource="{Binding PokemonCollection}" AutoGenerateColumns="True" IsReadOnly="True" SelectionMode="Single"/>
             </Grid>
         </Grid>
     </ContentControl>

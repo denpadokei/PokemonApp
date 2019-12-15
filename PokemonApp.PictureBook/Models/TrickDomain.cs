@@ -100,6 +100,9 @@ namespace PokemonApp.PictureBook.Models
         public void SetPokemon()
         {
             this.PokemonCollection.Clear();
+            if (CurrentMove.TrickId == 0) {
+                return;
+            }
             using (var repository = new Repository()) {
                 this.PokemonCollection.AddRange(PictureBookDataBase.FindLinkPokemon(repository.Context, this.CurrentMove.TrickId));
             }

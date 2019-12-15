@@ -18,6 +18,7 @@ using PokemonApp.Json;
 using PokemonApp.Style;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
+using PokemonApp.Core.Models;
 
 namespace PokemonApp
 {
@@ -28,6 +29,7 @@ namespace PokemonApp
     {
         protected override Window CreateShell()
         {
+
             return Container.Resolve<ShellWindow>();
         }
         protected override void OnInitialized()

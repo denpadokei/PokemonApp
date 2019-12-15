@@ -92,6 +92,14 @@
       <Project>{c23b58d9-88e4-4df8-bb80-2353dd7bc8d8}</Project>
       <Name>PokemonApp.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.DataBase\PokemonApp.DataBase.csproj">
+      <Project>{742f51d7-d5d7-4e0e-9df4-51a633de100d}</Project>
+      <Name>PokemonApp.DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Style\PokemonApp.Style.csproj">
+      <Project>{cc703163-fe6e-434c-9dbd-4066040994ba}</Project>
+      <Name>PokemonApp.Style</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\WildAreaKomorebi.xaml">
@@ -125,6 +133,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
       <Version>1.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="Npgsql">
+      <Version>4.1.2</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity">
       <Version>7.2.0.1422</Version>

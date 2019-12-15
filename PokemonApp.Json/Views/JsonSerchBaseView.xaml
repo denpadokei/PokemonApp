@@ -5,12 +5,13 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.Json.ViewModels"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:JsonSerchBaseViewModel}, IsDesignTimeCreatable=True}"
-             d:DesignWidth="1200" d:DesignHeight="800" Background="WhiteSmoke">
+             d:DesignWidth="1200" d:DesignHeight="800" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
@@ -18,9 +19,16 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <ContentControl>
-        <TabControl>
-            <TabItem Header="ポケモン" prism:RegionManager.RegionName="Pokemon" />
-            <TabItem Header="わざ" prism:RegionManager.RegionName="Trick" />
-        </TabControl>
+        <dragablz:TabablzControl>
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController InterTabClient="{Binding TabClient}" />
+            </dragablz:TabablzControl.InterTabController>
+            <TabItem Header="ポケモン">
+                <ContentControl prism:RegionManager.RegionName="Pokemon" />
+            </TabItem>
+            <TabItem Header="わざ" >
+                <ContentControl prism:RegionManager.RegionName="Trick" />
+            </TabItem>
+        </dragablz:TabablzControl>
     </ContentControl>
 </UserControl>

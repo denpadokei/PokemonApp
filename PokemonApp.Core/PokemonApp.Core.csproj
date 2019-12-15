@@ -59,12 +59,15 @@
     <Compile Include="Extentions\EnumExtention.cs" />
     <Compile Include="Interface\IAddable.cs" />
     <Compile Include="Interface\IButtonMenu.cs" />
+    <Compile Include="Interface\ICustomDialogService.cs" />
     <Compile Include="Interface\IDataBaseService.cs" />
     <Compile Include="Interface\IDeletable.cs" />
     <Compile Include="Interface\IInitialize.cs" />
+    <Compile Include="Interface\IOpend.cs" />
     <Compile Include="Interface\ISelectable.cs" />
     <Compile Include="Interface\IUpdatable.cs" />
     <Compile Include="Interface\IWindowManager.cs" />
+    <Compile Include="Models\CustomDialogService.cs" />
     <Compile Include="Models\DataBaseService.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\InterTabClient.cs" />
@@ -84,9 +87,17 @@
     </Compile>
     <Compile Include="ViewModels\BaseTabViewModel.cs" />
     <Compile Include="ViewModels\BaseWindowViewModel.cs" />
+    <Compile Include="ViewModels\DialogWindowViewModel.cs" />
+    <Compile Include="ViewModels\ProgressBarViewModel.cs" />
     <Compile Include="ViewModels\TabWindowViewModel.cs" />
     <Compile Include="Views\BaseWindowView.xaml.cs">
       <DependentUpon>BaseWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgressBar.xaml.cs">
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TabWindow.xaml.cs">
       <DependentUpon>TabWindow.xaml</DependentUpon>
@@ -110,6 +121,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\BaseWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +158,9 @@
     </PackageReference>
     <PackageReference Include="NLog">
       <Version>4.6.8</Version>
+    </PackageReference>
+    <PackageReference Include="Npgsql">
+      <Version>4.1.2</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity">
       <Version>7.2.0.1422</Version>

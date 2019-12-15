@@ -21,6 +21,7 @@ namespace PokemonApp.Core
             containerRegistry.Register<IWindowManager, WindowManager>();
             containerRegistry.Register<IDataBaseService, DataBaseService>();
             containerRegistry.Register<IInterTabClient, InterTabClient>();
+            containerRegistry.Register<ICustomDialogService, CustomDialogService>();
             containerRegistry.RegisterDialogWindow<TabWindow>();
         }
     }

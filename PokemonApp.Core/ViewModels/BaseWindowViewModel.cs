@@ -11,10 +11,11 @@ using System.Diagnostics;
 using Prism.Regions;
 using PokemonApp.Core.Models;
 using Dragablz;
+using System.ComponentModel;
 
 namespace PokemonApp.Core.ViewModels
 {
-    public class BaseWindowViewModel : BindableBase, IDialogAware, IInitialize
+    public class BaseWindowViewModel : BindableBase, IDialogAware, IInitialize, IOpend
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
@@ -26,6 +27,8 @@ namespace PokemonApp.Core.ViewModels
         public IRegionManager RegionManager { get; set; }
         [Dependency]
         public IInterTabClient TabClient { get; set; }
+        [Dependency]
+        public ICustomDialogService CustomDialogService { get; set; }
 
         /// <summary>タイトル を取得、設定</summary>
         private string title_;
@@ -34,6 +37,15 @@ namespace PokemonApp.Core.ViewModels
         {
             get { return this.title_; }
             set { this.SetProperty(ref title_, value); }
+        }
+
+        /// <summary>ダイアログ用Openフラグ を取得、設定</summary>
+        private bool isOpen_;
+        /// <summary>ダイアログ用Openフラグ を取得、設定</summary>
+        public bool IsOpen
+        {
+            get { return this.isOpen_; }
+            set { this.SetProperty(ref isOpen_, value); }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -52,6 +64,13 @@ namespace PokemonApp.Core.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(this.DataBaseService.IsLoading)) {
+                this.IsOpen = this.DataBaseService.IsLoading;
+            }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド

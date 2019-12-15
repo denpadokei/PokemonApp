@@ -1,10 +1,13 @@
 ﻿using PokemonApp.Core.ViewModels;
+using PokemonApp.Core.Interface;
 using PokemonApp.PictureBook.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace PokemonApp.PictureBook.ViewModels
 {
@@ -12,6 +15,24 @@ namespace PokemonApp.PictureBook.ViewModels
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
+        /// <summary>選択中のタブ を取得、設定</summary>
+        private IOpend currentViewIsOpend_;
+        /// <summary>選択中のタブ を取得、設定</summary>
+        public IOpend CurrentViewIsOpend
+        {
+            get { return this.currentViewIsOpend_; }
+            set { this.SetProperty(ref currentViewIsOpend_, value); }
+        }
+
+        /// <summary>選択中のタブ を取得、設定</summary>
+        private TabItem currentView_;
+        /// <summary>選択中のタブ を取得、設定</summary>
+        public TabItem CurrentView
+        {
+            get { return this.currentView_; }
+            set { this.SetProperty(ref currentView_, value); }
+        }
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -27,7 +48,16 @@ namespace PokemonApp.PictureBook.ViewModels
         public override void OnInitialize()
         {
             base.OnInitialize();
-            this.RegionManager.RequestNavigate("PictureBookRegion", nameof(PictureBookView));
+        }
+
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(this.CurrentView)) {
+                if (this.CurrentView.DataContext is IOpend isOpend) {
+                    this.CurrentViewIsOpend = isOpend;
+                }
+            }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -43,7 +73,7 @@ namespace PokemonApp.PictureBook.ViewModels
         #region // 構築・破棄
         public PokemonDataViewModel()
         {
-
+            
         }
         #endregion
     }

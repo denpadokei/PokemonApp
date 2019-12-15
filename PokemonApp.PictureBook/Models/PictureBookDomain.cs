@@ -92,16 +92,19 @@ namespace PokemonApp.PictureBook.Models
         public void Serch()
         {
             this.Collection.Clear();
+            //using (var repository = new Repository()) {
+            //    this.Collection.AddRange(PictureBookDataBase.FindPokemon(repository.Context));
+            //    //this.Collection.AddRange(PictureBookDataSet.FindPokemon());
+            //    //foreach (var pokemon in this.Collection) {
+            //    //    var trickListList = PictureBookDataSet.FindTrick(pokemon.Name);
+            //    //    foreach (var trickList in trickListList) {
+            //    //        pokemon.LeanTrickList.AddRange(trickList);
+            //    //    }
+            //    //    pokemon.LearnTrickList.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, pokemon.Id));
+            //    //}
+            //}
             using (var repository = new Repository()) {
                 this.Collection.AddRange(PictureBookDataBase.FindPokemon(repository.Context));
-                //this.Collection.AddRange(PictureBookDataSet.FindPokemon());
-                //foreach (var pokemon in this.Collection) {
-                //    var trickListList = PictureBookDataSet.FindTrick(pokemon.Name);
-                //    foreach (var trickList in trickListList) {
-                //        pokemon.LeanTrickList.AddRange(trickList);
-                //    }
-                //    pokemon.LearnTrickList.AddRange(PictureBookDataBase.FindLearnTrick(repository.Context, pokemon.Id));
-                //}
             }
             
         }

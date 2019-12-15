@@ -91,7 +91,6 @@ namespace PokemonApp.PictureBook.ViewModels
 
         private void SetPokemon()
         {
-            this.domain_.CurrentMove = this.CurrentMove;
             this.DataBaseService.Load(this.domain_.SetPokemon);
         }
 
@@ -113,7 +112,8 @@ namespace PokemonApp.PictureBook.ViewModels
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
-            if (args.PropertyName == nameof(this.CurrentMove) && this.CurrentMove.TrickId != 0) {
+            if (args.PropertyName == nameof(this.CurrentMove)) {
+                this.domain_.CurrentMove = this.CurrentMove;
                 this.SetPokemon();
             }
         }

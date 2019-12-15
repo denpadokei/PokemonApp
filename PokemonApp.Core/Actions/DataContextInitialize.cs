@@ -13,8 +13,7 @@ namespace PokemonApp.Core.Actions
     {
         protected override void Invoke(object parameter)
         {
-            var context = this.AssociatedObject.DataContext as IInitialize;
-            if (context is IInitialize) {
+            if (this.AssociatedObject.DataContext is IInitialize context) {
                 context.OnInitialize();
             }
         }
