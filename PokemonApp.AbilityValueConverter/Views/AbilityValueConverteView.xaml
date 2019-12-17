@@ -2,18 +2,95 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:controls="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:models="clr-namespace:PokemonApp.AbilityValueConverter.Models"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:prism="http://prismlibrary.com/"             
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.AbilityValueConverter.ViewModels"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:AbilityValueConverterViewModel}, IsDesignTimeCreatable=True}"
              prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1200" d:DesignHeight="800" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="能力値計算" Width="1200" Height="800"/>
+            <action:ChangeWindowAttribute IsRemoveOwner="True" Title="能力値計算" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <DataTemplate x:Key="NumberControler" DataType="{x:Type models:NumberInputControler}">
+            <WrapPanel>
+                <TextBlock HorizontalAlignment="Right" Text="{Binding ?}" Margin="5"/>
+                <ComboBox IsEditable="True" Width="100" HorizontalAlignment="Left" material:HintAssist.Hint="{Binding ?}" Margin="5"/>
+                <WrapPanel >
+                    <Button Content="0" Margin="10,0,10,0" Command="{Binding ?}"/>
+                    <Button Content="252" Margin="10,0,10,0" Command="{Binding ?}"/>
+                </WrapPanel>
+            </WrapPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <material:Card Margin="20">
+                <WrapPanel VerticalAlignment="Center">
+                    <TextBox Width="75" Margin="50,0,50,0" material:HintAssist.Hint="名前" Text="{Binding ?}"/>
+                    <Button Content="絞り込み" Command="{Binding ?}"/>
+                </WrapPanel>
+            </material:Card>
+            <control:CustomDataGrid Grid.Row="1" Margin="20">
 
- </UserControl>
+            </control:CustomDataGrid>
+        </Grid>
+        <Grid Grid.Column="1" ScrollViewer.CanContentScroll="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <material:Card Margin="20" Padding="20" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <WrapPanel>
+                        <TextBox Width="100" HorizontalAlignment="Left" material:HintAssist.Hint="ポケモンの名前" IsReadOnly="True" Margin="5"/>
+                        <ComboBox Width="100" HorizontalAlignment="Left" ItemsSource="{Binding ?}" material:HintAssist.Hint="せいかく" Margin="5"/>
+                        <ComboBox Width="100" HorizontalAlignment="Left" ItemsSource="{Binding ?}" Margin="5" material:HintAssist.Hint="個性"/>
+                        <ComboBox Width="100" HorizontalAlignment="Left" ItemsSource="{Binding ?}" Margin="5" material:HintAssist.Hint="めざめるパワー"/>
+                    </WrapPanel>
+                    <DockPanel Grid.Row="1">
+                        <Grid>
+                            <UniformGrid Columns="1">
+                                <ItemsControl ItemsSource="{Binding ?}"/>
+                            </UniformGrid>
+                        </Grid>
+                    </DockPanel>
+                </Grid>
+            </material:Card>
+            <material:Card Grid.Row="1" Margin="20" Padding="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <control:CustomDataGrid Margin="20" ItemsSource="{Binding ?}">
+                        
+                    </control:CustomDataGrid>
+                    <DataGrid Grid.Column="1" Margin="20" ItemsSource="{Binding ?}">
+                        
+                    </DataGrid>
+                </Grid>
+            </material:Card>
+        </Grid>
+    </Grid>
+</UserControl>

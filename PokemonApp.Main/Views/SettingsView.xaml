@@ -15,14 +15,14 @@
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <action:DataContextInitialize/>
-            <action:ChangeWindowAttribute Width="400" Height="300"/>
+            <action:ChangeWindowAttribute Width="400" Height="300" IsRemoveOwner="True"/>
         </b:EventTrigger>
     </b:Interaction.Triggers>
     <Grid>
         <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Light" Margin="20"/>
-            <ToggleButton Margin="20" IsChecked="{Binding IsTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding ToggleCommand}" />
-            <TextBlock Text="Dark" Margin="20"/>
+            <TextBlock Text="Light" Style="{StaticResource LabelTextBlock}" Margin="20"/>
+            <ToggleButton Margin="20" IsChecked="{Binding IsDark}" Command="{Binding ToggleCommand}" />
+            <TextBlock Text="Dark" Style="{StaticResource LabelTextBlock}" Margin="20"/>
         </WrapPanel>
     </Grid>
 </UserControl>

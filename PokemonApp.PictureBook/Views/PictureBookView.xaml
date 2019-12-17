@@ -32,19 +32,17 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <material:Card Margin="5">
+                    <material:Card>
                         <DockPanel Width="120" HorizontalAlignment="Left">
-                            <TextBlock Text="名前"/>
-                            <TextBox x:Name="NameBox" Text="{Binding Filter.PokemonName}" Height="20" Width="80" />
-                            
+                            <TextBox x:Name="NameBox" Text="{Binding Filter.PokemonName}" Margin="5" Width="80" material:HintAssist.Hint="名前"/>
                         </DockPanel>
                     </material:Card>
                     <WrapPanel Grid.Column="1">
-                        <Button Margin="3" Grid.Column="0" Command="{Binding FilteringCommand}" Content="検索" Width="100" Height="30" HorizontalAlignment="Right"/>
-                        <Button Margin="3" Grid.Column="1" Command="{Binding RegistCommand}" Content="登録" Width="100" Height="30" HorizontalAlignment="Right"/>
-                        <Button Margin="3" Grid.Column="1" Command="{Binding TrickWindowCommand}" Content="覚える技を紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
-                        <Button Margin="3" Grid.Column="2" Command="{Binding ComittCommand}" Content="特性を紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
-                        <Button Margin="3" Grid.Column="3" Command="{Binding TypeComitCommand}" Content="タイプを紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Command="{Binding FilteringCommand}" Content="検索" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Command="{Binding RegistCommand}" Content="登録" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Command="{Binding TrickWindowCommand}" Content="覚える技を紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Command="{Binding ComittCommand}" Content="特性を紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
+                        <Button Margin="3" Command="{Binding TypeComitCommand}" Content="タイプを紐づける" Width="100" Height="30" HorizontalAlignment="Right"/>
                     </WrapPanel>
                 </Grid>
             </StackPanel>

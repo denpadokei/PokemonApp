@@ -42,7 +42,7 @@ namespace PokemonApp
         protected override void OnStartup(StartupEventArgs e)
         {
             var primaryColor = SwatchHelper.Lookup[MaterialDesignColor.Grey900];
-            var accentColor = SwatchHelper.Lookup[MaterialDesignColor.Yellow100];
+            var accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime50];
             var theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
             base.OnStartup(e);

@@ -9,6 +9,7 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:action="clr-namespace:PokemonApp.Core.Actions"
+                      xmlns:tool="http://schemas.xceed.com/wpf/xaml/toolkit"
                       mc:Ignorable="d"
                       d:DataContext="{d:DesignInstance {x:Type viewmodel:TabWindowViewModel}, IsDesignTimeCreatable=True}"
                       xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
@@ -24,13 +25,9 @@
             <action:DataContextInitialize />
         </b:EventTrigger>
     </b:Interaction.Triggers>
-    <material:DialogHost Identifier="TabWindowHost">
-        <dockablz:Layout x:Name="LayOutRoot">
-            <dragablz:TabablzControl x:Name="InitialTabalzControl" ConsolidateOrphanedItems="True">
-                <dragablz:TabablzControl.InterTabController>
-                    <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
-                </dragablz:TabablzControl.InterTabController>
-            </dragablz:TabablzControl>
-        </dockablz:Layout>
-    </material:DialogHost>
+    <dragablz:TabablzControl x:Name="InitialTabalzControl" ConsolidateOrphanedItems="True">
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
+        </dragablz:TabablzControl.InterTabController>
+    </dragablz:TabablzControl>
 </controls:MetroWindow>

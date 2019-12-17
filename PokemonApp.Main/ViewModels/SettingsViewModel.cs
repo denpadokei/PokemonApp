@@ -15,12 +15,12 @@ namespace PokemonApp.Main.ViewModels
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
         /// <summary>テーマのフラグ を取得、設定</summary>
-        private bool isTheme_;
+        private bool isDark_;
         /// <summary>テーマのフラグ を取得、設定</summary>
-        public bool IsTheme
+        public bool IsDark
         {
-            get { return this.isTheme_; }
-            set { this.SetProperty(ref isTheme_, value); }
+            get { return this.isDark_; }
+            set { this.SetProperty(ref isDark_, value); }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -36,9 +36,9 @@ namespace PokemonApp.Main.ViewModels
         {
             var paletteHelper = new PaletteHelper();
             var theme = paletteHelper.GetTheme();
-            theme.SetBaseTheme(this.IsTheme ? Theme.Dark : Theme.Light);
-            //paletteHelper.SetTheme(theme);
-            Application.Current.Resources.SetTheme(theme);
+            var baseTheme = this.IsDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
+            theme.SetBaseTheme(baseTheme);
+            paletteHelper.SetTheme(theme);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -49,6 +49,7 @@ namespace PokemonApp.Main.ViewModels
         public override void OnInitialize()
         {
             base.OnInitialize();
+            this.RaisePropertyChanged(nameof(this.IsDark));
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -66,7 +67,7 @@ namespace PokemonApp.Main.ViewModels
         {
             var paletteHelper = new PaletteHelper();
             var theme = paletteHelper.GetTheme();
-            this.IsTheme = theme == Theme.Light;
+            this.IsDark = theme == Theme.Light;
         }
         #endregion
     }

@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbilityValueConverterModule.cs" />
+    <Compile Include="Models\AbilityValueConverterDomain.cs" />
+    <Compile Include="Models\NumberInputControler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,6 +84,10 @@
       <Project>{c23b58d9-88e4-4df8-bb80-2353dd7bc8d8}</Project>
       <Name>PokemonApp.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PokemonApp.Style\PokemonApp.Style.csproj">
+      <Project>{cc703163-fe6e-434c-9dbd-4066040994ba}</Project>
+      <Name>PokemonApp.Style</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AbilityValueConverteView.xaml">
@@ -92,6 +98,9 @@
   <ItemGroup>
     <PackageReference Include="Dragablz">
       <Version>0.0.3.203</Version>
+    </PackageReference>
+    <PackageReference Include="Extended.Wpf.Toolkit">
+      <Version>3.7.0</Version>
     </PackageReference>
     <PackageReference Include="MaterialDesignColors">
       <Version>1.2.1</Version>
@@ -116,8 +125,6 @@
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
