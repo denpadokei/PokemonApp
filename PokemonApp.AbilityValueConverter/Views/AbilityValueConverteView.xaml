@@ -16,21 +16,10 @@
              prism:ViewModelLocator.AutoWireViewModel="True" d:DesignWidth="1200" d:DesignHeight="800" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
+            <action:DataContextInitialize />
             <action:ChangeWindowAttribute IsRemoveOwner="True" Title="能力値計算" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <UserControl.Resources>
-        <DataTemplate x:Key="NumberControler" DataType="{x:Type models:NumberInputControler}">
-            <WrapPanel>
-                <TextBlock HorizontalAlignment="Right" Text="{Binding ?}" Margin="5"/>
-                <ComboBox IsEditable="True" Width="100" HorizontalAlignment="Left" material:HintAssist.Hint="{Binding ?}" Margin="5"/>
-                <WrapPanel >
-                    <Button Content="0" Margin="10,0,10,0" Command="{Binding ?}"/>
-                    <Button Content="252" Margin="10,0,10,0" Command="{Binding ?}"/>
-                </WrapPanel>
-            </WrapPanel>
-        </DataTemplate>
-    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
@@ -47,8 +36,10 @@
                     <Button Content="絞り込み" Command="{Binding ?}"/>
                 </WrapPanel>
             </material:Card>
-            <control:CustomDataGrid Grid.Row="1" Margin="20">
-
+            <control:CustomDataGrid Grid.Row="1" Margin="20" ItemsSource="{Binding PokemonNames}" SelectedItem="{Binding CurrentPokemon}" IsReadOnly="True" AutoGenerateColumns="false" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="名前" Binding="{Binding}" Width="*"/>
+                </DataGrid.Columns>
             </control:CustomDataGrid>
         </Grid>
         <Grid Grid.Column="1" ScrollViewer.CanContentScroll="True">
@@ -60,20 +51,40 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <WrapPanel>
-                        <TextBox Width="100" HorizontalAlignment="Left" material:HintAssist.Hint="ポケモンの名前" IsReadOnly="True" Margin="5"/>
+                        <TextBox Width="100" HorizontalAlignment="Left" Text="{Binding CurrentPokemon}"  material:HintAssist.Hint="ポケモンの名前" IsReadOnly="True" Margin="5" />
                         <ComboBox Width="100" HorizontalAlignment="Left" ItemsSource="{Binding ?}" material:HintAssist.Hint="せいかく" Margin="5"/>
                         <ComboBox Width="100" HorizontalAlignment="Left" ItemsSource="{Binding ?}" Margin="5" material:HintAssist.Hint="個性"/>
                         <ComboBox Width="100" HorizontalAlignment="Left" ItemsSource="{Binding ?}" Margin="5" material:HintAssist.Hint="めざめるパワー"/>
                     </WrapPanel>
                     <DockPanel Grid.Row="1">
-                        <Grid>
-                            <UniformGrid Columns="1">
-                                <ItemsControl ItemsSource="{Binding ?}"/>
-                            </UniformGrid>
-                        </Grid>
+                        <ItemsControl ItemsSource="{Binding Controlers}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type models:NumberInputControler}">
+                                    <UniformGrid Columns="3" Width="Auto">
+                                        <WrapPanel HorizontalAlignment="Right">
+                                            <TextBlock HorizontalAlignment="Right" Style="{StaticResource LabelTextBlock}" Text="{Binding Name}" Margin="5"/>
+                                            <ComboBox IsEditable="True" Width="100" HorizontalAlignment="Left" SelectedItem="{Binding Individualvalue}" ItemsSource="{Binding Numbers}" material:HintAssist.Hint="個体値" Margin="5"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <TextBlock HorizontalAlignment="Right" Style="{StaticResource LabelTextBlock}" Text="努力値" Margin="5"/>
+                                            <ComboBox IsEditable="True" Width="100" HorizontalAlignment="Left" SelectedItem="{Binding EffortValue}" ItemsSource="{Binding Numbers}" material:HintAssist.Hint="努力値" Margin="5"/>
+                                        </WrapPanel>
+                                        <WrapPanel >
+                                            <Button Content="0" Margin="10,0,10,0" Command="{Binding MinCommand}"/>
+                                            <Button Content="252" Margin="10,0,10,0" Command="{Binding MaxCommand}"/>
+                                        </WrapPanel>
+                                    </UniformGrid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </DockPanel>
                 </Grid>
             </material:Card>

@@ -51,16 +51,39 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <control:CustomDataGrid Grid.Column="0" ItemsSource="{Binding Pokemons}" SelectionMode="Single" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="True" IsReadOnly="False" Margin="10" />
+                <control:CustomDataGrid Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Pokemons}" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10" >
+                    <control:CustomDataGrid.Columns>
+                        <material:DataGridTextColumn Header="図鑑番号" Binding="{Binding No}" />
+                        <material:DataGridTextColumn Header="名前" Binding="{Binding Name}" />
+                        <material:DataGridTextColumn Header="タイプ１" Binding="{Binding Type1}" />
+                        <material:DataGridTextColumn Header="タイプ２" Binding="{Binding Type2}" />
+                        <material:DataGridTextColumn Header="高さ" Binding="{Binding Height}" />
+                        <material:DataGridTextColumn Header="重さ" Binding="{Binding Weight}" />
+                        <material:DataGridTextColumn Header="とくせい１" Binding="{Binding Characteristic1}" />
+                        <material:DataGridTextColumn Header="とくせい２" Binding="{Binding Characteristic2}" />
+                        <material:DataGridTextColumn Header="夢とくせい" Binding="{Binding DreamCharacteristic}" />
+                        <material:DataGridTextColumn Header="HP" Binding="{Binding Hp}" />
+                        <material:DataGridTextColumn Header="こうげき" Binding="{Binding Attack}" />
+                        <material:DataGridTextColumn Header="ぼうぎょ" Binding="{Binding Block}" />
+                        <material:DataGridTextColumn Header="とくこう" Binding="{Binding Contact}" />
+                        <material:DataGridTextColumn Header="とくぼう" Binding="{Binding Defence}" />
+                        <material:DataGridTextColumn Header="すばやさ" Binding="{Binding Speed}" />
+                        <material:DataGridTextColumn Header="合計" Binding="{Binding SumAll}" />
+                    </control:CustomDataGrid.Columns>
+                </control:CustomDataGrid>
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <control:CustomDataGrid Grid.Row="1" ItemsSource="{Binding TrickCollection}" AutoGenerateColumns="True" IsReadOnly="True" Margin="10">
+                    <control:CustomDataGrid Grid.Row="1" ItemsSource="{Binding TrickCollection}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
                         <control:CustomDataGrid.Columns>
-                            <DataGridCheckBoxColumn Header="Select" Binding="{Binding IsUpdated}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            <DataGridCheckBoxColumn Header="更新対象" Binding="{Binding IsUpdated}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
+                            <material:DataGridTextColumn Header="名前" Binding="{Binding Name}" />
+                            <material:DataGridTextColumn Header="いりょく" Binding="{Binding Power}" />
+                            <material:DataGridTextColumn Header="命中" Binding="{Binding Rate}" />
+                            <material:DataGridTextColumn Header="タイプ" Binding="{Binding Type}" />
+                            <material:DataGridTextColumn Header="分類" Binding="{Binding CategoryAttributeDiscription}" />
                         </control:CustomDataGrid.Columns>
                     </control:CustomDataGrid>
                 </Grid>

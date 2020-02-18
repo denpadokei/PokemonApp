@@ -6,14 +6,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
+             xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
+             xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
              xmlns:convert="clr-namespace:PokemonApp.Core.Enums;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignWidth="1200" d:DesignHeight="800"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:TrickViewModel}, IsDesignTimeCreatable=True}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+            <action:DataContextInitialize />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <ContentControl>
@@ -47,8 +50,36 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0" Margin="20" Padding="3" ItemsSource="{Binding Tricks}" SelectedItem="{Binding CurrentMove}" AutoGenerateColumns="True" IsReadOnly="True" SelectionMode="Single"/>
-                <DataGrid Grid.Column="1" Margin="20" Padding="3" ItemsSource="{Binding PokemonCollection}" AutoGenerateColumns="True" IsReadOnly="True" SelectionMode="Single"/>
+                <control:CustomDataGrid Grid.Column="0" Margin="20" Padding="3" ItemsSource="{Binding Tricks}" SelectedItem="{Binding CurrentMove}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" >
+                    <control:CustomDataGrid.Columns>
+                        <material:DataGridTextColumn Header="名前" Binding="{Binding Name}" />
+                        <material:DataGridTextColumn Header="タイプ" Binding="{Binding Type}" />
+                        <material:DataGridTextColumn Header="いりょく" Binding="{Binding Power}" />
+                        <material:DataGridTextColumn Header="めいちゅう" Binding="{Binding Rate}" />
+                        <material:DataGridTextColumn Header="属性" Binding="{Binding CategoryAttributeDescription}" />
+                        <material:DataGridTextColumn Header="説明" Binding="{Binding Detial}" />
+                    </control:CustomDataGrid.Columns>
+                </control:CustomDataGrid>
+                <control:CustomDataGrid Grid.Column="1" Margin="20" Padding="3" ItemsSource="{Binding PokemonCollection}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                    <control:CustomDataGrid.Columns>
+                        <material:DataGridTextColumn Header="図鑑番号" Binding="{Binding No}" />
+                        <material:DataGridTextColumn Header="名前" Binding="{Binding Name}" />
+                        <material:DataGridTextColumn Header="タイプ１" Binding="{Binding Type1}" />
+                        <material:DataGridTextColumn Header="タイプ２" Binding="{Binding Type2}" />
+                        <material:DataGridTextColumn Header="高さ" Binding="{Binding Height}" />
+                        <material:DataGridTextColumn Header="重さ" Binding="{Binding Weight}" />
+                        <material:DataGridTextColumn Header="とくせい１" Binding="{Binding Characteristic1}" />
+                        <material:DataGridTextColumn Header="とくせい２" Binding="{Binding Characteristic2}" />
+                        <material:DataGridTextColumn Header="夢とくせい" Binding="{Binding DreamCharacteristic}" />
+                        <material:DataGridTextColumn Header="HP" Binding="{Binding Hp}" />
+                        <material:DataGridTextColumn Header="こうげき" Binding="{Binding Attack}" />
+                        <material:DataGridTextColumn Header="ぼうぎょ" Binding="{Binding Block}" />
+                        <material:DataGridTextColumn Header="とくこう" Binding="{Binding Contact}" />
+                        <material:DataGridTextColumn Header="とくぼう" Binding="{Binding Defence}" />
+                        <material:DataGridTextColumn Header="すばやさ" Binding="{Binding Speed}" />
+                        <material:DataGridTextColumn Header="合計" Binding="{Binding SumAll}" />
+                    </control:CustomDataGrid.Columns>
+                </control:CustomDataGrid>
             </Grid>
         </Grid>
     </ContentControl>

@@ -58,13 +58,15 @@ namespace PokemonApp.PictureBook.Models
         }
 
         /// <summary>属性 を取得、設定</summary>
-        private CategoryAttribute typeAttribute_;
+        private CategoryAttribute categoryAttribute_;
         /// <summary>属性 を取得、設定</summary>
         public CategoryAttribute CategoryAttribute
         {
-            get { return this.typeAttribute_; }
-            set { this.SetProperty(ref typeAttribute_, value); }
+            get { return this.categoryAttribute_; }
+            set { this.SetProperty(ref categoryAttribute_, value); }
         }
+
+        public string CategoryAttributeDiscription => this.CategoryAttribute.GetDescription();
 
         /// <summary>更新フラグ を取得、設定</summary>
         private bool isUpdated_;
@@ -74,7 +76,6 @@ namespace PokemonApp.PictureBook.Models
             get { return this.isUpdated_; }
             set { this.SetProperty(ref isUpdated_, value); }
         }
-        public string TypeAttributeString => EnumExtention.GetDescription(this.CategoryAttribute);
 
         /// <summary>説明 を取得、設定</summary>
         private string detial_;

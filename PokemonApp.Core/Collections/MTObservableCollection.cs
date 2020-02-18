@@ -32,7 +32,7 @@ namespace PokemonApp.Core.Collections
         //            }
         //            nh.Invoke(this, e);
         //        }
-        //    }   
+        //    }
         //}
 
         public override event NotifyCollectionChangedEventHandler CollectionChanged;
