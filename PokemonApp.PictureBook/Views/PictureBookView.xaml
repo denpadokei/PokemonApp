@@ -83,7 +83,7 @@
                             <material:DataGridTextColumn Header="いりょく" Binding="{Binding Power}" />
                             <material:DataGridTextColumn Header="命中" Binding="{Binding Rate}" />
                             <material:DataGridTextColumn Header="タイプ" Binding="{Binding Type}" />
-                            <material:DataGridTextColumn Header="分類" Binding="{Binding CategoryAttributeDiscription}" />
+                            <material:DataGridTextColumn Header="分類" Binding="{Binding CategoryAttributeDescription}" />
                         </control:CustomDataGrid.Columns>
                     </control:CustomDataGrid>
                 </Grid>

@@ -53,11 +53,13 @@
     <Compile Include="Actions\ChangeWindowAttribute.cs" />
     <Compile Include="Actions\DataContextInitialize.cs" />
     <Compile Include="Collections\MTObservableCollection.cs" />
+    <Compile Include="Converters\EnumDisplayConverter.cs" />
     <Compile Include="CoreModule.cs" />
     <Compile Include="Enums\TrickCategory.cs" />
     <Compile Include="Enums\TypeAttributeEnum.cs" />
     <Compile Include="Enums\WildAreaEnum.cs" />
     <Compile Include="Extentions\EnumExtention.cs" />
+    <Compile Include="Extentions\EnumListExtension.cs" />
     <Compile Include="Interface\IAddable.cs" />
     <Compile Include="Interface\IButtonMenu.cs" />
     <Compile Include="Interface\ICustomDialogService.cs" />

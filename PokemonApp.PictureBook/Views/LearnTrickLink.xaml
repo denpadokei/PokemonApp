@@ -4,6 +4,11 @@
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
+             xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
+             xmlns:enum="clr-namespace:PokemonApp.Core.Enums;assembly=PokemonApp.Core"
+             xmlns:extention="clr-namespace:PokemonApp.Core.Extentions;assembly=PokemonApp.Core"
+             xmlns:converter="clr-namespace:PokemonApp.Core.Converters;assembly=PokemonApp.Core"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
@@ -13,7 +18,6 @@
              d:DataContext="{d:DesignInstance {x:Type viewmodel:LearnTrickLinkViewModel}, IsDesignTimeCreatable=True}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
             <action:ChangeWindowAttribute Width="600" Height="800" IsEnabled="False"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -40,17 +44,33 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="Tricks" Grid.Column= "0" Margin="5" IsReadOnly="True" ItemsSource="{Binding TrickCollection}">
-            </DataGrid>
+            <control:CustomDataGrid x:Name="Tricks" Grid.Column= "0" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding TrickCollection}">
+                <control:CustomDataGrid.Columns>
+                    <DataGridTextColumn Header="技名" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="タイプ" Binding="{Binding Type}" />
+                    <DataGridTextColumn Header="威力" Binding="{Binding Power}" />
+                    <DataGridTextColumn Header="命中" Binding="{Binding Rate}" />
+                    <DataGridTextColumn Header="分類" Binding="{Binding CategoryAttributeDescription}" />
+                </control:CustomDataGrid.Columns>
+            </control:CustomDataGrid>
             <StackPanel Grid.Column="1">
                 <Button Width="75" Content="→" Margin="5" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedItems, ElementName=Tricks}"/>
                 <Button Width="75" Content="←" Margin="5" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedItems, ElementName=LinkTrick}"/>
             </StackPanel>
-            <DataGrid x:Name="LinkTrick" Grid.Column="2" Margin="5" IsReadOnly="True" ItemsSource="{Binding LearnCollection}" >
-                <DataGrid.Columns>
+            <control:CustomDataGrid x:Name="LinkTrick" Grid.Column="2" Margin="5" AutoGenerateColumns="False" IsReadOnly="False" ItemsSource="{Binding LearnCollection}" >
+                <control:CustomDataGrid.Resources>
+                    <converter:EnumDisplayConverter x:Key="EnumConverter"/>
+                </control:CustomDataGrid.Resources>
+                <control:CustomDataGrid.Columns>
+                    <DataGridTextColumn Header="覚えるレベル" Binding="{Binding Level}"/>
+                    <material:DataGridComboBoxColumn Header="分類" ItemsSource="{Binding Source={extention:EnumList {x:Type enum:TrickCategory}}}" SelectedItemBinding="{Binding TrickCategory}" />
                     <DataGridTextColumn Header="技名" Binding="{Binding TrickEntity.Name}" />
-                </DataGrid.Columns>
-            </DataGrid>
+                    <DataGridTextColumn Header="タイプ" Binding="{Binding TrickEntity.Type}" />
+                    <DataGridTextColumn Header="威力" Binding="{Binding TrickEntity.Power}" />
+                    <DataGridTextColumn Header="命中" Binding="{Binding TrickEntity.Rate}" />
+                    <DataGridTextColumn Header="分類" Binding="{Binding TrickEntity.CategoryAttributeDescription}" />
+                </control:CustomDataGrid.Columns>
+            </control:CustomDataGrid>
         </Grid>
     </Grid>
 </UserControl>

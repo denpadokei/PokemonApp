@@ -66,7 +66,7 @@ namespace PokemonApp.PictureBook.Models
             set { this.SetProperty(ref categoryAttribute_, value); }
         }
 
-        public string CategoryAttributeDiscription => this.CategoryAttribute.GetDescription();
+        public string CategoryAttributeDescription => this.CategoryAttribute.GetDescription();
 
         /// <summary>更新フラグ を取得、設定</summary>
         private bool isUpdated_;

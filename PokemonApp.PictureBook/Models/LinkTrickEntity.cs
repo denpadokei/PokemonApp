@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.Interface;
+﻿using PokemonApp.Core.Enums;
+using PokemonApp.Core.Interface;
 using PokemonApp.Core.Models;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -29,6 +30,15 @@ namespace PokemonApp.PictureBook.Models
         {
             get { return this.level_; }
             set { this.SetProperty(ref level_, value); }
+        }
+
+        /// <summary>技の種類 を取得、設定</summary>
+        private TrickCategory trickCategory_;
+        /// <summary>技の種類 を取得、設定</summary>
+        public TrickCategory TrickCategory
+        {
+            get { return this.trickCategory_; }
+            set { this.SetProperty(ref trickCategory_, value); }
         }
 
         /// <summary>技 を取得、設定</summary>
