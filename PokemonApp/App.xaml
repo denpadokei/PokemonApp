@@ -27,6 +27,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                  <!--Dragablz Material Design--> 
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
+                <!--自作スタイル-->
+                <ResourceDictionary Source="pack://application:,,,/PokemonApp.Style;component/Styles/LayoutPanel.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
 

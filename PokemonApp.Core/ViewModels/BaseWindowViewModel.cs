@@ -47,6 +47,15 @@ namespace PokemonApp.Core.ViewModels
             get { return this.isOpen_; }
             set { this.SetProperty(ref isOpen_, value); }
         }
+
+        /// <summary>読み込み中 を取得、設定</summary>
+        private bool isLoading_;
+        /// <summary>読み込み中 を取得、設定</summary>
+        public bool IsLoading
+        {
+            get { return this.isLoading_; }
+            set { this.SetProperty(ref isLoading_, value); }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド

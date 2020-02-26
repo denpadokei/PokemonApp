@@ -30,7 +30,7 @@ namespace PokemonApp.DataBase.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = new SqliteConnectionStringBuilder { DataSource = @".\localdb.db" }.ToString();
-            optionsBuilder.UseLoggerFactory(MyLoggerFactory).UseSqlite(new SqliteConnection(connectionString));
+            optionsBuilder.UseLoggerFactory(this.MyLoggerFactory).UseSqlite(new SqliteConnection(connectionString));
         }
 
     }

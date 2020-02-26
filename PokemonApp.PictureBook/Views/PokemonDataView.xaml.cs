@@ -9,7 +9,7 @@ namespace PokemonApp.PictureBook.Views
     {
         public PokemonDataView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

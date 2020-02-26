@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\CustomDataGrid.cs" />
+    <Compile Include="Controls\CustomWindowPanel.cs" />
+    <Compile Include="Controls\LoadingPanel.cs" />
     <Compile Include="StyleModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -78,9 +80,18 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PokemonApp.Core\PokemonApp.Core.csproj">
+      <Project>{C23B58D9-88E4-4DF8-BB80-2353DD7BC8D8}</Project>
+      <Name>PokemonApp.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="CustomDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\LayoutPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,12 +17,21 @@ namespace PokemonApp.Core.Models
         [Dependency]
         public ICustomDialogService CustomDialogService { get; set; }
 
+        /// <summary>
+        /// Prismを使った方のダイアログ
+        /// </summary>
+        /// <param name="windowname"></param>
+        /// <param name="parameter"></param>
+        /// <param name="action"></param>
         public void Show(string windowname, IDialogParameters parameter, Action<IDialogResult> action)
         {
             this.DialogService.Show(windowname, parameter, action);
-            
         }
         
+        /// <summary>
+        /// materialを使った方のメッセージ
+        /// </summary>
+        /// <param name="message"></param>
         public async void ShowMessage(string message)
         {
             await this.CustomDialogService.ShowMessege(message);

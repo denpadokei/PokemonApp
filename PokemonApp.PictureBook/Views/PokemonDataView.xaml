@@ -7,6 +7,7 @@
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -21,7 +22,7 @@
             <action:DataContextInitialize/>
         </b:EventTrigger>
     </b:Interaction.Triggers>
-    <dockablz:Layout>
+    <control:CustomWindowPanel>
         <dragablz:TabablzControl SelectedItem="{Binding CurrentView}" ConsolidateOrphanedItems="True">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
@@ -39,5 +40,5 @@
                 <ContentControl prism:RegionManager.RegionName="TypeRegion"/>
             </TabItem>
         </dragablz:TabablzControl>
-    </dockablz:Layout>
+    </control:CustomWindowPanel>
 </UserControl>

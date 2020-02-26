@@ -20,7 +20,7 @@ namespace PokemonApp.Core.Models
         public bool IsOpen
         {
             get { return this.isOpen_; }
-            set { this.SetProperty(ref isOpen_, value); }
+            set { this.SetProperty(ref this.isOpen_, value); }
         }
         public async Task<bool> ShowMessege(string message, string identifir = "")
         {
