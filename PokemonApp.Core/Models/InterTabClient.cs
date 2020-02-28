@@ -1,11 +1,5 @@
-﻿using CommonServiceLocator;
-using Dragablz;
-using PokemonApp.Core.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dragablz;
+using PokemonApp.Core.Dialogs;
 using System.Windows;
 
 namespace PokemonApp.Core.Models
@@ -55,7 +49,7 @@ namespace PokemonApp.Core.Models
 
         }
 
-        
+
         #endregion
     }
 }

@@ -1,12 +1,6 @@
 ﻿using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokemonApp.Json.Models
 {
@@ -18,7 +12,7 @@ namespace PokemonApp.Json.Models
         /// <summary>図鑑番号 を取得、設定</summary>
         private int no_;
         /// <summary>図鑑番号 を取得、設定</summary>
-        [DataMember(Name ="name")]
+        [DataMember(Name = "name")]
         public int No
         {
             get { return this.no_; }

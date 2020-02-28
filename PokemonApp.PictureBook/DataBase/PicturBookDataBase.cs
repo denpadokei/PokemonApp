@@ -1,12 +1,8 @@
 ﻿using PokemonApp.Core.Enums;
 using PokemonApp.DataBase.Models;
 using PokemonApp.PictureBook.Models;
-using System;
 using System.Collections.Generic;
-using System.Data.Linq;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.DataBase
 {
@@ -63,16 +59,16 @@ namespace PokemonApp.PictureBook.DataBase
         public static TrickEntity FindTrick(LocalDbContext context, int trickId)
         {
             var query = (from trick in context.tricks.Where(x => x.trick_id == trickId)
-                        join type in context.types on trick.type_id equals type.type_id
-                        select new TrickEntity()
-                        {
-                            TrickId = trick.trick_id,
-                            Name = trick.trick_name,
-                            Power = trick.power,
-                            Rate = trick.accuracy_rate,
-                            Type = type.type_name,
-                            CategoryAttribute = (CategoryAttribute)trick.attribute
-                        }).FirstOrDefault();
+                         join type in context.types on trick.type_id equals type.type_id
+                         select new TrickEntity()
+                         {
+                             TrickId = trick.trick_id,
+                             Name = trick.trick_name,
+                             Power = trick.power,
+                             Rate = trick.accuracy_rate,
+                             Type = type.type_name,
+                             CategoryAttribute = (CategoryAttribute)trick.attribute
+                         }).FirstOrDefault();
             return query;
         }
 

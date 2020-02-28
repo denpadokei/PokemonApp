@@ -1,12 +1,7 @@
-﻿using PokemonApp.Core.Enums;
-using PokemonApp.Core.Interface;
-using PokemonApp.Core.Models;
-using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
+﻿using PokemonApp.Core.Bases;
+using PokemonApp.Core.Enums;
+using PokemonApp.Core.Interfaces;
 using System.ComponentModel;
-using System.Linq;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -91,7 +86,7 @@ namespace PokemonApp.PictureBook.Models
         #region // 構築・破棄
         public LinkTrickEntity()
         {
-            
+
         }
         #endregion
     }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using NLog;
-using PokemonApp.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +7,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -66,7 +64,7 @@ namespace PokemonApp.PictureBook.Models
                             trickList.Add(new TrickEntity() { Name = trick });
                         }
                         entity.LearnTrickList.AddRange(trickList);
-                    list.Add(entity);
+                        list.Add(entity);
                     }
                     #endregion
                     #region
@@ -157,7 +155,7 @@ namespace PokemonApp.PictureBook.Models
                                 Name = trick,
                             });
                         }
-                        if(pokemonName == fieldData[0]) {
+                        if (pokemonName == fieldData[0]) {
                             list.Add(entity);
                         }
                     }

@@ -1,16 +1,10 @@
-﻿using Prism.Mvvm;
-using System;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.DataBase.Models;
+using PokemonApp.PictureBook.DataBase;
+using Prism.Mvvm;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Linq;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PokemonApp.DataBase.Models;
-using NLog;
-using PokemonApp.PictureBook.DataBase;
-using System.ComponentModel;
-using PokemonApp.Core.Collections;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -84,7 +78,7 @@ namespace PokemonApp.PictureBook.Models
         public void Serch()
         {
             this.Collection.Clear();
-            using(var repository = new Repository()) {
+            using (var repository = new Repository()) {
                 var tricks = PictureBookDataBase.FindTrickList(repository.Context);
                 this.Collection.AddRange(tricks);
             }

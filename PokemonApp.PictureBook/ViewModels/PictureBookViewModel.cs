@@ -1,17 +1,11 @@
-﻿using PokemonApp.Core.Collections;
-using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Bases;
+using PokemonApp.Core.Collections;
 using PokemonApp.PictureBook.Models;
 using PokemonApp.PictureBook.Views;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Services.Dialogs;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.ViewModels
 {
@@ -34,7 +28,7 @@ namespace PokemonApp.PictureBook.ViewModels
         public MTObservableCollection<TrickEntity> TrickCollection
         {
             get { return this.trickCollection_; }
-            set { this.SetProperty(ref trickCollection_, value); }
+            set { this.SetProperty(ref this.trickCollection_, value); }
         }
 
         /// <summary>選択中 を取得、設定</summary>
@@ -43,7 +37,7 @@ namespace PokemonApp.PictureBook.ViewModels
         public PokemonEntity CurrentPokemon
         {
             get { return this.currentPokemon_ ?? (this.currentPokemon_ = new PokemonEntity()); }
-            set { this.SetProperty(ref currentPokemon_, value); }
+            set { this.SetProperty(ref this.currentPokemon_, value); }
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -52,7 +46,7 @@ namespace PokemonApp.PictureBook.ViewModels
         public PictureBookFilter Filter
         {
             get { return this.filter_; }
-            set { this.SetProperty(ref filter_, value); }
+            set { this.SetProperty(ref this.filter_, value); }
         }
 
         /// <summary>登録コマンド を取得、設定</summary>
@@ -132,7 +126,7 @@ namespace PokemonApp.PictureBook.ViewModels
         private void TrickComit()
         {
             if (this.CurrentPokemon.Id != 0) {
-                this.WindowManager.ShowDialog(nameof(LearnTrickLink), new DialogParameters() { { "PokemonId", CurrentPokemon.Id },{"PokemonName", CurrentPokemon.Name } }, _ => { });
+                this.WindowManager.ShowDialog(nameof(LearnTrickLink), new DialogParameters() { { "PokemonId", CurrentPokemon.Id }, { "PokemonName", CurrentPokemon.Name } }, _ => { });
             }
         }
 
@@ -151,7 +145,7 @@ namespace PokemonApp.PictureBook.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
-        
+
 
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
         {

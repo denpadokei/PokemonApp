@@ -1,10 +1,4 @@
-﻿using PokemonApp.Main.Views;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Prism.Mvvm;
 
 namespace PokemonApp.ViewModels
 {
@@ -12,7 +6,7 @@ namespace PokemonApp.ViewModels
     {
         public ShellWindowViewModel()
         {
-            
+
         }
     }
 }

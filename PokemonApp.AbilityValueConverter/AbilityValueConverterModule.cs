@@ -1,7 +1,6 @@
 ﻿using PokemonApp.AbilityValueConverter.Views;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
 
 namespace PokemonApp.AbilityValueConverter
 {
@@ -9,7 +8,7 @@ namespace PokemonApp.AbilityValueConverter
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
- 
+
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

@@ -1,31 +1,28 @@
-﻿using PokemonApp.Views;
-using Prism.Ioc;
-using Prism.Modularity;
-using Prism.Unity;
-using System.Windows;
+﻿using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
+using PokemonApp.AbilityValueConverter;
 using PokemonApp.Core;
 using PokemonApp.Damage;
-using PokemonApp.WildArea;
-using PokemonApp.PictureBook;
-using Prism.Regions;
-using PokemonApp.Main.Views;
-using PokemonApp.PictureBook.Views;
-using PokemonApp.Main;
-using PokemonApp.WindowManage;
-using Prism.Services.Dialogs;
-using PokemonApp.AbilityValueConverter;
 using PokemonApp.Json;
+using PokemonApp.Main;
+using PokemonApp.Main.Views;
+using PokemonApp.PictureBook;
 using PokemonApp.Style;
-using MaterialDesignColors;
-using MaterialDesignThemes.Wpf;
-using PokemonApp.Core.Models;
+using PokemonApp.Views;
+using PokemonApp.WildArea;
+using PokemonApp.WindowManage;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
+using Prism.Unity;
+using System.Windows;
 
 namespace PokemonApp
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : PrismApplication 
+    public partial class App : PrismApplication
     {
         protected override Window CreateShell()
         {
@@ -50,8 +47,8 @@ namespace PokemonApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //containerRegistry.RegisterDialogWindow<CustomDialogWindow>();
-            containerRegistry.RegisterDialog<ConfirmationWindowView>();
+            
+            //containerRegistry.RegisterDialog<ConfirmationWindowView>();
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

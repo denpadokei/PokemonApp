@@ -1,13 +1,7 @@
-﻿using System;
+﻿using PokemonApp.Json.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 using System.IO;
-using PokemonApp.Json.Models;
-using Newtonsoft.Json;
+using System.Runtime.Serialization.Json;
 
 namespace PokemonApp.Json.Json
 {

@@ -1,9 +1,7 @@
 ﻿using PokemonApp.Main.ViewModels;
 using PokemonApp.Main.Views;
-using PokemonApp.PictureBook.Views;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
 
 namespace PokemonApp.Main
 {
@@ -13,7 +11,7 @@ namespace PokemonApp.Main
         {
             //var region = containerProvider.Resolve<IRegionManager>();
             //region.RegisterViewWidthRegion("ShellRegion", typeof(MainWindowView));
-            
+
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

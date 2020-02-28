@@ -1,16 +1,11 @@
-﻿using Prism.Mvvm;
-using System;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.DataBase.Models;
+using PokemonApp.PictureBook.DataBase;
+using Prism.Mvvm;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Linq;
 //using System.Data.SQLite;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PokemonApp.DataBase.Models;
-using NLog;
-using PokemonApp.PictureBook.DataBase;
-using PokemonApp.Core.Collections;
 
 namespace PokemonApp.PictureBook.Models
 {

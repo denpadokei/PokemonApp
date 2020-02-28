@@ -1,14 +1,8 @@
 ﻿using Dragablz.Dockablz;
-using PokemonApp.Core.Interface;
+using PokemonApp.Core.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation.Peers;
-using System.Windows.Controls;
 
 namespace PokemonApp.Style.Controls
 {
@@ -70,9 +64,9 @@ namespace PokemonApp.Style.Controls
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
-        public CustomWindowPanel()
+        static CustomWindowPanel()
         {
-            //DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomWindowPanel), new FrameworkPropertyMetadata(typeof(CustomWindowPanel)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomWindowPanel), new FrameworkPropertyMetadata(typeof(Layout)));
         }
         #endregion
     }

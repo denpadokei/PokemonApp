@@ -1,12 +1,10 @@
-﻿using PokemonApp.Core.Collections;
-using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Bases;
+using PokemonApp.Core.Collections;
 using PokemonApp.DataBase.Models;
 using PokemonApp.PictureBook.DataBase;
 using PokemonApp.PictureBook.Models;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Services.Dialogs;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -62,7 +60,7 @@ namespace PokemonApp.PictureBook.ViewModels
             set { this.SetProperty(ref linkTrickFilter_, value); }
         }
 
-        
+
         /// <summary>覚える技一覧 を取得、設定</summary>
         private MTObservableCollection<LinkTrickEntity> learnCollection_;
         /// <summary>覚える技一覧 を取得、設定</summary>
@@ -72,7 +70,7 @@ namespace PokemonApp.PictureBook.ViewModels
             set { this.SetProperty(ref learnCollection_, value); }
         }
 
-        
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド

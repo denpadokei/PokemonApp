@@ -2,14 +2,8 @@
 using PokemonApp.DataBase.Models;
 using PokemonApp.Json.Json;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokemonApp.Json.Models
 {
@@ -34,7 +28,7 @@ namespace PokemonApp.Json.Models
             get { return this.filter_; }
             set { this.SetProperty(ref filter_, value); }
         }
-        
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -68,11 +62,12 @@ namespace PokemonApp.Json.Models
                     var category = repository.Context.categories.FirstOrDefault(x => x.c_category_name == trick.Category);
                     if (updateTrick == null) {
 
-                        repository.Context.Add(new trick() {
+                        repository.Context.Add(new trick()
+                        {
                             trick_name = trick.JName,
                             power = trick.Power,
                             accuracy_rate = trick.Accuracy,
-                            type_id =  type != null ? type.type_id : 0,
+                            type_id = type != null ? type.type_id : 0,
                             attribute = category != null ? category.category_id : 0,
                             pp = trick.Pp
                         });
@@ -93,7 +88,7 @@ namespace PokemonApp.Json.Models
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // メンバ変数
-        
+
 
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

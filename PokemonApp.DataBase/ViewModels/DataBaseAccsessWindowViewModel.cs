@@ -1,11 +1,5 @@
-﻿using PokemonApp.Core.Collections;
-using PokemonApp.Core.ViewModels;
-using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using PokemonApp.Core.Bases;
+using PokemonApp.Core.Collections;
 
 namespace PokemonApp.DataBase.ViewModels
 {

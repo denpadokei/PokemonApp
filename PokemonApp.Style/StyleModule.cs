@@ -1,8 +1,5 @@
-﻿using PokemonApp.Style.Controls;
-using PokemonApp.Style.Views;
-using Prism.Ioc;
+﻿using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
 
 namespace PokemonApp.Style
 {
@@ -10,12 +7,12 @@ namespace PokemonApp.Style
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
- 
+
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<CustomDataGrid>();
+            //containerRegistry.RegisterDialogWindow<TabWindow>();
         }
     }
 }

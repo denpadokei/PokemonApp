@@ -20,6 +20,7 @@
             <action:DataContextInitialize />
         </b:EventTrigger>
     </b:Interaction.Triggers>
+
     <dockablz:Layout>
         <Grid Margin="10">
             <Grid.RowDefinitions>

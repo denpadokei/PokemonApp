@@ -1,10 +1,5 @@
 ﻿using PokemonApp.Core.Enums;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokemonApp.WildArea.Models
 {
@@ -40,7 +35,7 @@ namespace PokemonApp.WildArea.Models
 
         public WildAreaEntity()
         {
-            
+
         }
     }
 }

@@ -1,16 +1,10 @@
-﻿using Prism.Mvvm;
-using System;
+﻿using PokemonApp.Core.Collections;
+using PokemonApp.DataBase.Models;
+using PokemonApp.PictureBook.DataBase;
+using Prism.Mvvm;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Linq;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PokemonApp.DataBase.Models;
-using NLog;
-using System.Diagnostics;
-using PokemonApp.PictureBook.DataBase;
-using PokemonApp.Core.Collections;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -106,7 +100,7 @@ namespace PokemonApp.PictureBook.Models
             using (var repository = new Repository()) {
                 this.Collection.AddRange(PictureBookDataBase.FindPokemon(repository.Context));
             }
-            
+
         }
 
         public void SerchLearnTrick()
@@ -169,7 +163,7 @@ namespace PokemonApp.PictureBook.Models
                         //        });
                         //    }
                         //}
-                        
+
                     }
                 }
                 if (repositoty.Context.ChangeTracker.HasChanges()) {

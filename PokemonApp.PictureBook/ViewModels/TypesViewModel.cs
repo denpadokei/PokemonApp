@@ -1,13 +1,9 @@
-﻿using PokemonApp.Core.Collections;
-using PokemonApp.Core.ViewModels;
+﻿using PokemonApp.Core.Bases;
+using PokemonApp.Core.Collections;
 using PokemonApp.PictureBook.Models;
 using Prism.Commands;
-using Prism.Mvvm;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data;
-using System.Linq;
 
 namespace PokemonApp.PictureBook.ViewModels
 {
@@ -123,4 +119,4 @@ namespace PokemonApp.PictureBook.ViewModels
         }
         #endregion
     }
-    }
+}

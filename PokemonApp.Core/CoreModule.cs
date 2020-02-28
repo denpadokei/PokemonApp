@@ -1,11 +1,10 @@
 ﻿using Dragablz;
-using PokemonApp.Core.Actions;
-using PokemonApp.Core.Interface;
+using PokemonApp.Core.Interfaces;
 using PokemonApp.Core.Models;
-using PokemonApp.Core.Views;
+using PokemonApp.Core.Dialogs;
+using PokemonApp.Core.Services;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
 
 namespace PokemonApp.Core
 {
@@ -13,15 +12,16 @@ namespace PokemonApp.Core
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
- 
+
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<IWindowManager, WindowManager>();
+            containerRegistry.Register<IWindowManagerService, WindowManagerService>();
             containerRegistry.Register<IDataBaseService, DataBaseService>();
             containerRegistry.Register<IInterTabClient, InterTabClient>();
             containerRegistry.Register<ICustomDialogService, CustomDialogService>();
+            containerRegistry.RegisterDialog<ConfirmationWindowView>();
             containerRegistry.RegisterDialogWindow<TabWindow>();
         }
     }

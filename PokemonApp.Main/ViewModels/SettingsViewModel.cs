@@ -1,12 +1,6 @@
-﻿using MaterialDesignColors;
-using MaterialDesignThemes.Wpf;
-using PokemonApp.Core.ViewModels;
+﻿using MaterialDesignThemes.Wpf;
+using PokemonApp.Core.Bases;
 using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 
 namespace PokemonApp.Main.ViewModels
 {

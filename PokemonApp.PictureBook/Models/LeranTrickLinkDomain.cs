@@ -1,11 +1,6 @@
 ﻿using PokemonApp.Core.Collections;
 using PokemonApp.DataBase.Models;
-using Prism.Commands;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace PokemonApp.PictureBook.Models
 {
@@ -49,7 +44,7 @@ namespace PokemonApp.PictureBook.Models
                     else if (linkTrick.IsDeleted) {
 
                     }
-                    
+
                 }
                 repository.Context.SaveChanges();
                 return true;

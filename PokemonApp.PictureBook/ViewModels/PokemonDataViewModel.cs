@@ -1,11 +1,5 @@
-﻿using PokemonApp.Core.ViewModels;
-using PokemonApp.Core.Interface;
-using PokemonApp.PictureBook.Views;
-using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PokemonApp.Core.Bases;
+using PokemonApp.Core.Interfaces;
 using System.ComponentModel;
 using System.Windows.Controls;
 
@@ -73,7 +67,7 @@ namespace PokemonApp.PictureBook.ViewModels
         #region // 構築・破棄
         public PokemonDataViewModel()
         {
-            
+
         }
         #endregion
     }

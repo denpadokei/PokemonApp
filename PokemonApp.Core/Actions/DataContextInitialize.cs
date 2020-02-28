@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xaml.Behaviors;
-using PokemonApp.Core.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PokemonApp.Core.Interfaces;
 using System.Windows;
 
 namespace PokemonApp.Core.Actions

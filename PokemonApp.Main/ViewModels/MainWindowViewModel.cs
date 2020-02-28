@@ -1,16 +1,8 @@
-﻿using PokemonApp.Core.Collections;
-using PokemonApp.Core.Interface;
-using PokemonApp.Core.ViewModels;
-using PokemonApp.PictureBook.Views;
+﻿using PokemonApp.Core.Bases;
+using PokemonApp.Core.Collections;
+using PokemonApp.Core.Interfaces;
 using PokemonApp.WindowManage;
-using Prism.Commands;
 using Prism.Ioc;
-using Prism.Mvvm;
-using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace PokemonApp.Main.ViewModels
 {

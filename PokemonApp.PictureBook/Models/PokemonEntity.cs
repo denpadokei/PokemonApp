@@ -1,13 +1,7 @@
 ﻿
+using PokemonApp.Core.Bases;
 using PokemonApp.Core.Collections;
-using PokemonApp.Core.Interface;
-using PokemonApp.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PokemonApp.Core.Interfaces;
 
 namespace PokemonApp.PictureBook.Models
 {

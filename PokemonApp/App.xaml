@@ -29,6 +29,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
                 <!--自作スタイル-->
                 <ResourceDictionary Source="pack://application:,,,/PokemonApp.Style;component/Styles/LayoutPanel.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/PokemonApp.Style;component/Styles/ProgressPanel.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
 

@@ -1,12 +1,9 @@
 ﻿using PokemonApp.AbilityValueConverter.Models;
+using PokemonApp.Core.Bases;
 using PokemonApp.Core.Collections;
-using PokemonApp.Core.ViewModels;
 using Prism.Commands;
-using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 
 namespace PokemonApp.AbilityValueConverter.ViewModels
 {
@@ -117,7 +114,7 @@ namespace PokemonApp.AbilityValueConverter.ViewModels
         /// </summary>
         private void Calculation()
         {
-            
+
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

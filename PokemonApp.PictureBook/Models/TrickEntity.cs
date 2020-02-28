@@ -1,12 +1,7 @@
 ﻿using PokemonApp.Core.Enums;
 using PokemonApp.Core.Extentions;
-using PokemonApp.Core.Interface;
+using PokemonApp.Core.Interfaces;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokemonApp.PictureBook.Models
 {
