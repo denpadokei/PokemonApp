@@ -1,4 +1,5 @@
 ﻿using Dragablz;
+using NLog;
 using PokemonApp.Core.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -26,13 +27,15 @@ namespace PokemonApp.Core.Bases
         [Dependency]
         public ICustomDialogService CustomDialogService { get; set; }
 
+        protected virtual Logger Logger => LogManager.GetCurrentClassLogger();
+
         /// <summary>タイトル を取得、設定</summary>
         private string title_;
         /// <summary>タイトル を取得、設定</summary>
         public string Title
         {
             get { return this.title_; }
-            set { this.SetProperty(ref title_, value); }
+            set { this.SetProperty(ref this.title_, value); }
         }
 
         /// <summary>ダイアログ用Openフラグ を取得、設定</summary>
@@ -41,7 +44,7 @@ namespace PokemonApp.Core.Bases
         public bool IsOpen
         {
             get { return this.isOpen_; }
-            set { this.SetProperty(ref isOpen_, value); }
+            set { this.SetProperty(ref this.isOpen_, value); }
         }
 
         /// <summary>読み込み中 を取得、設定</summary>
@@ -50,7 +53,7 @@ namespace PokemonApp.Core.Bases
         public bool IsLoading
         {
             get { return this.isLoading_; }
-            set { this.SetProperty(ref isLoading_, value); }
+            set { this.SetProperty(ref this.isLoading_, value); }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -113,6 +116,7 @@ namespace PokemonApp.Core.Bases
 
         public virtual void OnInitialize()
         {
+            this.Logger.Info($"{this.Title}画面を開きました。");
             if (this.DataBaseService is INotifyPropertyChanged service) {
                 WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.RemoveHandler(
                 service, nameof(INotifyPropertyChanged.PropertyChanged), this.OnIsLoadingPropertyChenged);

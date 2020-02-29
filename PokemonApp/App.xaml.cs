@@ -1,5 +1,8 @@
 ﻿using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
+using NLog;
+using NLog.Config;
+using NLog.Targets;
 using PokemonApp.AbilityValueConverter;
 using PokemonApp.Core;
 using PokemonApp.Damage;
@@ -34,6 +37,16 @@ namespace PokemonApp
             base.OnInitialized();
             var region = this.Container.Resolve<IRegionManager>();
             region.RegisterViewWithRegion("ShellRegion", typeof(MainWindowView));
+
+            var config = new LoggingConfiguration();
+
+            var file = new FileTarget("logfile") { FileName = "log.txt", ConcurrentWrites = true };
+            var consol = new ConsoleTarget("logconsole");
+
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, file);
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, consol);
+
+            LogManager.Configuration = config;
         }
 
         protected override void OnStartup(StartupEventArgs e)

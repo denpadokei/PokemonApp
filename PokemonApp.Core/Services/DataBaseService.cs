@@ -93,7 +93,7 @@ namespace PokemonApp.Core.Services
                 Dispatcher.Run();
             }));
             thread.Start();
-            dispatcher_ = dispatcherSource.Task.Result; // メンバ変数に dispatcher を保存
+            this.dispatcher_ = dispatcherSource.Task.Result; // メンバ変数に dispatcher を保存
 
             // 表のディスパッチャーが終了するタイミングで、こちらのディスパッチャーも終了する
             Dispatcher.CurrentDispatcher.ShutdownStarted += (s, e) => dispatcher_.BeginInvokeShutdown(DispatcherPriority.Normal);
