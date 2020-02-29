@@ -31,9 +31,9 @@
             <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
         </dragablz:TabablzControl.InterTabController>
         <dragablz:TabablzControl.ContentTemplate>
-            <DataTemplate>
+            <ItemContainerTemplate>
                 <control:LoadingProgressHost />
-            </DataTemplate>
+            </ItemContainerTemplate>
         </dragablz:TabablzControl.ContentTemplate>
     </dragablz:TabablzControl>
 </mahapp:MetroWindow>
