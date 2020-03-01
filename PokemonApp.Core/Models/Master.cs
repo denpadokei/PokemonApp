@@ -1,35 +1,37 @@
-﻿using PokemonApp.Core.Bases;
-using PokemonApp.Core.Collections;
-using PokemonApp.Core.Interfaces;
-using PokemonApp.WindowManage;
-using Prism.Ioc;
+﻿using NLog;
+using Prism.Mvvm;
 using System;
-using Unity;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace PokemonApp.Main.ViewModels
+namespace PokemonApp.Core.Models
 {
-    public class MainWindowViewModel : BaseWindowViewModel
+    /// <summary>
+    /// 世代とか共通の値を指定するところ。開いた全画面に影響を与える。
+    /// </summary>
+    public sealed class Master : BindableBase
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
-        [Dependency]
-        public IContainerExtension container;
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        private MTObservableCollection<IButtonMenu> collection_;
-        /// <summary>ボタンコレクション を取得、設定</summary>
-        public MTObservableCollection<IButtonMenu> Collection
-        {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
-        }
+        private static readonly Master master_ = new Master();
+        public static Master Current => master_;
 
-        /// <summary>世代コレクション を取得、設定</summary>
-        private MTObservableCollection<int> generateCollection_;
-        /// <summary>世代コレクション を取得、設定</summary>
-        public MTObservableCollection<int> GenerateCollection
+        private Logger Logger => LogManager.GetCurrentClassLogger();
+        /// <summary>世代 を取得、設定</summary>
+        private int genrate_;
+        /// <summary>世代 を取得、設定</summary>
+        public int Generate
         {
-            get { return this.generateCollection_; }
-            set { this.SetProperty(ref this.generateCollection_, value); }
+            get { return this.genrate_; }
+            set
+            {
+                if (this.SetProperty(ref this.genrate_, value)) {
+                    this.Logger.Info($"代{value}世代が選択されました");
+                }
+            }
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -43,18 +45,6 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
-        public override void OnInitialize()
-        {
-            base.OnInitialize();
-            this.Collection = new MTObservableCollection<IButtonMenu>() {
-                this.container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.PictuerBook)),
-                this.container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.DamageSim)),
-                this.container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.WildArea)),
-                this.container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.AbilityValueConverter)),
-                this.container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.JsonSerch)),
-                this.container.Resolve<MainWindowButtonViewModel>((typeof(WindowType), WindowType.Settings))
-            };
-        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
@@ -66,15 +56,14 @@ namespace PokemonApp.Main.ViewModels
         #region // メンバ変数
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
-        #region // 構築・破棄        
-        public MainWindowViewModel()
+        #region // 構築・破棄
+        /// <summary>
+        /// シングルトンとして実装
+        /// </summary>
+        private Master()
         {
-            this.GenerateCollection = new MTObservableCollection<int>();
-            for (int i = 1; i < 9; i++) {
-                this.GenerateCollection.Add(i);
-            }
+            this.Generate = 8;
         }
         #endregion
-
     }
 }

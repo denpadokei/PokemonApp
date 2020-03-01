@@ -79,7 +79,6 @@
                     </Grid.RowDefinitions>
                     <control:CustomDataGrid Grid.Row="1" ItemsSource="{Binding TrickCollection}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
                         <control:CustomDataGrid.Columns>
-                            <DataGridCheckBoxColumn Header="更新対象" Binding="{Binding IsUpdated}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"/>
                             <material:DataGridTextColumn Header="名前" Binding="{Binding Name}" />
                             <material:DataGridTextColumn Header="いりょく" Binding="{Binding Power}" />
                             <material:DataGridTextColumn Header="命中" Binding="{Binding Rate}" />

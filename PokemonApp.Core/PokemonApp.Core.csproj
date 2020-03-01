@@ -90,6 +90,7 @@
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Interfaces\IWindowManagerService.cs" />
     <Compile Include="Interfaces\IWindowPanel.cs" />
+    <Compile Include="Models\Master.cs" />
     <Compile Include="Services\CustomDialogService.cs" />
     <Compile Include="Services\DataBaseService.cs" />
     <Compile Include="Bases\EntityBase.cs" />

@@ -48,8 +48,6 @@ namespace PokemonApp.Core.Models
         {
 
         }
-
-
         #endregion
     }
 }

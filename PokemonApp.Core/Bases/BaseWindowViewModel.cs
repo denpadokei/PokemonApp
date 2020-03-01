@@ -1,6 +1,7 @@
 ﻿using Dragablz;
 using NLog;
 using PokemonApp.Core.Interfaces;
+using PokemonApp.Core.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -55,6 +56,15 @@ namespace PokemonApp.Core.Bases
             get { return this.isLoading_; }
             set { this.SetProperty(ref this.isLoading_, value); }
         }
+
+        /// <summary>マスター を取得、設定</summary>
+        private Master master_;
+        /// <summary>マスター を取得、設定</summary>
+        public Master Master
+        {
+            get { return this.master_; }
+            set { this.SetProperty(ref this.master_, value); }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -91,6 +101,10 @@ namespace PokemonApp.Core.Bases
             }
         }
 
+        protected virtual void OnMasterPropertyChanged(Object sender, PropertyChangedEventArgs e)
+        {
+
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド
@@ -123,6 +137,10 @@ namespace PokemonApp.Core.Bases
                 WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.AddHandler(
                 service, nameof(INotifyPropertyChanged.PropertyChanged), this.OnIsLoadingPropertyChenged);
             }
+            WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.RemoveHandler(
+                this.Master, nameof(INotifyPropertyChanged.PropertyChanged), this.OnMasterPropertyChanged);
+            WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.AddHandler(
+                this.Master, nameof(INotifyPropertyChanged.PropertyChanged), this.OnMasterPropertyChanged);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -132,7 +150,7 @@ namespace PokemonApp.Core.Bases
         #region // 構築・破棄
         public BaseWindowViewModel()
         {
-
+            this.Master = Master.Current;
         }
         #endregion
     }
