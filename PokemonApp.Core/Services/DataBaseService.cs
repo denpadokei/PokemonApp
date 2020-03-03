@@ -1,4 +1,5 @@
-﻿using PokemonApp.Core.Interfaces;
+﻿using NLog;
+using PokemonApp.Core.Interfaces;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
@@ -26,6 +27,8 @@ namespace PokemonApp.Core.Services
             get { return this.isLoading_; }
             set { this.SetProperty(ref this.isLoading_, value); }
         }
+
+        private Logger Logger => LogManager.GetCurrentClassLogger();
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -41,45 +44,80 @@ namespace PokemonApp.Core.Services
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
+        private void StartLoading()
+        {
+            lock (this.lockingObject_) {
+                this.lockingCount_++;
+                this.IsLoading = true;
+            }
+        }
+        private void EndLoading()
+        {
+            lock (this.lockingObject_) {
+                this.lockingCount_--;
+                if (this.lockingCount_ == 0) {
+                    this.IsLoading = false;
+                }
+            }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド
         public async void Load(Action action)
         {
             try {
-                this.IsLoading = true;
+                this.StartLoading();
                 await this.dispatcher_?.InvokeAsync(() => action?.Invoke());
             }
             catch (Exception e) {
-                this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", $"{e}" } }, _ => { });
+                this.Logger.Error(e);
+                this.DialogService?.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", $"{e}" } }, _ => { });
                 //throw;
             }
             finally {
-                this.IsLoading = false;
+                this.EndLoading();
             }
         }
 
-        public void Regist(Func<bool> func)
+        public async void Regist(Func<bool> func)
         {
             try {
-                if (this.dispatcher_.InvokeAsync(func).Result) {
+                this.StartLoading();
+                var result = await this.dispatcher_?.InvokeAsync(() => func?.Invoke());
+                if (result == true) {
                     //this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録に成功しました" } }, _ => { });
-                    this.WindowManager.ShowMessage("登録に成功しました");
+                    this.WindowManager?.ShowMessage("登録に成功しました");
                 }
                 else {
-                    this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録するデータはありませんでした" } }, _ => { });
+                    this.DialogService?.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", "登録するデータはありませんでした" } }, _ => { });
                 }
             }
             catch (Exception e) {
-                this.DialogService.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", $"{e}" } }, _ => { });
+                this.Logger.Error(e);
+                this.DialogService?.ShowDialog("ConfirmationWindowView", new DialogParameters() { { "Title", "情報" }, { "Content", $"{e}" } }, _ => { });
                 //throw;
             }
+            finally {
+                this.EndLoading();
+            }
+        }
+
+        public void Regist(Func<int, bool> func, int num)
+        {
+            this.Regist(() => func.Invoke(num));
+        }
+
+        public void Regist(Func<int, bool?> func, int num)
+        {
+            this.Regist(() => func.Invoke(num).Value);
         }
 
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // メンバ変数
         private readonly Dispatcher dispatcher_;
+        private readonly Object lockingObject_ = new Object();
+        private int lockingCount_;
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // 構築・破棄
