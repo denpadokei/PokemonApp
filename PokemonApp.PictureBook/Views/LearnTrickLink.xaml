@@ -64,7 +64,14 @@
                 </control:CustomDataGrid.Resources>
                 <control:CustomDataGrid.Columns>
                     <DataGridTextColumn Header="覚えるレベル" Binding="{Binding Level}"/>
-                    <material:DataGridComboBoxColumn Header="分類" ItemsSource="{Binding Source={extention:EnumList {x:Type enum:TrickCategory}}}" SelectedItemBinding="{Binding TrickCategory}" />
+                    <!--<DataGridTemplateColumn Header="分類">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{Binding Source={extention:EnumList {x:Type enum:TrickCategory}}}" DisplayMemberPath="Key" SelectedValue="{Binding TrickCategory}" SelectedValuePath="Value"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                    <material:DataGridComboBoxColumn Header="分類" ItemsSource="{Binding Source={extention:EnumList {x:Type enum:TrickCategory}}}" DisplayMemberPath="Key" SelectedValueBinding="{Binding TrickCategory}" SelectedValuePath="Value"/>
                     <DataGridTextColumn Header="技名" Binding="{Binding TrickEntity.Name}" />
                     <DataGridTextColumn Header="タイプ" Binding="{Binding TrickEntity.Type}" />
                     <DataGridTextColumn Header="威力" Binding="{Binding TrickEntity.Power}" />

@@ -51,11 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ChangeWindowAttribute.cs" />
+    <Compile Include="Actions\DataBaseContextDispose.cs" />
     <Compile Include="Actions\DataContextInitialize.cs" />
     <Compile Include="Bases\BaseTabViewModel.cs" />
     <Compile Include="Bases\BaseWindowViewModel.cs" />
     <Compile Include="Collections\MTObservableCollection.cs" />
     <Compile Include="Controls\LoadingProgressHost.cs" />
+    <Compile Include="Converters\BooleanReverseConverter.cs" />
     <Compile Include="Converters\EnumDisplayConverter.cs" />
     <Compile Include="CoreModule.cs" />
     <Compile Include="Dialogs\ConfirmationWindowView.xaml.cs">

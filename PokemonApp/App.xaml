@@ -3,13 +3,13 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
                         xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
+                        xmlns:converter="clr-namespace:PokemonApp.Core.Converters;assembly=PokemonApp.Core"
                         xmlns:tool="http://schemas.xceed.com/wpf/xaml/toolkit"
                         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
                         xmlns:prism="http://prismlibrary.com/"
                         xmlns:local="clr-namespace:PokemonApp">
     <Application.Resources>
         <ResourceDictionary>
-            
             <ResourceDictionary.MergedDictionaries>
 
                 <!--MahApps--> 
@@ -60,6 +60,9 @@
             </Style>
             <!-- Dragablz Material Design -->
             <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}"/>
+            <!--コンバーター-->
+            <converter:EnumDisplayConverter x:Key="EnumConverter"/>
+            <converter:BooleanReverseConverter x:Key="ReverseConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

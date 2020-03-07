@@ -15,7 +15,7 @@ using Unity;
 
 namespace PokemonApp.Core.Bases
 {
-    public class BaseWindowViewModel : BindableBase, IDialogAware, IInitialize, IWindowPanel
+    public class BaseWindowViewModel : BindableBase, IDialogAware, IInitialize, IWindowPanel, IDisposable
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
@@ -97,8 +97,8 @@ namespace PokemonApp.Core.Bases
             base.OnPropertyChanged(args);
             if (args.PropertyName == nameof(this.IsLoading)) {
                 if (this.IsLoading == true && this.IsOpen == false) {
-                    this.Logger.Info("プログレスバーを表示します");
-                    this.CustomDialogService?.ShowProgress();
+                    this.Logger.Info("プログレスバーを表示します(嘘です)");
+                    //this.CustomDialogService?.ShowProgress();
                 }
                 else if (this.IsLoading == false) {
                     this.Logger.Info("プログレスバーを消します");
@@ -162,7 +162,7 @@ namespace PokemonApp.Core.Bases
 
         public virtual bool CanCloseDialog()
         {
-            return true;
+            return !this.IsLoading;
         }
 
         public virtual void OnDialogClosed()
@@ -199,6 +199,42 @@ namespace PokemonApp.Core.Bases
         {
             this.Master = Master.Current;
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // 重複する呼び出しを検出するには
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposedValue) {
+                if (disposing) {
+                    // TODO: マネージ状態を破棄します (マネージ オブジェクト)。
+                    this.Logger.Info("Dispose プログレスバーを閉じます（半ギレ）");
+                    this.CustomDialogService?.CloseProgress();
+                }
+
+                // TODO: アンマネージ リソース (アンマネージ オブジェクト) を解放し、下のファイナライザーをオーバーライドします。
+                // TODO: 大きなフィールドを null に設定します。
+
+                this.disposedValue = true;
+            }
+        }
+
+        // TODO: 上の Dispose(bool disposing) にアンマネージ リソースを解放するコードが含まれる場合にのみ、ファイナライザーをオーバーライドします。
+        // ~BaseWindowViewModel()
+        // {
+        //   // このコードを変更しないでください。クリーンアップ コードを上の Dispose(bool disposing) に記述します。
+        //   Dispose(false);
+        // }
+
+        // このコードは、破棄可能なパターンを正しく実装できるように追加されました。
+        public void Dispose()
+        {
+            // このコードを変更しないでください。クリーンアップ コードを上の Dispose(bool disposing) に記述します。
+            Dispose(true);
+            // TODO: 上のファイナライザーがオーバーライドされる場合は、次の行のコメントを解除してください。
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
         #endregion
     }
 }
