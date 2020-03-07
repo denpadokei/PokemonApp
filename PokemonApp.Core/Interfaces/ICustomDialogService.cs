@@ -7,7 +7,8 @@ namespace PokemonApp.Core.Interfaces
     {
         bool IsOpen { get; set; }
         Task<bool> ShowMessege(string messege, string identifir = "");
-        Task ShowProgress();
+        void ShowProgress();
+        void CloseProgress();
         void CloseDialog(object parameter, IInputElement target);
     }
 }

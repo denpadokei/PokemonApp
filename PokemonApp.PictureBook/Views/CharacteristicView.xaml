@@ -7,16 +7,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
+             xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
+             xmlns:dlragblz="http://dragablz.net/winfx/xaml/dragablz"
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DesignWidth="1200" d:DesignHeight="800"
              d:DataContext="{d:DesignInstance {x:Type viewmodel:CharacteristicViewModel}, IsDesignTimeCreatable=True}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+            <action:DataContextInitialize />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <ContentControl>
+    <dockablz:Layout>
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -46,5 +48,5 @@
                 <DataGrid ItemsSource="{Binding Characteristics}" AutoGenerateColumns="True" IsReadOnly="True"/>
             </ContentControl>
         </Grid>
-    </ContentControl>
+    </dockablz:Layout>
 </UserControl>

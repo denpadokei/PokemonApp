@@ -9,6 +9,8 @@
              xmlns:action="clr-namespace:PokemonApp.Core.Actions;assembly=PokemonApp.Core"
              xmlns:control="clr-namespace:PokemonApp.Style.Controls;assembly=PokemonApp.Style"
              xmlns:viewmodel="clr-namespace:PokemonApp.PictureBook.ViewModels"
+             xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
+             xmlns:dlragblz="http://dragablz.net/winfx/xaml/dragablz"
              xmlns:convert="clr-namespace:PokemonApp.Core.Enums;assembly=PokemonApp.Core"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -19,7 +21,7 @@
             <action:DataContextInitialize />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <ContentControl>
+    <dockablz:Layout>
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -82,5 +84,5 @@
                 </control:CustomDataGrid>
             </Grid>
         </Grid>
-    </ContentControl>
+    </dockablz:Layout>
 </UserControl>

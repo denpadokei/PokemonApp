@@ -1,5 +1,6 @@
 ﻿using PokemonApp.Core.Bases;
 using PokemonApp.Core.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Windows.Controls;
 
@@ -9,24 +10,6 @@ namespace PokemonApp.PictureBook.ViewModels
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
-        /// <summary>選択中のタブ を取得、設定</summary>
-        private IOpend currentViewIsOpend_;
-        /// <summary>選択中のタブ を取得、設定</summary>
-        public IOpend CurrentViewIsOpend
-        {
-            get { return this.currentViewIsOpend_; }
-            set { this.SetProperty(ref currentViewIsOpend_, value); }
-        }
-
-        /// <summary>選択中のタブ を取得、設定</summary>
-        private TabItem currentView_;
-        /// <summary>選択中のタブ を取得、設定</summary>
-        public TabItem CurrentView
-        {
-            get { return this.currentView_; }
-            set { this.SetProperty(ref currentView_, value); }
-        }
-
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -47,9 +30,9 @@ namespace PokemonApp.PictureBook.ViewModels
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
-            if (args.PropertyName == nameof(this.CurrentView)) {
-                if (this.CurrentView.DataContext is IOpend isOpend) {
-                    this.CurrentViewIsOpend = isOpend;
+            if (args.PropertyName == nameof(this.CurrentView) && this.CurrentView is TabItem context) {
+                if (context.DataContext is IOpend isOpend) {
+                    
                 }
             }
         }

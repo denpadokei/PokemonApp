@@ -19,6 +19,7 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <action:ChangeWindowAttribute Width="600" Height="800" IsEnabled="False"/>
+            <action:DataContextInitialize/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>

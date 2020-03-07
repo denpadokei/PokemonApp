@@ -1,4 +1,5 @@
 ﻿using PokemonApp.Core.Bases;
+using System;
 
 namespace PokemonApp.ViewModels
 {

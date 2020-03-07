@@ -1,8 +1,9 @@
 ﻿using PokemonApp.Core.Bases;
+using Prism.Mvvm;
 
 namespace PokemonApp.Core.Dialogs
 {
-    public class TabWindowViewModel : BaseWindowViewModel
+    public class TabWindowViewModel : BindableBase
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ

@@ -28,11 +28,7 @@ namespace PokemonApp.Main.ViewModels
         #region // コマンド用メソッド
         private void Change()
         {
-            var paletteHelper = new PaletteHelper();
-            var theme = paletteHelper.GetTheme();
-            var baseTheme = this.IsDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
-            theme.SetBaseTheme(baseTheme);
-            paletteHelper.SetTheme(theme);
+            this.Master.IsDark = this.IsDark;
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -40,11 +36,6 @@ namespace PokemonApp.Main.ViewModels
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
-        public override void OnInitialize()
-        {
-            base.OnInitialize();
-            this.RaisePropertyChanged(nameof(this.IsDark));
-        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
@@ -59,9 +50,10 @@ namespace PokemonApp.Main.ViewModels
         #region // 構築・破棄
         public SettingsViewModel()
         {
-            var paletteHelper = new PaletteHelper();
-            var theme = paletteHelper.GetTheme();
-            this.IsDark = theme == Theme.Light;
+            this.IsDark = this.Master.IsDark;
+            //var paletteHelper = new PaletteHelper();
+            //var theme = paletteHelper.GetTheme();
+            //this.IsDark = theme == Theme.Light;
         }
         #endregion
     }

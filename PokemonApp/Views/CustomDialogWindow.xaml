@@ -16,12 +16,12 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <material:DialogHost Identifier="ProgressBar">
-            <dragablz:TabablzControl>
+        <material:DialogHost Identifier="ProgressBar" IsOpen="{Binding IsOpen}">
+            <control:CustomTabControl SelectedItem="{Binding CurrentView}">
                 <dragablz:TabablzControl.InterTabController>
                     <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
                 </dragablz:TabablzControl.InterTabController>
-            </dragablz:TabablzControl>
+            </control:CustomTabControl>
         </material:DialogHost>
     </Grid>
 </Window>

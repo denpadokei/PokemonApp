@@ -8,32 +8,17 @@
                     prism:ViewModelLocator.AutoWireViewModel="True"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:action="clr-namespace:PokemonApp.Core.Actions"
-                    xmlns:control="clr-namespace:PokemonApp.Core.Controls"
-                    xmlns:tool="http://schemas.xceed.com/wpf/xaml/toolkit"
                     mc:Ignorable="d"
                     d:DataContext="{d:DesignInstance {x:Type viewmodel:TabWindowViewModel}, IsDesignTimeCreatable=True}"
                     xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-                    xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
-                    xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
                     MinHeight="300" MinWidth="400"
                     Title="{Binding Title}"
                     WindowStartupLocation="CenterScreen"
                     Background="{DynamicResource MaterialDesignPaper}"
                     FontFamily="{DynamicResource MaterialDesignFont}">
-    <b:Interaction.Triggers>
-        <b:EventTrigger EventName="Loaded">
-            <action:DataContextInitialize />
-        </b:EventTrigger>
-    </b:Interaction.Triggers>
     <dragablz:TabablzControl x:Name="InitialTabalzControl" ConsolidateOrphanedItems="True">
         <dragablz:TabablzControl.InterTabController>
             <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
         </dragablz:TabablzControl.InterTabController>
-        <dragablz:TabablzControl.ContentTemplate>
-            <ItemContainerTemplate>
-                <control:LoadingProgressHost />
-            </ItemContainerTemplate>
-        </dragablz:TabablzControl.ContentTemplate>
     </dragablz:TabablzControl>
 </mahapp:MetroWindow>

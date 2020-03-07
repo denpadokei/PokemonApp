@@ -22,22 +22,23 @@
             <action:DataContextInitialize/>
         </b:EventTrigger>
     </b:Interaction.Triggers>
-
-    <dragablz:TabablzControl SelectedItem="{Binding CurrentView}" ConsolidateOrphanedItems="True">
-        <dragablz:TabablzControl.InterTabController>
-            <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
-        </dragablz:TabablzControl.InterTabController>
-        <TabItem x:Name="PictureBook" Header="種族値一覧表">
-            <ContentControl prism:RegionManager.RegionName="PictureBookRegion"/>
-        </TabItem>
-        <TabItem x:Name="Trick" Header="技一覧表">
-            <ContentControl prism:RegionManager.RegionName="TrickRegion"/>
-        </TabItem>
-        <TabItem x:Name="Characteristic" Header="とくせい一覧表">
-            <ContentControl prism:RegionManager.RegionName="CharacteristicRegion"/>
-        </TabItem>
-        <TabItem x:Name="Type" Header="タイプ名称一覧表">
-            <ContentControl prism:RegionManager.RegionName="TypeRegion"/>
-        </TabItem>
-    </dragablz:TabablzControl>
+    <material:DialogHost IsOpen="{Binding IsOpen}" Identifier="ProgressHost">
+        <dragablz:TabablzControl SelectedItem="{Binding CurrentView}" ConsolidateOrphanedItems="True">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController InterTabClient="{Binding TabClient}"/>
+            </dragablz:TabablzControl.InterTabController>
+            <TabItem x:Name="PictureBook" Header="種族値一覧表">
+                <ContentControl prism:RegionManager.RegionName="PictureBookRegion"/>
+            </TabItem>
+            <TabItem x:Name="Trick" Header="技一覧表">
+                <ContentControl prism:RegionManager.RegionName="TrickRegion"/>
+            </TabItem>
+            <TabItem x:Name="Characteristic" Header="とくせい一覧表">
+                <ContentControl prism:RegionManager.RegionName="CharacteristicRegion"/>
+            </TabItem>
+            <TabItem x:Name="Type" Header="タイプ名称一覧表">
+                <ContentControl prism:RegionManager.RegionName="TypeRegion"/>
+            </TabItem>
+        </dragablz:TabablzControl>
+    </material:DialogHost>
 </UserControl>

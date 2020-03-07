@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using MaterialDesignThemes.Wpf;
+using NLog;
 using PokemonApp.Core.Interfaces;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -47,6 +48,7 @@ namespace PokemonApp.Core.Services
         private void StartLoading()
         {
             lock (this.lockingObject_) {
+                this.Logger.Info("読み込みを開始します。");
                 this.lockingCount_++;
                 this.IsLoading = true;
             }
@@ -56,7 +58,9 @@ namespace PokemonApp.Core.Services
             lock (this.lockingObject_) {
                 this.lockingCount_--;
                 if (this.lockingCount_ == 0) {
+                    this.Logger.Info("読み込みを終了します。");
                     this.IsLoading = false;
+                    //DialogHost.CloseDialogCommand.Execute(null, null);
                 }
             }
         }

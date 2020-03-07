@@ -30,6 +30,7 @@
                 <!--自作スタイル-->
                 <ResourceDictionary Source="pack://application:,,,/PokemonApp.Style;component/Styles/LayoutPanel.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/PokemonApp.Style;component/Styles/ProgressPanel.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/PokemonApp.Style;component/Styles/TabControl.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
 

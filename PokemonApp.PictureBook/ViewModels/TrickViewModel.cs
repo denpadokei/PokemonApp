@@ -26,7 +26,7 @@ namespace PokemonApp.PictureBook.ViewModels
         public TrickEntity CurrentMove
         {
             get { return this.currentMove_ ?? (this.currentMove_ = new TrickEntity()); }
-            set { this.SetProperty(ref currentMove_, value); }
+            set { this.SetProperty(ref this.currentMove_, value); }
         }
 
         /// <summary>ポケモンのコレクション を取得、設定</summary>
@@ -35,7 +35,7 @@ namespace PokemonApp.PictureBook.ViewModels
         public MTObservableCollection<PokemonEntity> PokemonCollection
         {
             get { return this.pokemonCollection_; }
-            set { this.SetProperty(ref pokemonCollection_, value); }
+            set { this.SetProperty(ref this.pokemonCollection_, value); }
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -44,7 +44,7 @@ namespace PokemonApp.PictureBook.ViewModels
         public PictureBookFilter Filter
         {
             get { return this.filter_; }
-            set { this.SetProperty(ref filter_, value); }
+            set { this.SetProperty(ref this.filter_, value); }
         }
 
         /// <summary>登録コマンド を取得、設定</summary>
@@ -82,12 +82,12 @@ namespace PokemonApp.PictureBook.ViewModels
         /// </summary>
         private void Serch()
         {
-            this.DataBaseService.Load(this.domain_.Serch);
+            this.DataBaseService?.Load(this.domain_.Serch);
         }
 
         private void SetPokemon()
         {
-            this.DataBaseService.Load(this.domain_.SetPokemon);
+            this.DataBaseService?.Load(this.domain_.SetPokemon);
         }
 
         private void Filtering()
@@ -97,7 +97,7 @@ namespace PokemonApp.PictureBook.ViewModels
 
         private void Regist()
         {
-            this.DataBaseService.Regist(this.domain_.Regist);
+            this.DataBaseService?.Regist(this.domain_.Regist);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

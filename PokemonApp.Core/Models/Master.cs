@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using MaterialDesignThemes.Wpf;
+using NLog;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PokemonApp.Core.Models
 {
@@ -33,6 +35,15 @@ namespace PokemonApp.Core.Models
                 }
             }
         }
+
+        /// <summary>テーマ を取得、設定</summary>
+        private bool isDark_;
+        /// <summary>テーマ を取得、設定</summary>
+        public bool IsDark
+        {
+            get { return this.isDark_; }
+            set { this.SetProperty(ref this.isDark_, value); }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド
@@ -45,6 +56,19 @@ namespace PokemonApp.Core.Models
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // オーバーライドメソッド
+        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (args.PropertyName == nameof(this.IsDark)) {
+                var paletteHelper = new PaletteHelper();
+                var theme = paletteHelper.GetTheme();
+                var baseTheme = this.IsDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
+                theme.SetBaseTheme(baseTheme);
+                paletteHelper.SetTheme(theme);
+                Properties.Settings.Default.IsDark = this.IsDark;
+                Properties.Settings.Default.Save();
+            }
+        }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プライベートメソッド
@@ -63,6 +87,13 @@ namespace PokemonApp.Core.Models
         private Master()
         {
             this.Generate = 8;
+            this.IsDark = Properties.Settings.Default.IsDark;
+
+            var paletteHelper = new PaletteHelper();
+            var theme = paletteHelper.GetTheme();
+            var baseTheme = this.IsDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
+            theme.SetBaseTheme(baseTheme);
+            paletteHelper.SetTheme(theme);
         }
         #endregion
     }
