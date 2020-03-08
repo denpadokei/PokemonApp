@@ -9,7 +9,7 @@ namespace PokemonApp.DataBase.Views
     {
         public DataBaseAccsessWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

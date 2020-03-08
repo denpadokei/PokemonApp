@@ -43,7 +43,7 @@ namespace PokemonApp.Core.Collections
 
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
-            using (BlockReentrancy()) {
+            using (this.BlockReentrancy()) {
                 var eh = CollectionChanged;
                 if (eh == null) return;
 
@@ -53,7 +53,7 @@ namespace PokemonApp.Core.Collections
                                   select dpo.Dispatcher).FirstOrDefault();
 
                 if (dispatcher != null && dispatcher.CheckAccess() == false) {
-                    dispatcher.Invoke(DispatcherPriority.DataBind, (Action)(() => OnCollectionChanged(e)));
+                    dispatcher.Invoke(DispatcherPriority.DataBind, (Action)(() => this.OnCollectionChanged(e)));
                 }
                 else {
                     foreach (NotifyCollectionChangedEventHandler nh in eh.GetInvocationList())

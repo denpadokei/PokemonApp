@@ -14,8 +14,9 @@ namespace PokemonApp.Json.ViewModels
         /// <summary>ポケモンコレクション を取得、設定</summary>
         public MTObservableCollection<JsonTrickEntity> Collection
         {
-            get { return this.collection_ ?? (this.collection_ = new MTObservableCollection<JsonTrickEntity>()); }
-            set { this.SetProperty(ref collection_, value); }
+            get => this.collection_ ?? (this.collection_ = new MTObservableCollection<JsonTrickEntity>());
+
+            set => this.SetProperty(ref this.collection_, value);
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -23,8 +24,9 @@ namespace PokemonApp.Json.ViewModels
         /// <summary>検索条件 を取得、設定</summary>
         public Filter Filter
         {
-            get { return this.filter_; }
-            set { this.SetProperty(ref filter_, value); }
+            get => this.filter_;
+
+            set => this.SetProperty(ref this.filter_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -32,12 +34,12 @@ namespace PokemonApp.Json.ViewModels
         /// <summary>検索コマンド を取得、設定</summary>
         private DelegateCommand serchCommand_;
         /// <summary>検索コマンド を取得、設定</summary>
-        public DelegateCommand SerchCommand { get { return this.serchCommand_ ?? (this.serchCommand_ = new DelegateCommand(this.Serch)); } }
+        public DelegateCommand SerchCommand => this.serchCommand_ ?? (this.serchCommand_ = new DelegateCommand(this.Serch));
 
         /// <summary>登録コマンド を取得、設定</summary>
         private DelegateCommand registCommand_;
         /// <summary>登録コマンド を取得、設定</summary>
-        public DelegateCommand RegistCommand { get { return this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist)); } }
+        public DelegateCommand RegistCommand => this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist));
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド

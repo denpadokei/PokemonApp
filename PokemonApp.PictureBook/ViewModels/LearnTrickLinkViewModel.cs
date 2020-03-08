@@ -20,8 +20,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>ポケモンID を取得、設定</summary>
         public int PokemonId
         {
-            get { return this.pokemonId_; }
-            set { this.SetProperty(ref pokemonId_, value); }
+            get => this.pokemonId_;
+
+            set => this.SetProperty(ref this.pokemonId_, value);
         }
 
         /// <summary>ポケモンの名前 を取得、設定</summary>
@@ -29,8 +30,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>ポケモンの名前 を取得、設定</summary>
         public string PokemonName
         {
-            get { return this.pokemonName_; }
-            set { this.SetProperty(ref pokemonName_, value); }
+            get => this.pokemonName_;
+
+            set => this.SetProperty(ref this.pokemonName_, value);
         }
 
         /// <summary>技コレクション を取得、設定</summary>
@@ -38,8 +40,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>技コレクション を取得、設定</summary>
         public MTObservableCollection<TrickEntity> TrickCollection
         {
-            get { return this.trickCollection_; }
-            set { this.SetProperty(ref trickCollection_, value); }
+            get => this.trickCollection_;
+
+            set => this.SetProperty(ref this.trickCollection_, value);
         }
 
         /// <summary>技検索 を取得、設定</summary>
@@ -47,8 +50,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>技検索 を取得、設定</summary>
         public PictureBookFilter TrickFilter
         {
-            get { return this.trickFilter_; }
-            set { this.SetProperty(ref trickFilter_, value); }
+            get => this.trickFilter_;
+
+            set => this.SetProperty(ref this.trickFilter_, value);
         }
 
         /// <summary>技検索 を取得、設定</summary>
@@ -56,8 +60,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>技検索 を取得、設定</summary>
         public PictureBookFilter LinkTrickFilter
         {
-            get { return this.linkTrickFilter_; }
-            set { this.SetProperty(ref linkTrickFilter_, value); }
+            get => this.linkTrickFilter_;
+
+            set => this.SetProperty(ref this.linkTrickFilter_, value);
         }
 
 
@@ -66,8 +71,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>覚える技一覧 を取得、設定</summary>
         public MTObservableCollection<LinkTrickEntity> LearnCollection
         {
-            get { return this.learnCollection_; }
-            set { this.SetProperty(ref learnCollection_, value); }
+            get => this.learnCollection_;
+
+            set => this.SetProperty(ref this.learnCollection_, value);
         }
 
 
@@ -77,17 +83,17 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>技追加コマンド を取得、設定</summary>
         private DelegateCommand<IList<object>> addCommand_;
         /// <summary>技追加コマンド を取得、設定</summary>
-        public DelegateCommand<IList<object>> AddCommand { get { return this.addCommand_ ?? (this.addCommand_ = new DelegateCommand<IList<object>>(this.MoveToRight)); } }
+        public DelegateCommand<IList<object>> AddCommand => this.addCommand_ ?? (this.addCommand_ = new DelegateCommand<IList<object>>(this.MoveToRight));
 
         /// <summary>技削除コマンド を取得、設定</summary>
         private DelegateCommand<IList<object>> deleteCommand_;
         /// <summary>技削除コマンド を取得、設定</summary>
-        public DelegateCommand<IList<object>> DeleteCommand { get { return this.deleteCommand_ ?? (this.deleteCommand_ = new DelegateCommand<IList<object>>(this.MoveToLeft)); } }
+        public DelegateCommand<IList<object>> DeleteCommand => this.deleteCommand_ ?? (this.deleteCommand_ = new DelegateCommand<IList<object>>(this.MoveToLeft));
 
         /// <summary>登録コマンド を取得、設定</summary>
         private DelegateCommand registCommand_;
         /// <summary>登録コマンド を取得、設定</summary>
-        public DelegateCommand RegistCommand { get { return this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist)); } }
+        public DelegateCommand RegistCommand => this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist));
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド

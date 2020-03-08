@@ -9,7 +9,7 @@ namespace PokemonApp.AbilityValueConverter.Views
     {
         public AbilityValueConverterView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

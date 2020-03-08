@@ -19,8 +19,9 @@ namespace PokemonApp.Main.ViewModels
         /// <summary>ボタンコレクション を取得、設定</summary>
         public MTObservableCollection<IButtonMenu> Collection
         {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
+            get => this.collection_;
+
+            set => this.SetProperty(ref this.collection_, value);
         }
 
         /// <summary>世代コレクション を取得、設定</summary>
@@ -28,8 +29,9 @@ namespace PokemonApp.Main.ViewModels
         /// <summary>世代コレクション を取得、設定</summary>
         public MTObservableCollection<int> GenerateCollection
         {
-            get { return this.generateCollection_; }
-            set { this.SetProperty(ref this.generateCollection_, value); }
+            get => this.generateCollection_;
+
+            set => this.SetProperty(ref this.generateCollection_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

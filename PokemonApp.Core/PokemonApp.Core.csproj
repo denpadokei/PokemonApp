@@ -87,11 +87,10 @@
     <Compile Include="Interfaces\IDataBaseService.cs" />
     <Compile Include="Interfaces\IDeletable.cs" />
     <Compile Include="Interfaces\IInitialize.cs" />
-    <Compile Include="Interfaces\IOpend.cs" />
     <Compile Include="Interfaces\ISelectable.cs" />
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Interfaces\IWindowManagerService.cs" />
-    <Compile Include="Interfaces\IWindowPanel.cs" />
+    <Compile Include="Interfaces\IViewModelBaseable.cs" />
     <Compile Include="Models\Master.cs" />
     <Compile Include="Services\CustomDialogService.cs" />
     <Compile Include="Services\DataBaseService.cs" />
@@ -179,6 +178,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

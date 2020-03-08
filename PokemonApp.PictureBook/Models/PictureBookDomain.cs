@@ -17,8 +17,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>コレクション を取得、設定</summary>
         public MTObservableCollection<PokemonEntity> Collection
         {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
+            get => this.collection_;
+
+            set => this.SetProperty(ref this.collection_, value);
         }
 
         /// <summary>覚える技コレクション を取得、設定</summary>
@@ -26,8 +27,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>覚える技コレクション を取得、設定</summary>
         public MTObservableCollection<TrickEntity> TrickCollection
         {
-            get { return this.trickCollection_; }
-            set { this.SetProperty(ref trickCollection_, value); }
+            get => this.trickCollection_;
+
+            set => this.SetProperty(ref this.trickCollection_, value);
         }
 
 
@@ -36,8 +38,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>選択中のポケモン を取得、設定</summary>
         public PokemonEntity CurrentPokemon
         {
-            get { return this.currentPokemon_ ?? (this.currentPokemon_ = new PokemonEntity()); }
-            set { this.SetProperty(ref currentPokemon_, value); }
+            get => this.currentPokemon_ ?? (this.currentPokemon_ = new PokemonEntity());
+
+            set => this.SetProperty(ref this.currentPokemon_, value);
         }
 
         /// <summary>初期リスト を取得、設定</summary>
@@ -45,8 +48,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>初期リスト を取得、設定</summary>
         public IReadOnlyList<PokemonEntity> PokemonList
         {
-            get { return this.pokemonList_; }
-            set { this.SetProperty(ref pokemonList_, value); }
+            get => this.pokemonList_;
+
+            set => this.SetProperty(ref this.pokemonList_, value);
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -54,8 +58,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>検索条件 を取得、設定</summary>
         public PictureBookFilter Filter
         {
-            get { return this.filter_ ?? (this.filter_ = new PictureBookFilter()); }
-            set { this.SetProperty(ref filter_, value); }
+            get => this.filter_ ?? (this.filter_ = new PictureBookFilter());
+
+            set => this.SetProperty(ref this.filter_, value);
         }
 
         #endregion

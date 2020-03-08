@@ -9,7 +9,7 @@ namespace PokemonApp.Core.Dialogs
     {
         public ProgressBar()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

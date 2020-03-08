@@ -18,8 +18,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>コレクション を取得、設定</summary>
         public MTObservableCollection<CharacteristicEntity> Collection
         {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
+            get => this.collection_;
+
+            set => this.SetProperty(ref this.collection_, value);
         }
 
         /// <summary>初期リスト を取得、設定</summary>
@@ -27,8 +28,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>初期リスト を取得、設定</summary>
         public List<CharacteristicEntity> CharsList
         {
-            get { return this.charsList_; }
-            set { this.SetProperty(ref charsList_, value); }
+            get => this.charsList_;
+
+            set => this.SetProperty(ref this.charsList_, value);
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -36,8 +38,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>検索条件 を取得、設定</summary>
         public PictureBookFilter Filter
         {
-            get { return this.filter_; }
-            set { this.SetProperty(ref filter_, value); }
+            get => this.filter_;
+
+            set => this.SetProperty(ref this.filter_, value);
         }
 
         #endregion

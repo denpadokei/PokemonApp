@@ -12,7 +12,7 @@ namespace PokemonApp.PictureBook.Models
 {
     static class PictureBookDataSet
     {
-        static public List<PokemonEntity> FindPokemon(string csv_file_path_1 = @".\Static\pokemon_status.csv", string csv_file_path_2 = @".\Static\PokemonData.csv")
+        public static List<PokemonEntity> FindPokemon(string csv_file_path_1 = @".\Static\pokemon_status.csv", string csv_file_path_2 = @".\Static\PokemonData.csv")
         {
             var csvData = new DataTable();
             var list = new List<PokemonEntity>();
@@ -126,7 +126,7 @@ namespace PokemonApp.PictureBook.Models
         }
 
 
-        static public List<List<TrickEntity>> FindTrick(string pokemonName = "", string csv_file_path = @".\Static\PokemonData.csv")
+        public static List<List<TrickEntity>> FindTrick(string pokemonName = "", string csv_file_path = @".\Static\PokemonData.csv")
         {
             var csvData = new DataTable();
             var list = new List<List<TrickEntity>>();

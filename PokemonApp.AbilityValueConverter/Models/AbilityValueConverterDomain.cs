@@ -15,8 +15,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>ポケモンの名前コレクション を取得、設定</summary>
         public MTObservableCollection<string> PokemonNames
         {
-            get { return this.pokemonNames_; }
-            set { this.SetProperty(ref pokemonNames_, value); }
+            get => this.pokemonNames_;
+
+            set => this.SetProperty(ref this.pokemonNames_, value);
         }
 
         /// <summary>個体値推定 を取得、設定</summary>
@@ -24,8 +25,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>個体値推定 を取得、設定</summary>
         public MTObservableCollection<IndividualEntity> Individuals
         {
-            get { return this.individuals_; }
-            set { this.SetProperty(ref individuals_, value); }
+            get => this.individuals_;
+
+            set => this.SetProperty(ref this.individuals_, value);
         }
 
         /// <summary>個体値一覧 を取得、設定</summary>
@@ -33,8 +35,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>個体値一覧 を取得、設定</summary>
         public MTObservableCollection<AbilityEntity> Abilityes
         {
-            get { return this.abilityes_; }
-            set { this.SetProperty(ref abilityes_, value); }
+            get => this.abilityes_;
+
+            set => this.SetProperty(ref this.abilityes_, value);
         }
 
         /// <summary>選択中のポケモン を取得、設定</summary>
@@ -42,8 +45,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>選択中のポケモン を取得、設定</summary>
         public string CurrentPokemon
         {
-            get { return this.currentPokemon_; }
-            set { this.SetProperty(ref currentPokemon_, value); }
+            get => this.currentPokemon_;
+
+            set => this.SetProperty(ref this.currentPokemon_, value);
         }
 
         /// <summary>計算対象のポケモン を取得、設定</summary>
@@ -51,8 +55,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>計算対象のポケモン を取得、設定</summary>
         public pokemon Pokemon
         {
-            get { return this.pokemon_; }
-            set { this.SetProperty(ref pokemon_, value); }
+            get => this.pokemon_;
+
+            set => this.SetProperty(ref this.pokemon_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

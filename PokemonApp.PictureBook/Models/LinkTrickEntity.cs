@@ -14,8 +14,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>リンクテーブルID を取得、設定</summary>
         public int LinkTrickId
         {
-            get { return this.linkTrickId_; }
-            set { this.SetProperty(ref linkTrickId_, value); }
+            get => this.linkTrickId_;
+
+            set => this.SetProperty(ref this.linkTrickId_, value);
         }
 
         /// <summary>レベル を取得、設定</summary>
@@ -23,8 +24,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>レベル を取得、設定</summary>
         public int Level
         {
-            get { return this.level_; }
-            set { this.SetProperty(ref level_, value); }
+            get => this.level_;
+
+            set => this.SetProperty(ref this.level_, value);
         }
 
         /// <summary>技の種類 を取得、設定</summary>
@@ -32,8 +34,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>技の種類 を取得、設定</summary>
         public TrickCategory TrickCategory
         {
-            get { return this.trickCategory_; }
-            set { this.SetProperty(ref trickCategory_, value); }
+            get => this.trickCategory_;
+
+            set => this.SetProperty(ref this.trickCategory_, value);
         }
 
         /// <summary>技 を取得、設定</summary>
@@ -41,8 +44,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>技 を取得、設定</summary>
         public TrickEntity TrickEntity
         {
-            get { return this.trickEntity_; }
-            set { this.SetProperty(ref trickEntity_, value); }
+            get => this.trickEntity_;
+
+            set => this.SetProperty(ref this.trickEntity_, value);
         }
 
         /// <summary>更新フラグ を取得、設定</summary>
@@ -50,8 +54,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>更新フラグ を取得、設定</summary>
         public bool IsUpdated
         {
-            get { return this.isUpdated_; }
-            set { this.SetProperty(ref isUpdated_, value); }
+            get => this.isUpdated_;
+
+            set => this.SetProperty(ref this.isUpdated_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

@@ -16,8 +16,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>説明 を取得、設定</summary>
         public MTObservableCollection<TypeEntity> Types
         {
-            get { return this.type_; }
-            set { this.SetProperty(ref this.type_, value); }
+            get => this.type_;
+
+            set => this.SetProperty(ref this.type_, value);
         }
 
         /// <summary>データセット を取得、設定</summary>
@@ -25,8 +26,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>データセット を取得、設定</summary>
         public DataTable CsvTable
         {
-            get { return this.csvTable_; }
-            set { this.SetProperty(ref csvTable_, value); }
+            get => this.csvTable_;
+
+            set => this.SetProperty(ref this.csvTable_, value);
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -34,14 +36,15 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>検索条件 を取得、設定</summary>
         public PictureBookFilter Filter
         {
-            get { return this.filter_; }
-            set { this.SetProperty(ref filter_, value); }
+            get => this.filter_;
+
+            set => this.SetProperty(ref this.filter_, value);
         }
 
         /// <summary>登録コマンド を取得、設定</summary>
         private DelegateCommand registCommand_;
         /// <summary>登録コマンド を取得、設定</summary>
-        public DelegateCommand RegistCommand { get { return this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist)); } }
+        public DelegateCommand RegistCommand => this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist));
 
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -52,8 +55,9 @@ namespace PokemonApp.PictureBook.ViewModels
         public DelegateCommand SerchCommand
 
         {
-            get { return this.serchCommand_ ?? new DelegateCommand(this.Serch); }
-            set { this.SetProperty(ref serchCommand_, value); }
+            get => this.serchCommand_ ?? new DelegateCommand(this.Serch);
+
+            set => this.SetProperty(ref this.serchCommand_, value);
         }
 
         /// <summary>絞り込みコマンド を取得、設定</summary>
@@ -62,8 +66,9 @@ namespace PokemonApp.PictureBook.ViewModels
         public DelegateCommand FilteringCommand
 
         {
-            get { return this.filteringCommand_ ?? new DelegateCommand(this.Filtering); }
-            set { this.SetProperty(ref this.filteringCommand_, value); }
+            get => this.filteringCommand_ ?? new DelegateCommand(this.Filtering);
+
+            set => this.SetProperty(ref this.filteringCommand_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

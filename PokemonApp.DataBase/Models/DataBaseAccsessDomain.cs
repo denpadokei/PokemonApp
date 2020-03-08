@@ -12,8 +12,9 @@ namespace PokemonApp.DataBase.Models
         /// <summary>コレクション を取得、設定</summary>
         public MTObservableCollection<string> Collection
         {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
+            get => this.collection_;
+
+            set => this.SetProperty(ref this.collection_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

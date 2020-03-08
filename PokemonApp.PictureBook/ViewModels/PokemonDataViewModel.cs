@@ -31,8 +31,8 @@ namespace PokemonApp.PictureBook.ViewModels
         {
             base.OnPropertyChanged(args);
             if (args.PropertyName == nameof(this.CurrentView) && this.CurrentView is TabItem context) {
-                if (context.DataContext is IOpend isOpend) {
-                    
+                if (context.DataContext is IViewModelBaseable isOpend) {
+
                 }
             }
         }

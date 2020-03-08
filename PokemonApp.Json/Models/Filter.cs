@@ -11,8 +11,9 @@ namespace PokemonApp.Json.Models
         /// <summary>名前 を取得、設定</summary>
         public string Name
         {
-            get { return this.name_; }
-            set { this.SetProperty(ref name_, value); }
+            get => this.name_;
+
+            set => this.SetProperty(ref this.name_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

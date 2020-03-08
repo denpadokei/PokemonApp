@@ -14,8 +14,9 @@ namespace PokemonApp.Json.Models
         /// <summary>ポケモンコレクション を取得、設定</summary>
         public MTObservableCollection<JsonPokemonEntity> Collection
         {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
+            get => this.collection_;
+
+            set => this.SetProperty(ref this.collection_, value);
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -23,8 +24,9 @@ namespace PokemonApp.Json.Models
         /// <summary>検索条件 を取得、設定</summary>
         public Filter Filter
         {
-            get { return this.filter_; }
-            set { this.SetProperty(ref filter_, value); }
+            get => this.filter_;
+
+            set => this.SetProperty(ref this.filter_, value);
         }
 
         #endregion

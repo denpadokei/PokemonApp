@@ -15,7 +15,7 @@ using Unity;
 
 namespace PokemonApp.Core.Bases
 {
-    public class BaseWindowViewModel : BindableBase, IDialogAware, IInitialize, IWindowPanel, IDisposable
+    public class BaseWindowViewModel : BindableBase, IViewModelBaseable
     {
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // プロパティ
@@ -37,8 +37,9 @@ namespace PokemonApp.Core.Bases
         /// <summary>タイトル を取得、設定</summary>
         public string Title
         {
-            get { return this.title_; }
-            set { this.SetProperty(ref this.title_, value); }
+            get => this.title_;
+
+            set => this.SetProperty(ref this.title_, value);
         }
 
         /// <summary>ダイアログ用Openフラグ を取得、設定</summary>
@@ -46,8 +47,9 @@ namespace PokemonApp.Core.Bases
         /// <summary>ダイアログ用Openフラグ を取得、設定</summary>
         public bool IsOpen
         {
-            get { return this.isOpen_; }
-            set { this.SetProperty(ref this.isOpen_, value); }
+            get => this.isOpen_;
+
+            set => this.SetProperty(ref this.isOpen_, value);
         }
 
         /// <summary>読み込み中 を取得、設定</summary>
@@ -55,8 +57,9 @@ namespace PokemonApp.Core.Bases
         /// <summary>読み込み中 を取得、設定</summary>
         public bool IsLoading
         {
-            get { return this.isLoading_; }
-            set { this.SetProperty(ref this.isLoading_, value); }
+            get => this.isLoading_;
+
+            set => this.SetProperty(ref this.isLoading_, value);
         }
 
         /// <summary>開いているタブ を取得、設定</summary>
@@ -64,16 +67,18 @@ namespace PokemonApp.Core.Bases
         /// <summary>開いているタブ を取得、設定</summary>
         public object CurrentView
         {
-            get { return this.currentView_; }
-            set { this.SetProperty(ref this.currentView_, value); }
+            get => this.currentView_;
+
+            set => this.SetProperty(ref this.currentView_, value);
         }
         /// <summary>マスター を取得、設定</summary>
         private Master master_;
         /// <summary>マスター を取得、設定</summary>
         public Master Master
         {
-            get { return this.master_; }
-            set { this.SetProperty(ref this.master_, value); }
+            get => this.master_;
+
+            set => this.SetProperty(ref this.master_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -81,7 +86,7 @@ namespace PokemonApp.Core.Bases
         /// <summary>ロードコマンド を取得、設定</summary>
         private DelegateCommand loadedCommand_;
         /// <summary>ロードコマンド を取得、設定</summary>
-        public DelegateCommand LoadedCommand { get { return this.loadedCommand_ ?? (this.loadedCommand_ = new DelegateCommand(this.OnInitialize)); } }
+        public DelegateCommand LoadedCommand => this.loadedCommand_ ?? (this.loadedCommand_ = new DelegateCommand(this.OnInitialize));
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
@@ -116,7 +121,7 @@ namespace PokemonApp.Core.Bases
             }
 
             if (args.PropertyName == nameof(this.CurrentView) && this.CurrentView is TabItem tabItem) {
-                if (tabItem.DataContext is IOpend context) {
+                if (tabItem.DataContext is IViewModelBaseable context) {
                     WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.RemoveHandler(
                         context, nameof(INotifyPropertyChanged.PropertyChanged), this.OnCurrentViewPropertyChanged);
                     WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.AddHandler(
@@ -145,7 +150,7 @@ namespace PokemonApp.Core.Bases
 
         protected virtual void OnCurrentViewPropertyChanged(Object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(IOpend.IsLoading) && sender is IOpend context) {
+            if (e.PropertyName == nameof(IViewModelBaseable.IsLoading) && sender is IViewModelBaseable context) {
                 this.Logger.Info("タブアイテムのIsLoadingが切り替わりました。");
                 this.IsLoading = context.IsLoading;
             }
@@ -167,7 +172,7 @@ namespace PokemonApp.Core.Bases
 
         public virtual void OnDialogClosed()
         {
-
+            this.Dispose();
         }
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
@@ -208,7 +213,7 @@ namespace PokemonApp.Core.Bases
             if (!this.disposedValue) {
                 if (disposing) {
                     // TODO: マネージ状態を破棄します (マネージ オブジェクト)。
-                    this.Logger.Info("Dispose プログレスバーを閉じます（半ギレ）");
+                    this.Logger.Info("Dispose プログレスバーを閉じます");
                     this.CustomDialogService?.CloseProgress();
                 }
 
@@ -230,7 +235,7 @@ namespace PokemonApp.Core.Bases
         public void Dispose()
         {
             // このコードを変更しないでください。クリーンアップ コードを上の Dispose(bool disposing) に記述します。
-            Dispose(true);
+            this.Dispose(true);
             // TODO: 上のファイナライザーがオーバーライドされる場合は、次の行のコメントを解除してください。
             // GC.SuppressFinalize(this);
         }

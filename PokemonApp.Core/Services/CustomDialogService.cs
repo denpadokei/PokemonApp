@@ -18,8 +18,9 @@ namespace PokemonApp.Core.Services
         /// <summary>ダイアログOpenフラグ を取得、設定</summary>
         public bool IsOpen
         {
-            get { return this.isOpen_; }
-            set { this.SetProperty(ref this.isOpen_, value); }
+            get => this.isOpen_;
+
+            set => this.SetProperty(ref this.isOpen_, value);
         }
         public async Task<bool> ShowMessege(string message, string identifir = "")
         {

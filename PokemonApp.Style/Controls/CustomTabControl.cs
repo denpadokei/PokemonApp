@@ -19,8 +19,9 @@ namespace PokemonApp.Style.Controls
         public static readonly DependencyProperty IsLoadingProperty = IsLoadingPropertyKey.DependencyProperty;
         public bool IsLoading
         {
-            get { return (bool)this.GetValue(IsLoadingProperty); }
-            set { this.SetValue(IsLoadingPropertyKey, value); }
+            get => (bool)this.GetValue(IsLoadingProperty);
+
+            set => this.SetValue(IsLoadingPropertyKey, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -38,7 +39,7 @@ namespace PokemonApp.Style.Controls
         {
             base.OnApplyTemplate();
             if (this.SelectedItem is TabItem context) {
-                if (context.DataContext is IOpend tabContext) {
+                if (context.DataContext is IViewModelBaseable tabContext) {
                     WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.RemoveHandler(
                         tabContext, nameof(INotifyPropertyChanged.PropertyChanged), this.OnDataContextPropertyChanged);
                     WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.AddHandler(
@@ -51,9 +52,9 @@ namespace PokemonApp.Style.Controls
         #region // プライベートメソッド
         private void OnDataContextPropertyChanged(Object sender, PropertyChangedEventArgs e)
         {
-            if (sender is IOpend context && e.PropertyName == nameof(IOpend.IsLoading)) {
+            if (sender is IViewModelBaseable context && e.PropertyName == nameof(IViewModelBaseable.IsLoading)) {
                 var window = Window.GetWindow(this);
-                if (window.DataContext is IOpend windowContext) {
+                if (window.DataContext is IViewModelBaseable windowContext) {
                     windowContext.IsLoading = context.IsLoading;
                 }
             }
@@ -63,7 +64,7 @@ namespace PokemonApp.Style.Controls
         {
             base.OnSelectionChanged(e);
             var window = Window.GetWindow(this);
-            if (window.DataContext is IOpend context) {
+            if (window.DataContext is IViewModelBaseable context) {
                 WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.RemoveHandler(
                     context, nameof(INotifyPropertyChanged.PropertyChanged), this.OnDataContextPropertyChanged);
                 WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.AddHandler(

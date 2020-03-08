@@ -49,7 +49,7 @@
             </StackPanel>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <control:CustomDataGrid Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Pokemons}" SelectedItem="{Binding CurrentPokemon}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10" >

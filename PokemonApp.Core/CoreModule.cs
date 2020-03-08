@@ -1,7 +1,7 @@
 ﻿using Dragablz;
+using PokemonApp.Core.Dialogs;
 using PokemonApp.Core.Interfaces;
 using PokemonApp.Core.Models;
-using PokemonApp.Core.Dialogs;
 using PokemonApp.Core.Services;
 using Prism.Ioc;
 using Prism.Modularity;

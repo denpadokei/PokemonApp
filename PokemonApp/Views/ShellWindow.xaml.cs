@@ -12,7 +12,7 @@ namespace PokemonApp.Views
     {
         public ShellWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         protected override void OnClosed(EventArgs e)

@@ -13,8 +13,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>項目名 を取得、設定</summary>
         public string Name
         {
-            get { return this.name_; }
-            set { this.SetProperty(ref name_, value); }
+            get => this.name_;
+
+            set => this.SetProperty(ref this.name_, value);
         }
 
         /// <summary>能力値の入れ物 を取得、設定</summary>
@@ -22,8 +23,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>能力値の入れ物 を取得、設定</summary>
         public MTObservableCollection<int> Numbers
         {
-            get { return this.numbers_; }
-            set { this.SetProperty(ref numbers_, value); }
+            get => this.numbers_;
+
+            set => this.SetProperty(ref this.numbers_, value);
         }
 
         /// <summary>個体値 を取得、設定</summary>
@@ -31,8 +33,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>個体値 を取得、設定</summary>
         public int Individualvalue
         {
-            get { return this.individualvalue_; }
-            set { this.SetProperty(ref individualvalue_, value); }
+            get => this.individualvalue_;
+
+            set => this.SetProperty(ref this.individualvalue_, value);
         }
 
         /// <summary>努力値 を取得、設定</summary>
@@ -40,8 +43,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>努力値 を取得、設定</summary>
         public int EffortValue
         {
-            get { return this.effortValue_; }
-            set { this.SetProperty(ref effortValue_, value); }
+            get => this.effortValue_;
+
+            set => this.SetProperty(ref this.effortValue_, value);
         }
 
         #endregion
@@ -50,12 +54,12 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>最小値入力コマンド を取得、設定</summary>
         private DelegateCommand minCommand_;
         /// <summary>最小値入力コマンド を取得、設定</summary>
-        public DelegateCommand MinCommand { get { return this.minCommand_ ?? (this.minCommand_ = new DelegateCommand(this.InputToMin)); } }
+        public DelegateCommand MinCommand => this.minCommand_ ?? (this.minCommand_ = new DelegateCommand(this.InputToMin));
 
         /// <summary>最大値入力コマンド を取得、設定</summary>
         private DelegateCommand maxCommand_;
         /// <summary>最大値入力コマンド を取得、設定</summary>
-        public DelegateCommand MaxCommand { get { return this.maxCommand_ ?? (this.maxCommand_ = new DelegateCommand(this.InputToMax)); } }
+        public DelegateCommand MaxCommand => this.maxCommand_ ?? (this.maxCommand_ = new DelegateCommand(this.InputToMax));
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド

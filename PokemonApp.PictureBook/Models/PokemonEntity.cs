@@ -30,8 +30,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>更新フラグ を取得、設定</summary>
         public bool IsUpdated
         {
-            get { return this.isUpdated_; }
-            set { this.SetProperty(ref isUpdated_, value); }
+            get => this.isUpdated_;
+
+            set => this.SetProperty(ref this.isUpdated_, value);
         }
 
         public MTObservableCollection<TrickEntity> LearnTrickList { get; set; }

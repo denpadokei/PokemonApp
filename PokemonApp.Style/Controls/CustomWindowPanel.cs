@@ -15,8 +15,9 @@ namespace PokemonApp.Style.Controls
         public static readonly DependencyProperty IsLoadingProperty = IsLoadingPropertyKey.DependencyProperty;
         public bool IsLoading
         {
-            get { return (bool)this.GetValue(IsLoadingProperty); }
-            set { this.SetValue(IsLoadingPropertyKey, value); }
+            get => (bool)this.GetValue(IsLoadingProperty);
+
+            set => this.SetValue(IsLoadingPropertyKey, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -45,11 +46,11 @@ namespace PokemonApp.Style.Controls
         /// <param name="e"></param>
         private void OnContextPropertyChanged(Object sender, PropertyChangedEventArgs e)
         {
-            if (sender is IOpend context) {
+            if (sender is IViewModelBaseable context) {
                 this.IsLoading = context.IsLoading;
             }
         }
-        
+
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // パブリックメソッド

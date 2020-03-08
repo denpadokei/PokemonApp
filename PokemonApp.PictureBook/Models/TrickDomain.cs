@@ -17,8 +17,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>コレクション を取得、設定</summary>
         public MTObservableCollection<TrickEntity> Collection
         {
-            get { return this.collection_; }
-            set { this.SetProperty(ref collection_, value); }
+            get => this.collection_;
+
+            set => this.SetProperty(ref this.collection_, value);
         }
 
         /// <summary>選択中の技 を取得、設定</summary>
@@ -26,8 +27,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>選択中の技 を取得、設定</summary>
         public TrickEntity CurrentMove
         {
-            get { return this.currentMove_; }
-            set { this.SetProperty(ref currentMove_, value); }
+            get => this.currentMove_;
+
+            set => this.SetProperty(ref this.currentMove_, value);
         }
 
         /// <summary>ポケモンのコレクション を取得、設定</summary>
@@ -35,8 +37,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>ポケモンのコレクション を取得、設定</summary>
         public MTObservableCollection<PokemonEntity> PokemonCollection
         {
-            get { return this.pokemonCollection_; }
-            set { this.SetProperty(ref pokemonCollection_, value); }
+            get => this.pokemonCollection_;
+
+            set => this.SetProperty(ref this.pokemonCollection_, value);
         }
 
         /// <summary>初期リスト を取得、設定</summary>
@@ -44,8 +47,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>初期リスト を取得、設定</summary>
         public IReadOnlyList<TrickEntity> TrickList
         {
-            get { return this.trickList_; }
-            set { this.SetProperty(ref trickList_, value); }
+            get => this.trickList_;
+
+            set => this.SetProperty(ref this.trickList_, value);
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -53,8 +57,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>検索条件 を取得、設定</summary>
         public PictureBookFilter Filter
         {
-            get { return this.filter_; }
-            set { this.SetProperty(ref filter_, value); }
+            get => this.filter_;
+
+            set => this.SetProperty(ref this.filter_, value);
         }
 
         #endregion
@@ -94,7 +99,7 @@ namespace PokemonApp.PictureBook.Models
         public void SetPokemon()
         {
             this.PokemonCollection.Clear();
-            if (CurrentMove.TrickId == 0) {
+            if (this.CurrentMove.TrickId == 0) {
                 return;
             }
             using (var repository = new Repository()) {

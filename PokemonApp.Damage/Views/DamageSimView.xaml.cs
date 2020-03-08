@@ -9,7 +9,7 @@ namespace PokemonApp.Damage.Views
     {
         public DamageSimView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

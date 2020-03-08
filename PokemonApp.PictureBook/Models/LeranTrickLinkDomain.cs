@@ -13,8 +13,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>覚える技コレクション を取得、設定</summary>
         public MTObservableCollection<LinkTrickEntity> LinkTrickColection
         {
-            get { return this.linkTrickCollection_; }
-            set { this.SetProperty(ref linkTrickCollection_, value); }
+            get => this.linkTrickCollection_;
+
+            set => this.SetProperty(ref this.linkTrickCollection_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

@@ -21,6 +21,9 @@
             <action:ChangeWindowAttribute IsRemoveOwner="True"/>
             <action:DataContextInitialize/>
         </b:EventTrigger>
+        <b:EventTrigger EventName="UnLoaded">
+            <action:DataBaseContextDispose/>
+        </b:EventTrigger>
     </b:Interaction.Triggers>
     <material:DialogHost IsOpen="{Binding IsOpen}" Identifier="ProgressHost">
         <dragablz:TabablzControl SelectedItem="{Binding CurrentView}" ConsolidateOrphanedItems="True">

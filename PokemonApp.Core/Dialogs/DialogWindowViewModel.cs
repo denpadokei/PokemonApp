@@ -11,8 +11,9 @@ namespace PokemonApp.Core.Dialogs
         /// <summary>テキスト を取得、設定</summary>
         public string Message
         {
-            get { return this.message_; }
-            set { this.SetProperty(ref message_, value); }
+            get => this.message_;
+
+            set => this.SetProperty(ref this.message_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

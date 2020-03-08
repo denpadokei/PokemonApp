@@ -16,8 +16,9 @@ namespace PokemonApp.AbilityValueConverter.ViewModels
         /// <summary>ポケモン名前一覧 を取得、設定</summary>
         public MTObservableCollection<string> PokemonNames
         {
-            get { return this.pokemonNames_; }
-            set { this.SetProperty(ref pokemonNames_, value); }
+            get => this.pokemonNames_;
+
+            set => this.SetProperty(ref this.pokemonNames_, value);
         }
 
         /// <summary>選択中のポケモン を取得、設定</summary>
@@ -25,16 +26,18 @@ namespace PokemonApp.AbilityValueConverter.ViewModels
         /// <summary>選択中のポケモン を取得、設定</summary>
         public string CurrentPokemon
         {
-            get { return this.currentPokemon_; }
-            set { this.SetProperty(ref currentPokemon_, value); }
+            get => this.currentPokemon_;
+
+            set => this.SetProperty(ref this.currentPokemon_, value);
         }
         /// <summary>能力値コントローラーリスト を取得、設定</summary>
         private MTObservableCollection<NumberInputControler> controlers_;
         /// <summary>能力値コントローラーリスト を取得、設定</summary>
         public MTObservableCollection<NumberInputControler> Controlers
         {
-            get { return this.controlers_; }
-            set { this.SetProperty(ref controlers_, value); }
+            get => this.controlers_;
+
+            set => this.SetProperty(ref this.controlers_, value);
         }
 
         /// <summary>推定固定値 を取得、設定</summary>
@@ -42,8 +45,9 @@ namespace PokemonApp.AbilityValueConverter.ViewModels
         /// <summary>推定固定値 を取得、設定</summary>
         public MTObservableCollection<IndividualEntity> Individuals
         {
-            get { return this.individuals_; }
-            set { this.SetProperty(ref individuals_, value); }
+            get => this.individuals_;
+
+            set => this.SetProperty(ref this.individuals_, value);
         }
 
         /// <summary>個体値一覧表 を取得、設定</summary>
@@ -51,8 +55,9 @@ namespace PokemonApp.AbilityValueConverter.ViewModels
         /// <summary>個体値一覧表 を取得、設定</summary>
         public MTObservableCollection<AbilityEntity> Abilityes
         {
-            get { return this.abilityes_; }
-            set { this.SetProperty(ref abilityes_, value); }
+            get => this.abilityes_;
+
+            set => this.SetProperty(ref this.abilityes_, value);
         }
 
         #endregion
@@ -61,7 +66,7 @@ namespace PokemonApp.AbilityValueConverter.ViewModels
         /// <summary>絞り込みコマンド を取得、設定</summary>
         private DelegateCommand filteringCommand_;
         /// <summary>絞り込みコマンド を取得、設定</summary>
-        public DelegateCommand FilteringCommand { get { return this.filteringCommand_ ?? (this.filteringCommand_ = new DelegateCommand(this.Filtering)); } }
+        public DelegateCommand FilteringCommand => this.filteringCommand_ ?? (this.filteringCommand_ = new DelegateCommand(this.Filtering));
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド

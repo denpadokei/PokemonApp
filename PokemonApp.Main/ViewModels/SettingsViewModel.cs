@@ -13,8 +13,9 @@ namespace PokemonApp.Main.ViewModels
         /// <summary>テーマのフラグ を取得、設定</summary>
         public bool IsDark
         {
-            get { return this.isDark_; }
-            set { this.SetProperty(ref isDark_, value); }
+            get => this.isDark_;
+
+            set => this.SetProperty(ref this.isDark_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -22,7 +23,7 @@ namespace PokemonApp.Main.ViewModels
         /// <summary>トグルコマンド を取得、設定</summary>
         private DelegateCommand toggleCommand_;
         /// <summary>トグルコマンド を取得、設定</summary>
-        public DelegateCommand ToggleCommand { get { return this.toggleCommand_ ?? (this.toggleCommand_ = new DelegateCommand(this.Change)); } }
+        public DelegateCommand ToggleCommand => this.toggleCommand_ ?? (this.toggleCommand_ = new DelegateCommand(this.Change));
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド

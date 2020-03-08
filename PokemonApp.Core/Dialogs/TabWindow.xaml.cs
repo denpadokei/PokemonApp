@@ -1,5 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using Prism.Services.Dialogs;
+using System;
 
 namespace PokemonApp.Core.Dialogs
 {
@@ -11,7 +12,15 @@ namespace PokemonApp.Core.Dialogs
 
         public TabWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if (this.DataContext is IDisposable context) {
+                context.Dispose();
+            }
         }
 
         public IDialogResult Result { get; set; }

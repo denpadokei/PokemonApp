@@ -12,8 +12,9 @@ namespace PokemonApp.Damage.Models
         /// <summary>レベル を取得、設定</summary>
         public int Level
         {
-            get { return this.level_; }
-            set { this.SetProperty(ref level_, value); }
+            get => this.level_;
+
+            set => this.SetProperty(ref this.level_, value);
         }
 
         /// <summary>技の威力 を取得、設定</summary>
@@ -21,8 +22,9 @@ namespace PokemonApp.Damage.Models
         /// <summary>技の威力 を取得、設定</summary>
         public int Power
         {
-            get { return this.power_; }
-            set { this.SetProperty(ref power_, value); }
+            get => this.power_;
+
+            set => this.SetProperty(ref this.power_, value);
         }
 
         /// <summary>攻撃値 を取得、設定</summary>
@@ -30,8 +32,9 @@ namespace PokemonApp.Damage.Models
         /// <summary>攻撃値 を取得、設定</summary>
         public int PowerValue
         {
-            get { return this.powerValue_; }
-            set { this.SetProperty(ref powerValue_, value); }
+            get => this.powerValue_;
+
+            set => this.SetProperty(ref this.powerValue_, value);
         }
 
         /// <summary>防御値 を取得、設定</summary>
@@ -39,8 +42,9 @@ namespace PokemonApp.Damage.Models
         /// <summary>防御値 を取得、設定</summary>
         public int BlockValue
         {
-            get { return this.blockValue_; }
-            set { this.SetProperty(ref blockValue_, value == 0 ? 1 : value); }
+            get => this.blockValue_;
+
+            set => this.SetProperty(ref this.blockValue_, value == 0 ? 1 : value);
         }
 
         /// <summary>倍率 を取得、設定</summary>
@@ -48,8 +52,9 @@ namespace PokemonApp.Damage.Models
         /// <summary>倍率 を取得、設定</summary>
         public double Magnification
         {
-            get { return this.magnification_; }
-            set { this.SetProperty(ref magnification_, value); }
+            get => this.magnification_;
+
+            set => this.SetProperty(ref this.magnification_, value);
         }
 
         /// <summary>最低値 取得、設定</summary>
@@ -57,8 +62,9 @@ namespace PokemonApp.Damage.Models
         /// <summary>最低値 を取得、設定</summary>
         public int Min
         {
-            get { return this.min_; }
-            set { this.SetProperty(ref min_, value); }
+            get => this.min_;
+
+            set => this.SetProperty(ref this.min_, value);
         }
 
         /// <summary>最大値 を取得、設定</summary>
@@ -66,8 +72,9 @@ namespace PokemonApp.Damage.Models
         /// <summary>最大値 を取得、設定</summary>
         public int Max
         {
-            get { return this.Max_; }
-            set { this.SetProperty(ref Max_, value); }
+            get => this.Max_;
+
+            set => this.SetProperty(ref this.Max_, value);
         }
 
         #endregion

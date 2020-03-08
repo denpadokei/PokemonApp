@@ -9,8 +9,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>項目名 を取得、設定</summary>
         public string Name
         {
-            get { return this.name_; }
-            set { this.SetProperty(ref name_, value); }
+            get => this.name_;
+
+            set => this.SetProperty(ref this.name_, value);
         }
 
         /// <summary>値 を取得、設定</summary>
@@ -18,8 +19,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>値 を取得、設定</summary>
         public int? Value
         {
-            get { return this.value_; }
-            set { this.SetProperty(ref value_, value); }
+            get => this.value_;
+
+            set => this.SetProperty(ref this.value_, value);
         }
 
         public IndividualEntity(string name = "", int? value = null)

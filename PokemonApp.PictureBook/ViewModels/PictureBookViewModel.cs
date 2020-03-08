@@ -1,5 +1,6 @@
 ﻿using PokemonApp.Core.Bases;
 using PokemonApp.Core.Collections;
+using PokemonApp.Core.Models;
 using PokemonApp.PictureBook.Models;
 using PokemonApp.PictureBook.Views;
 using Prism.Commands;
@@ -18,8 +19,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>説明 を取得、設定</summary>
         public MTObservableCollection<PokemonEntity> Pokemons
         {
-            get { return this.pokemons_; }
-            set { this.SetProperty(ref this.pokemons_, value); }
+            get => this.pokemons_;
+
+            set => this.SetProperty(ref this.pokemons_, value);
         }
 
         /// <summary>覚える技コレクション を取得、設定</summary>
@@ -27,8 +29,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>覚える技コレクション を取得、設定</summary>
         public MTObservableCollection<TrickEntity> TrickCollection
         {
-            get { return this.trickCollection_; }
-            set { this.SetProperty(ref this.trickCollection_, value); }
+            get => this.trickCollection_;
+
+            set => this.SetProperty(ref this.trickCollection_, value);
         }
 
         /// <summary>選択中 を取得、設定</summary>
@@ -36,8 +39,9 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>選択中 を取得、設定</summary>
         public PokemonEntity CurrentPokemon
         {
-            get { return this.currentPokemon_ ?? (this.currentPokemon_ = new PokemonEntity()); }
-            set { this.SetProperty(ref this.currentPokemon_, value); }
+            get => this.currentPokemon_ ?? (this.currentPokemon_ = new PokemonEntity());
+
+            set => this.SetProperty(ref this.currentPokemon_, value);
         }
 
         /// <summary>検索条件 を取得、設定</summary>
@@ -45,14 +49,15 @@ namespace PokemonApp.PictureBook.ViewModels
         /// <summary>検索条件 を取得、設定</summary>
         public PictureBookFilter Filter
         {
-            get { return this.filter_; }
-            set { this.SetProperty(ref this.filter_, value); }
+            get => this.filter_;
+
+            set => this.SetProperty(ref this.filter_, value);
         }
 
         /// <summary>登録コマンド を取得、設定</summary>
         private DelegateCommand registCommand_;
         /// <summary>登録コマンド を取得、設定</summary>
-        public DelegateCommand RegistCommand { get { return this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist)); } }
+        public DelegateCommand RegistCommand => this.registCommand_ ?? (this.registCommand_ = new DelegateCommand(this.Regist));
 
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
@@ -63,8 +68,9 @@ namespace PokemonApp.PictureBook.ViewModels
         public DelegateCommand SerchCommand
 
         {
-            get { return this.serchCommand_ ?? new DelegateCommand(this.Serch); }
-            set { this.SetProperty(ref serchCommand_, value); }
+            get => this.serchCommand_ ?? new DelegateCommand(this.Serch);
+
+            set => this.SetProperty(ref this.serchCommand_, value);
         }
 
         /// <summary>絞り込みコマンド を取得、設定</summary>
@@ -73,24 +79,25 @@ namespace PokemonApp.PictureBook.ViewModels
         public DelegateCommand FilteringCommand
 
         {
-            get { return this.filteringCommand_ ?? new DelegateCommand(this.Filtering); }
-            set { this.SetProperty(ref this.filteringCommand_, value); }
+            get => this.filteringCommand_ ?? new DelegateCommand(this.Filtering);
+
+            set => this.SetProperty(ref this.filteringCommand_, value);
         }
 
         /// <summary>特性を紐づけるコマンド を取得、設定</summary>
         private DelegateCommand comittCommand_;
         /// <summary>特性を紐づけるコマンド を取得、設定</summary>
-        public DelegateCommand ComittCommand { get { return this.comittCommand_ ?? (this.comittCommand_ = new DelegateCommand(this.CharComit)); } }
+        public DelegateCommand ComittCommand => this.comittCommand_ ?? (this.comittCommand_ = new DelegateCommand(this.CharComit));
 
         /// <summary>タイプを紐づけるコマンド を取得、設定</summary>
         private DelegateCommand typeComitCommand_;
         /// <summary>タイプを紐づけるコマンド を取得、設定</summary>
-        public DelegateCommand TypeComitCommand { get { return this.typeComitCommand_ ?? (this.typeComitCommand_ = new DelegateCommand(this.TypeComit)); } }
+        public DelegateCommand TypeComitCommand => this.typeComitCommand_ ?? (this.typeComitCommand_ = new DelegateCommand(this.TypeComit));
 
         /// <summary>覚える技紐づけウインドウコマンド を取得、設定</summary>
         private DelegateCommand trickWindowcommand_;
         /// <summary>覚える技紐づけウインドウコマンド を取得、設定</summary>
-        public DelegateCommand TrickWindowCommand { get { return this.trickWindowcommand_ ?? (this.trickWindowcommand_ = new DelegateCommand(this.TrickComit)); } }
+        public DelegateCommand TrickWindowCommand => this.trickWindowcommand_ ?? (this.trickWindowcommand_ = new DelegateCommand(this.TrickComit));
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*
         #region // コマンド用メソッド
@@ -126,7 +133,7 @@ namespace PokemonApp.PictureBook.ViewModels
         private void TrickComit()
         {
             if (this.CurrentPokemon.Id != 0) {
-                this.WindowManager.ShowDialog(nameof(LearnTrickLink), new DialogParameters() { { "PokemonId", CurrentPokemon.Id }, { "PokemonName", CurrentPokemon.Name } }, _ => { });
+                this.WindowManager.ShowDialog(nameof(LearnTrickLink), new DialogParameters() { { "PokemonId", this.CurrentPokemon.Id }, { "PokemonName", this.CurrentPokemon.Name } }, _ => { });
             }
         }
 
@@ -156,7 +163,9 @@ namespace PokemonApp.PictureBook.ViewModels
         protected override void OnMasterPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnMasterPropertyChanged(sender, e);
-            this.Serch();
+            if (sender is Master && e.PropertyName == nameof(this.Master.Generate)) {
+                this.Serch();
+            }
         }
 
         public override void OnInitialize()

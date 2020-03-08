@@ -9,7 +9,7 @@ namespace PokemonApp.PictureBook.Views
     {
         public TrickView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

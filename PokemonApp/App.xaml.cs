@@ -30,7 +30,7 @@ namespace PokemonApp
         protected override Window CreateShell()
         {
 
-            return Container.Resolve<ShellWindow>();
+            return this.Container.Resolve<ShellWindow>();
         }
         protected override void OnInitialized()
         {
@@ -54,13 +54,13 @@ namespace PokemonApp
             var primaryColor = SwatchHelper.Lookup[MaterialDesignColor.Grey900];
             var accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime50];
             var theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
-            Resources.SetTheme(theme);
+            this.Resources.SetTheme(theme);
             base.OnStartup(e);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+
             //containerRegistry.RegisterDialog<ConfirmationWindowView>();
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

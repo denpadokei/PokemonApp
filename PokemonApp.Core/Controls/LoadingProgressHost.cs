@@ -34,7 +34,7 @@ namespace PokemonApp.Core.Controls
         public override void OnApplyTemplate()
         {
             var window = Window.GetWindow(this);
-            if (window.DataContext is IOpend context) {
+            if (window.DataContext is IViewModelBaseable context) {
                 WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.RemoveHandler(
                     context, nameof(INotifyPropertyChanged.PropertyChanged), this.OnContextPropertyChanged);
                 WeakEventManager<INotifyPropertyChanged, PropertyChangedEventArgs>.AddHandler(
@@ -52,7 +52,7 @@ namespace PokemonApp.Core.Controls
         /// <param name="e"></param>
         private void OnContextPropertyChanged(Object sender, PropertyChangedEventArgs e)
         {
-            if (sender is IWindowPanel context) {
+            if (sender is IViewModelBaseable context) {
                 this.IsOpen = context.IsLoading;
             }
         }

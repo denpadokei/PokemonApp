@@ -9,7 +9,7 @@ namespace PokemonApp.Main.Views
     {
         public SettingsView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

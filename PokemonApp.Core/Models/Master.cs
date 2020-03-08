@@ -27,7 +27,8 @@ namespace PokemonApp.Core.Models
         /// <summary>世代 を取得、設定</summary>
         public int Generate
         {
-            get { return this.genrate_; }
+            get => this.genrate_;
+
             set
             {
                 if (this.SetProperty(ref this.genrate_, value)) {
@@ -41,8 +42,9 @@ namespace PokemonApp.Core.Models
         /// <summary>テーマ を取得、設定</summary>
         public bool IsDark
         {
-            get { return this.isDark_; }
-            set { this.SetProperty(ref this.isDark_, value); }
+            get => this.isDark_;
+
+            set => this.SetProperty(ref this.isDark_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

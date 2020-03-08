@@ -9,8 +9,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>タイプ名 を取得、設定</summary>
         public string Name
         {
-            get { return this.name_; }
-            set { this.SetProperty(ref name_, value); }
+            get => this.name_;
+
+            set => this.SetProperty(ref this.name_, value);
         }
 
         public TypeEntity()

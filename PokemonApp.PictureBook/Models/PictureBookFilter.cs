@@ -11,8 +11,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>ポケモンの名前 を取得、設定</summary>
         public string PokemonName
         {
-            get { return this.pokemonName_ ?? ""; }
-            set { this.SetProperty(ref pokemonName_, value); }
+            get => this.pokemonName_ ?? "";
+
+            set => this.SetProperty(ref this.pokemonName_, value);
         }
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

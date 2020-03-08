@@ -9,7 +9,7 @@ namespace PokemonApp.Core.Dialogs
     {
         public DialogWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

@@ -38,10 +38,7 @@ namespace PokemonApp.Json.Models
         /// <summary>素早さ を取得、設定</summary>
         public int Speed { get; set; }
         /// <summary>種族値合計 を取得、設定</summary>
-        public int SumAll
-        {
-            get { return this.Hp + this.Attack + this.Block + this.Contact + this.Defence + this.Speed; }
-        }
+        public int SumAll => this.Hp + this.Attack + this.Block + this.Contact + this.Defence + this.Speed;
 
         #endregion
         //ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*ﾟ+｡｡+ﾟ*｡+ﾟ ﾟ+｡*

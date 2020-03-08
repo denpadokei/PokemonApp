@@ -12,8 +12,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>技ID を取得、設定</summary>
         public int TrickId
         {
-            get { return this.trickId_; }
-            set { this.SetProperty(ref trickId_, value); }
+            get => this.trickId_;
+
+            set => this.SetProperty(ref this.trickId_, value);
         }
 
         /// <summary>技の名前 を取得、設定</summary>
@@ -21,8 +22,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>技の名前 を取得、設定</summary>
         public string Name
         {
-            get { return this.name_; }
-            set { this.SetProperty(ref name_, value); }
+            get => this.name_;
+
+            set => this.SetProperty(ref this.name_, value);
         }
 
         /// <summary>威力 を取得、設定</summary>
@@ -30,8 +32,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>威力 を取得、設定</summary>
         public int? Power
         {
-            get { return this.power_; }
-            set { this.SetProperty(ref power_, value); }
+            get => this.power_;
+
+            set => this.SetProperty(ref this.power_, value);
         }
 
         /// <summary>命中率 を取得、設定</summary>
@@ -39,8 +42,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>命中率 を取得、設定</summary>
         public int? Rate
         {
-            get { return this.rate_; }
-            set { this.SetProperty(ref rate_, value); }
+            get => this.rate_;
+
+            set => this.SetProperty(ref this.rate_, value);
         }
 
         /// <summary>タイプ を取得、設定</summary>
@@ -48,8 +52,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>タイプ を取得、設定</summary>
         public string Type
         {
-            get { return this.type_; }
-            set { this.SetProperty(ref type_, value); }
+            get => this.type_;
+
+            set => this.SetProperty(ref this.type_, value);
         }
 
         /// <summary>属性 を取得、設定</summary>
@@ -57,8 +62,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>属性 を取得、設定</summary>
         public CategoryAttribute CategoryAttribute
         {
-            get { return this.categoryAttribute_; }
-            set { this.SetProperty(ref categoryAttribute_, value); }
+            get => this.categoryAttribute_;
+
+            set => this.SetProperty(ref this.categoryAttribute_, value);
         }
 
         public string CategoryAttributeDescription => this.CategoryAttribute.GetDescription();
@@ -68,8 +74,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>更新フラグ を取得、設定</summary>
         public bool IsUpdated
         {
-            get { return this.isUpdated_; }
-            set { this.SetProperty(ref isUpdated_, value); }
+            get => this.isUpdated_;
+
+            set => this.SetProperty(ref this.isUpdated_, value);
         }
 
         /// <summary>説明 を取得、設定</summary>
@@ -77,8 +84,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>説明 を取得、設定</summary>
         public string Detial
         {
-            get { return this.detial_; }
-            set { this.SetProperty(ref detial_, value); }
+            get => this.detial_;
+
+            set => this.SetProperty(ref this.detial_, value);
         }
 
     }

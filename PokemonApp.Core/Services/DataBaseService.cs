@@ -25,8 +25,9 @@ namespace PokemonApp.Core.Services
         /// <summary>読み込み中かどうか を取得、設定</summary>
         public bool IsLoading
         {
-            get { return this.isLoading_; }
-            set { this.SetProperty(ref this.isLoading_, value); }
+            get => this.isLoading_;
+
+            set => this.SetProperty(ref this.isLoading_, value);
         }
 
         private Logger Logger => LogManager.GetCurrentClassLogger();
@@ -138,7 +139,7 @@ namespace PokemonApp.Core.Services
             this.dispatcher_ = dispatcherSource.Task.Result; // メンバ変数に dispatcher を保存
 
             // 表のディスパッチャーが終了するタイミングで、こちらのディスパッチャーも終了する
-            Dispatcher.CurrentDispatcher.ShutdownStarted += (s, e) => dispatcher_.BeginInvokeShutdown(DispatcherPriority.Normal);
+            Dispatcher.CurrentDispatcher.ShutdownStarted += (s, e) => this.dispatcher_.BeginInvokeShutdown(DispatcherPriority.Normal);
         }
         #endregion
     }

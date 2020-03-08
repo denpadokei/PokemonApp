@@ -9,8 +9,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>HP を取得、設定</summary>
         public int Hp
         {
-            get { return this.hp_; }
-            set { this.SetProperty(ref hp_, value); }
+            get => this.hp_;
+
+            set => this.SetProperty(ref this.hp_, value);
         }
 
         /// <summary>攻撃 を取得、設定</summary>
@@ -18,8 +19,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>攻撃 を取得、設定</summary>
         public int Attack
         {
-            get { return this.attack_; }
-            set { this.SetProperty(ref attack_, value); }
+            get => this.attack_;
+
+            set => this.SetProperty(ref this.attack_, value);
         }
 
         /// <summary>防御 を取得、設定</summary>
@@ -27,8 +29,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>防御 を取得、設定</summary>
         public int Block
         {
-            get { return this.block_; }
-            set { this.SetProperty(ref block_, value); }
+            get => this.block_;
+
+            set => this.SetProperty(ref this.block_, value);
         }
 
         /// <summary>とくこう を取得、設定</summary>
@@ -36,8 +39,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>とくこう を取得、設定</summary>
         public int Contact
         {
-            get { return this.contact_; }
-            set { this.SetProperty(ref contact_, value); }
+            get => this.contact_;
+
+            set => this.SetProperty(ref this.contact_, value);
         }
 
         /// <summary>とくぼう を取得、設定</summary>
@@ -45,8 +49,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>とくぼう を取得、設定</summary>
         public int Defence
         {
-            get { return this.defence_; }
-            set { this.SetProperty(ref defence_, value); }
+            get => this.defence_;
+
+            set => this.SetProperty(ref this.defence_, value);
         }
 
         /// <summary>すばやさ を取得、設定</summary>
@@ -54,8 +59,9 @@ namespace PokemonApp.AbilityValueConverter.Models
         /// <summary>すばやさ を取得、設定</summary>
         public int Speed
         {
-            get { return this.speed_; }
-            set { this.SetProperty(ref speed_, value); }
+            get => this.speed_;
+
+            set => this.SetProperty(ref this.speed_, value);
         }
     }
 }

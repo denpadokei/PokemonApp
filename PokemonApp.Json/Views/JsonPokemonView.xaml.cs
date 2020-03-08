@@ -9,7 +9,7 @@ namespace PokemonApp.Json.Views
     {
         public JsonPokemonView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

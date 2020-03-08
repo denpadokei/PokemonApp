@@ -10,7 +10,7 @@ namespace PokemonApp.Views
     {
         public CustomDialogWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public IDialogResult Result { get; set; }

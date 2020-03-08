@@ -9,8 +9,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>特性の名前 を取得、設定</summary>
         public string Name
         {
-            get { return this.name_; }
-            set { this.SetProperty(ref name_, value); }
+            get => this.name_;
+
+            set => this.SetProperty(ref this.name_, value);
         }
 
         /// <summary>特性の説明 を取得、設定</summary>
@@ -18,8 +19,9 @@ namespace PokemonApp.PictureBook.Models
         /// <summary>特性の説明 を取得、設定</summary>
         public string Deteal
         {
-            get { return this.deteal_; }
-            set { this.SetProperty(ref deteal_, value); }
+            get => this.deteal_;
+
+            set => this.SetProperty(ref this.deteal_, value);
         }
     }
 }

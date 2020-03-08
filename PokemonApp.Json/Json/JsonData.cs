@@ -26,6 +26,9 @@ namespace PokemonApp.Json.Json
         /// </summary>
         /// <typeparam name="TYpe">任意の型</typeparam>
         /// <returns></returns>
-        public static DataContractJsonSerializer SerializerList<TYpe>() => new DataContractJsonSerializer(typeof(List<TYpe>));
+        public static DataContractJsonSerializer SerializerList<TYpe>()
+        {
+            return new DataContractJsonSerializer(typeof(List<TYpe>));
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace PokemonApp.WildArea.Views
     {
         public WildAreaUraraka()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

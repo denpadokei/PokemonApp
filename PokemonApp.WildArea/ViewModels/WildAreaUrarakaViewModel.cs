@@ -8,8 +8,9 @@ namespace PokemonApp.WildArea.ViewModels
         private string text_;
         public string Text
         {
-            get { return this.text_; }
-            set { this.SetProperty(ref this.text_, value); }
+            get => this.text_;
+
+            set => this.SetProperty(ref this.text_, value);
         }
 
         private readonly WildAreaDomain domain_;
